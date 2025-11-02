@@ -1,673 +1,125 @@
-/* ===================================
-   RESET & BASE STYLES
-   =================================== */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    /* Warm, readable serif for that analog, testimonial feel */
-    font-family: 'Georgia', 'Iowan Old Style', 'Times New Roman', serif;
-    background-color: #1a1a1a;
-    color: #d4d0c8;
-    line-height: 1.75;
-    padding: 20px;
-    font-size: 18px;
-    /* Subtle texture for analog warmth */
-    background-image: 
-        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.01) 0%, transparent 50%),
-        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.01) 0%, transparent 50%);
-}
-
-/* ===================================
-   CONTAINER & LAYOUT
-   =================================== */
-
-.container {
-    max-width: 680px;
-    margin: 0 auto;
-    padding: 40px 20px;
-}
-
-/* ===================================
-   TYPOGRAPHY
-   =================================== */
-
-h1 {
-    /* Restrained, weathered headline */
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 2.4rem;
-    font-weight: 400;
-    margin-bottom: 0.75rem;
-    color: #e8e4dc;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-}
-
-h2 {
-    /* Section headers - quiet but present */
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    margin-top: 3.5rem;
-    margin-bottom: 1.75rem;
-    color: #8a8577;
-    text-align: left;
-}
-
-h3 {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 1.35rem;
-    font-weight: 400;
-    color: #c8c4bb;
-    margin-bottom: 1.25rem;
-    line-height: 1.4;
-}
-
-p {
-    margin-bottom: 1.5rem;
-    color: #d4d0c8;
-    font-size: 1.05rem;
-    line-height: 1.75;
-}
-
-/* Emphasis text - for preview/pull quotes */
-.emphasis-text,
-.preview-text {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 1.25rem;
-    line-height: 1.65;
-    color: #e0ddd5;
-    font-style: italic;
-    margin: 2.5rem 0;
-    padding: 0 1.5rem;
-}
-
-a {
-    color: #9db4c9;
-    text-decoration: none;
-    transition: all 0.2s ease;
-    border-bottom: 1px solid transparent;
-}
-
-a:hover {
-    color: #b8cfe0;
-    border-bottom-color: #9db4c9;
-}
-
-/* ===================================
-   HEADER
-   =================================== */
-
-header {
-    text-align: center;
-    padding-bottom: 2.5rem;
-    border-bottom: 1px solid #2d2a25;
-    margin-bottom: 3rem;
-}
-
-.subtitle {
-    font-size: 1.05rem;
-    color: #7a766d;
-    font-style: italic;
-    margin-top: 1rem;
-    font-weight: 300;
-}
-
-/* ===================================
-   ABOUT SECTION
-   =================================== */
-
-.about-section {
-    margin-bottom: 4rem;
-}
-
-.about-preview {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 1.2rem;
-    color: #e0ddd5;
-    margin-bottom: 1.25rem;
-    line-height: 1.65;
-    font-style: italic;
-}
-
-/* ===================================
-   ACCORDION / DETAILS
-   For the "Read More" sections - optimized for extended reading
-   =================================== */
-
-.accordion {
-    margin-top: 2rem;
-    border-top: 1px solid #2d2a25;
-    padding-top: 1.25rem;
-}
-
-.accordion summary {
-    cursor: pointer;
-    color: #9db4c9;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-weight: 500;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    list-style: none;
-    padding: 0.75rem 0;
-    user-select: none;
-    transition: color 0.2s ease;
-}
-
-.accordion summary:hover {
-    color: #b8cfe0;
-}
-
-.accordion summary::-webkit-details-marker {
-    display: none;
-}
-
-.accordion summary::before {
-    content: "â–¸ ";
-    display: inline-block;
-    transition: transform 0.2s ease;
-    margin-right: 0.5rem;
-    font-size: 0.9rem;
-}
-
-.accordion[open] summary::before {
-    transform: rotate(90deg);
-}
-
-/* Enhanced readability for long-form content */
-.accordion-content {
-    padding: 2rem 0 0 0;
-    color: #d4d0c8;
-    animation: fadeIn 0.4s ease;
-    
-    /* Optimized for extended reading */
-    font-size: 1.05rem;
-    line-height: 1.8;
-    max-width: 38rem; /* Optimal line length for reading */
-    
-    /* Add subtle paragraph spacing for easier scanning */
-    & p {
-        margin-bottom: 1.75rem;
-    }
-    
-    /* Add breathing room between sections */
-    & p + p {
-        text-indent: 0;
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-8px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* ===================================
-   LESSONS SECTION
-   =================================== */
-
-.lessons-section {
-    margin-top: 4rem;
-}
-
-.lessons-section h2 {
-    text-align: center;
-    margin-bottom: 2.5rem;
-}
-
-#lessons-list {
-    margin-top: 2rem;
-}
-
-.lesson-item {
-    margin-bottom: 1.25rem;
-}
-
-.lesson-item a {
-    display: block;
-    padding: 1.5rem 1.5rem;
-    background-color: rgba(42, 38, 33, 0.3);
-    border-radius: 2px;
-    border-left: 2px solid #3a3630;
-    transition: all 0.3s ease;
-    text-decoration: none;
-}
-
-.lesson-item a:hover {
-    background-color: rgba(42, 38, 33, 0.5);
-    border-left-color: #9db4c9;
-    transform: translateX(6px);
-    border-bottom: none;
-}
-
-.lesson-title {
-    display: block;
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 1.25rem;
-    font-weight: 400;
-    color: #e8e4dc;
-    margin-bottom: 0.5rem;
-    line-height: 1.35;
-}
-
-.lesson-scripture {
-    display: block;
-    font-size: 0.95rem;
-    color: #8a8577;
-    font-style: italic;
-    font-weight: 300;
-}
-
-.no-lessons {
-    text-align: center;
-    padding: 3rem 2rem;
-    color: #7a766d;
-    font-style: italic;
-    font-size: 1.05rem;
-}
-
-/* ===================================
-   LESSON PAGE
-   =================================== */
-
-.back-link {
-    margin-bottom: 2.5rem;
-}
-
-.back-link a {
-    display: inline-block;
-    padding: 0.5rem 0;
-    color: #8a8577;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-weight: 500;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    border-bottom: 1px solid transparent;
-    transition: all 0.25s ease;
-}
-
-.back-link a:hover {
-    color: #9db4c9;
-    border-bottom-color: #9db4c9;
-    transform: translateX(-4px);
-}
-
-.back-link a::before {
-    content: "â† ";
-    margin-right: 0.4rem;
-}
-
-.lesson-header {
-    text-align: center;
-    padding-bottom: 2.5rem;
-    border-bottom: 1px solid #2d2a25;
-    margin-bottom: 3.5rem;
-}
-
-.scripture-reference {
-    font-size: 1.05rem;
-    color: #8a8577;
-    font-style: italic;
-    margin-top: 1rem;
-    font-weight: 300;
-    letter-spacing: 0.01em;
-}
-
-.lesson-summary,
-.song-tie-in,
-.song-section {
-    margin-bottom: 4.5rem;
-}
-
-/* Section headers for lesson content */
-.lesson-summary h2,
-.song-tie-in h2 {
-    text-align: center;
-}
-
-.preview-text {
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-/* ===================================
-   SONG SECTION
-   =================================== */
-
-.song-section {
-    text-align: center;
-    padding: 3rem 0;
-    border-top: 1px solid #2d2a25;
-    border-bottom: 1px solid #2d2a25;
-}
-
-.song-section h2 {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 1.65rem;
-    font-weight: 400;
-    text-transform: none;
-    letter-spacing: -0.01em;
-    margin-bottom: 2rem;
-    color: #e0ddd5;
-}
-
-/* Balanced image sizing - not overwhelming */
-.song-image {
-    max-width: 65%;
-    height: auto;
-    border-radius: 2px;
-    margin: 2rem auto;
-    display: block;
-    
-    /* Soft edges - old photograph feel for dark mode */
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 
-        /* Darker inset vignette that shows on images */
-        inset 0 0 80px rgba(0, 0, 0, 0.5),
-        inset 0 0 40px rgba(0, 0, 0, 0.3),
-        /* Soft outer glow to blend edges with dark background */
-        0 0 20px rgba(0, 0, 0, 0.6),
-        0 4px 12px rgba(0, 0, 0, 0.4),
-        0 12px 32px rgba(0, 0, 0, 0.3);
-    
-    /* Subtle warmth and texture */
-    filter: contrast(0.95) brightness(0.95) saturate(0.92);
-    
-    /* Soft edge fade effect */
-    position: relative;
-}
-
-/* Alternative: Add a pseudo-element overlay for even softer edges */
-.song-image::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    pointer-events: none;
-    border-radius: 2px;
-    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4);
-}
-
-.audio-player {
-    margin: 2.5rem 0;
-}
-
-.audio-player audio {
-    width: 100%;
-    max-width: 480px;
-    height: 54px;
-    border-radius: 2px;
-    background-color: rgba(42, 38, 33, 0.4);
-}
-
-.suno-link {
-    margin-top: 1.5rem;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-size: 0.85rem;
-    color: #7a766d;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-}
-
-.suno-link a {
-    color: #9db4c9;
-    font-weight: 500;
-}
-
-/* ===================================
-   NAVIGATION
-   =================================== */
-
-.lesson-navigation {
-    margin-top: 5rem;
-    padding-top: 2.5rem;
-    border-top: 1px solid #2d2a25;
-}
-
-.nav-links {
-    display: flex;
-    justify-content: space-between;
-    gap: 1.5rem;
-}
-
-.nav-link {
-    flex: 1;
-    padding: 1.25rem 1.5rem;
-    background-color: rgba(42, 38, 33, 0.3);
-    border: 1px solid #3a3630;
-    border-radius: 2px;
-    text-align: center;
-    color: #9db4c9;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-weight: 500;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    transition: all 0.25s ease;
-}
-
-.nav-link:hover {
-    background-color: rgba(42, 38, 33, 0.5);
-    border-color: #9db4c9;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    border-bottom-color: #9db4c9;
-}
-
-.prev-link {
-    text-align: left;
-}
-
-.next-link {
-    text-align: right;
-}
-
-.nav-link-placeholder {
-    flex: 1;
-}
-
-/* ===================================
-   SPECIAL TEXT ELEMENTS
-   =================================== */
-
-/* Scripture quotes within text */
-.scripture-quote {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-style: italic;
-    color: #e0ddd5;
-    padding-left: 2rem;
-    border-left: 2px solid #3a3630;
-    margin: 2.5rem 0;
-    font-size: 1.1rem;
-    line-height: 1.7;
-}
-
-em, i {
-    font-style: italic;
-    color: #e0ddd5;
-}
-
-strong, b {
-    font-weight: 600;
-    color: #e8e4dc;
-}
-
-/* ===================================
-   ERROR MESSAGE
-   =================================== */
-
-.error-message {
-    text-align: center;
-    padding: 5rem 2rem;
-}
-
-.error-message h1 {
-    color: #c98a7a;
-    margin-bottom: 1.5rem;
-}
-
-.error-message p {
-    margin-bottom: 2.5rem;
-    font-size: 1.1rem;
-}
-
-.button {
-    display: inline-block;
-    padding: 1rem 2rem;
-    background-color: #9db4c9;
-    color: #1a1a1a;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-weight: 600;
-    border-radius: 2px;
-    transition: all 0.2s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 0.85rem;
-    border: none;
-}
-
-.button:hover {
-    background-color: #b8cfe0;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(157, 180, 201, 0.25);
-    border-bottom: none;
-}
-
-/* ===================================
-   RESPONSIVE DESIGN
-   =================================== */
-
-@media (max-width: 768px) {
-    body {
-        padding: 15px;
-        font-size: 17px;
+// ============================================
+// HURST CLASS STUDY: LESSON DATA
+// ============================================
+//
+// HOW TO ADD A NEW LESSON:
+//
+// 1. Copy the entire lesson object template below (from the opening { to the closing },)
+// 2. Paste it at the end of the array (before the final ]);
+// 3. Fill in your content for each field
+// 4. Make sure each lesson has a unique "id"
+// 5. Save this file
+//
+// IMPORTANT:
+// - Each lesson object must be separated by a comma
+// - The "id" must be unique and lowercase with hyphens (e.g., "lesson-1", "lesson-2")
+// - Keep the quotes around text values
+// - Use relative paths: "images/lesson-x.png", "audio/lesson-x.mp3"
+// ============================================
+
+const lessonData = [
+    {
+        id: "lesson-1",
+        title: "Lesson 1: A Deep Dive into the Gospels",
+        scripture: "Matthew, Mark, Luke - Overview",
+        summary_preview:
+            "This foundational lesson explores the Synoptic Gospels—Matthew, Mark, and Luke—examining why we have four distinct accounts of Jesus's life and what makes each Gospel unique.",
+        summary_full:
+            "This lesson served as a foundational study of the Synoptic Gospels (Matthew, Mark, and Luke) to prepare for a deeper study into the Gospel of John. The session explored the definition of 'the gospel,' the literary genre of ancient biography, and the crucial concept of 'target audience' to explain why we have four distinct accounts of Jesus's life. The lesson began with a foundational question: 'What does gospel mean?' The word comes from the Greek euangelion, meaning 'good news,' often used in ancient times to announce a military victory. In a Christian context, quoting 1 Corinthians 15:1-4, the Gospel is the record that 'Christ died for our sins, according to the scriptures, that he was buried, and that he was raised on the 3rd day according to the scriptures.' The discussion then shifted to the genre of the Gospels. While we consider them biographies of Jesus, they must be understood through the lens of ancient biography, which differs significantly from modern biography. Ancient biographers focused on what they deemed most important, often skipping large sections of a person's life—like the missing portions of Jesus's life from infancy to age 12, and from age 12 to 30. The central question was, 'Why do we need four different accounts?' The main reason is that each Gospel was written for a specific target audience. Matthew wrote for Jewish Christians, using heavy Old Testament references (60-100 times) and Jewish terminology. Mark wrote for Gentile Romans, incorporating Latin words and explaining Jewish customs his audience wouldn't know. Luke, a Gentile physician, wrote the most comprehensive gospel with historical detail, universal scope, special emphasis on women (43 mentions), and unique parables. The lesson concluded by emphasizing that the different details in the Gospels are not contradictions. These differences are a hallmark of authentic, independent testimony, all pointing to the same foundational truth.",
+        tie_in_preview:
+            "The song 'Enough of the Road' captures the struggle of finding authentic words to share our faith story, inspired by the realization that each Gospel writer crafted their account for a specific audience.",
+        tie_in_full:
+            "Our journey began not with an answer, but with a surprisingly difficult question. When our group leader, Ben, asked us to define the word 'gospel'—a word we use all the time—a quiet struggle filled the room. The definition felt clear in our hearts, yet we couldn't find the words to succinctly express it. That shared, public challenge is captured in the song's opening verse, which takes the struggle and places it in an intimate, one-on-one context. The song opens in the 'lamplight of her kitchen,' where the narrator's 'old Sunday phrases' crumble, forcing a search for a more honest way to share their story. The lesson then pivoted from that personal struggle to a historical revelation. The leader introduced a concept new to many of us: that each of the gospel writers crafted their story for a specific 'target audience.' With this new perspective, the differences between the Gospels no longer seemed like weaknesses to be defended. Instead, they became a strength, serving as powerful evidence of the story's authenticity. Like variations in eyewitness accounts, the unique details in each testimony pointed to the same core truth. The song finds its answer by looking to their example. It realizes that each gospel writer crafted a story from their own experiences, intentionally tailoring it to a unique audience. The 'different kindling' represents their individual perspectives, unique details, and even the seemingly contradictory parts of their accounts. But all of that different kindling serves to reveal the one 'same bright fire': the single, unchanging truth of the Gospel. This realization is more than a permission slip; it's a lesson and a challenge that we, too, must tell the story in a way tailored for our audience. It frees us from the pressure of getting every detail perfect, reminding us that it doesn't have to be 'the whole map,' just 'enough of the road' to help someone find their way.",
+        song_title: "Enough of the Road",
+        image_url: "images/lesson-1.png",
+        audio_file: "audio/lesson-1.mp3",
+        suno_link: "https://suno.com/s/3DKxQRvElIiDWZXN"
+    },
+    {
+        id: "lesson-2",
+        title: "Lesson 2: Reading the Gospels with Humility and Context",
+        scripture: "Matthew 8:1–4",
+        summary_preview:
+            "This lesson explores how to approach the Gospels with humility—recognizing cultural, historical, and contextual distance—so that we don’t confuse description for prescription.",
+        summary_full:
+            "Lesson 2 emphasizes reading the Gospels with humility and awareness of context. It unpacks how modern readers can misapply Scripture when failing to consider its original audience or purpose. The discussion centers on Matthew 8:1–4, where Jesus heals a leper, showing compassion beyond social boundaries. The class examined the 'Bull’s-Eye Method'—a layered approach to interpretation that distinguishes what applied to the original audience, what applies universally, and what applies personally today. Participants learned how easily description can be mistaken for prescription and how humility keeps interpretation grounded in truth rather than assumption.",
+        tie_in_preview:
+            "The song 'Standing at the Doorway' captures the tension between the world’s noise and the quiet call to understand before acting, mirroring our need to approach the Gospels with reverent humility.",
+        tie_in_full:
+            "The song ‘Standing at the Doorway’ draws from the imagery of waiting on the threshold between understanding and assumption. Just as the lesson calls us to read the Gospels carefully, the song’s narrator stands before the 'doorway of truth,' acknowledging the temptation to rush into conclusions. The lyrics reflect the slow, faithful process of listening—mirroring the humility required to truly grasp Jesus’s message in its historical and cultural context. Both the song and the lesson invite believers to pause, reflect, and enter into understanding rather than react from instinct.",
+        song_title: "Standing at the Doorway",
+        image_url: "images/lesson-2.png",
+        audio_file: "audio/lesson-2.mp3",
+        suno_link: "https://suno.com/s/qyxWoygzR74r0Aqd"
+    },
+    {
+        id: "lesson-3",
+        title: "Lesson 3: Establishing the Historical Witness of John's Gospel",
+        scripture: "John 20:28, 30–31",
+        summary_preview:
+            "This lesson examines John’s Gospel as an eyewitness account, reinforced by archaeological and textual evidence that confirm its authenticity and purpose.",
+        summary_full:
+            "Lesson 3 focuses on John’s Gospel as a direct testimony of Jesus’s life and divinity. Participants explored the significance of John 20:28—Thomas’s declaration 'My Lord and my God'—and how it frames the book’s purpose statement in verses 30–31. The discussion included the discovery of a Domitian coin bearing divine titles, demonstrating the political and theological stakes of calling Jesus 'God.' The class considered John’s distinctiveness as an eyewitness and how his narrative builds a bridge between history and faith.",
+        tie_in_preview:
+            "The song 'The Last Witness' reflects John’s unique perspective as the final living eyewitness to Christ’s ministry, weaving faith, memory, and revelation together.",
+        tie_in_full:
+            "‘The Last Witness’ draws its emotional center from John’s longevity and reflection as the last surviving disciple. The song evokes the weight of memory—of seeing miracles, hearing the voice of God made flesh, and carrying those memories across decades. It parallels John’s Gospel: intimate, reflective, and written so 'you may believe.' Through both the song and the lesson, we see faith as testimony—anchored not in myth, but in the eyewitness witness who outlived them all.",
+        song_title: "The Last Witness",
+        image_url: "images/lesson-3.png",
+        audio_file: "audio/lesson-3.mp3",
+        suno_link: "https://suno.com/s/J33ELRr9EsWyTzYM"
+    },
+    {
+        id: "lesson-4",
+        title: "Lesson 4: A Map to John's Gospel — Purpose, Signs, and the 'I AM' Statements",
+        scripture: "John 20:30–31; John 1:1–18",
+        summary_preview:
+            "This lesson explores the structure of John’s Gospel—the seven miraculous signs and the seven 'I AM' statements—as a map revealing Jesus’s divine identity.",
+        summary_full:
+            "Lesson 4 invites participants to navigate John’s Gospel as a spiritual map. The class examined how the seven miraculous signs—from turning water to wine to raising Lazarus—each illuminate a unique facet of Christ’s divinity. The 'I AM' statements ('I am the bread of life,' 'I am the light of the world,' etc.) serve as signposts connecting Old Testament revelation with the person of Jesus. Together, these motifs form a cohesive portrait of purpose and power: that we may believe and have life in His name.",
+        tie_in_preview:
+            "The song 'Every Wonder Spoke His Name' celebrates how every miracle in John’s Gospel reveals not just power, but identity—the Creator speaking through creation itself.",
+        tie_in_full:
+            "In ‘Every Wonder Spoke His Name,’ the music and lyrics weave the themes of John’s Gospel into a lyrical journey through the signs of Jesus. Each verse reflects one of the miracles, building toward the realization that every act of power was also a declaration of who He is. The song’s refrain—'Every wonder spoke His name'—echoes the Gospel’s purpose: that belief arises not from spectacle, but from revelation. It complements the lesson’s call to read John as both narrative and theology, a map marked by the signs of divinity.",
+        song_title: "Every Wonder Spoke His Name",
+        image_url: "images/lesson-4.png",
+        audio_file: "audio/lesson-4.mp3",
+        suno_link: "https://suno.com/s/sCJVmoBBPZD71zHl"
+    },
+    {
+        id: "lesson-5",
+        title: "Lesson 5: John's Prologue — The Pre-existent Word and the Themes of the Gospel",
+        scripture: "John 1:1–18",
+        summary_preview:
+            "This lesson examines the opening of John’s Gospel, where the eternal Word becomes flesh, setting the foundation for all that follows.",
+        summary_full:
+            "Lesson 5 focuses on the majestic prologue of John’s Gospel, presenting Jesus as the divine Word who was with God and was God from the beginning. The study delves into the theological depth of 'In the beginning was the Word,' highlighting how John connects creation, revelation, and incarnation. Participants discussed how this passage introduces the Gospel’s major themes: light versus darkness, grace and truth, and the mystery of God made visible in human form.",
+        tie_in_preview:
+            "The song 'Never The Same' captures the transformation that occurs when the Word becomes flesh and dwells among us—how nothing remains unchanged once grace takes hold.",
+        tie_in_full:
+            "‘Never The Same’ brings to life the awe of the incarnation. The song echoes the poetic rhythm of John’s prologue, tracing how divine presence enters human history and alters it forever. Its verses build from quiet wonder to proclamation, mirroring the movement from 'the Word was with God' to 'the Word became flesh.' The lesson and song together remind us that the revelation of Christ is not theoretical—it’s experiential, and once encountered, we are never the same.",
+        song_title: "Never The Same",
+        image_url: "images/lesson-5.png",
+        audio_file: "audio/lesson-5.mp3",
+        suno_link: "https://suno.com/s/V8QYmNKy4hBvczwK"
     }
 
-    .container {
-        padding: 30px 15px;
-    }
+    // ============================================
+    // TEMPLATE FOR NEW LESSONS
+    // ============================================
+    // ,
+    // {
+    //     id: "lesson-6",
+    //     title: "Lesson 6: Your Title Here",
+    //     scripture: "John X:XX–XX",
+    //     summary_preview: "Short preview here...",
+    //     summary_full: "Full lesson text here...",
+    //     tie_in_preview: "Short song connection preview...",
+    //     tie_in_full: "Full song explanation here...",
+    //     song_title: "Song Title Here",
+    //     image_url: "images/lesson-6.png",
+    //     audio_file: "audio/lesson-6.mp3",
+    //     suno_link: "https://suno.com/s/[your-song-id]"
+    // }
+];
 
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 0.8rem;
-        margin-top: 3rem;
-    }
-
-    h3 {
-        font-size: 1.2rem;
-    }
-
-    .emphasis-text,
-    .preview-text {
-        font-size: 1.15rem;
-        padding: 0 1rem;
-    }
-
-    .lesson-item a {
-        padding: 1.25rem 1.25rem;
-    }
-
-    .lesson-title {
-        font-size: 1.15rem;
-    }
-
-    /* Image remains balanced on mobile */
-    .song-image {
-        max-width: 75%;
-    }
-
-    .nav-links {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .prev-link,
-    .next-link {
-        text-align: center;
-    }
-
-    .accordion-content {
-        max-width: 100%;
-        font-size: 1.025rem;
-    }
-}
-
-@media (max-width: 480px) {
-    body {
-        font-size: 16px;
-    }
-
-    h1 {
-        font-size: 1.75rem;
-    }
-
-    .subtitle {
-        font-size: 0.95rem;
-    }
-
-    h2 {
-        font-size: 0.75rem;
-    }
-
-    h3 {
-        font-size: 1.1rem;
-    }
-
-    .emphasis-text,
-    .preview-text {
-        font-size: 1.05rem;
-    }
-
-    .about-preview {
-        font-size: 1.05rem;
-    }
-
-    /* Image scales down further on very small screens */
-    .song-image {
-        max-width: 85%;
-    }
-
-    .accordion-content {
-        font-size: 1rem;
-        line-height: 1.75;
-    }
-}
-
-/* ===================================
-   UTILITY CLASSES
-   =================================== */
-
-.text-center {
-    text-align: center;
-}
-
-/* Subtle divider with warm tone */
-.divider {
-    border: 0;
-    height: 1px;
-    background: linear-gradient(to right, transparent, #3a3630, transparent);
-    margin: 3.5rem 0;
-}
-
-.small-caps {
-    font-variant: small-caps;
-    letter-spacing: 0.08em;
-}
