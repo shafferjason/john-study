@@ -52,7 +52,8 @@ const lessonData = [
         
         // OPTIONAL: Link to the song on Suno (backup for users who can't play the audio)
         suno_link: "https://suno.com/s/3DKxQRvElIiDWZXN"
-    }, {
+    },
+    {
         id: "lesson-2",
         title: "Lesson 2: Reading the Gospels with Humility and Context",
         scripture: "Matthew 8:1-4",
