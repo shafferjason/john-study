@@ -18,7 +18,7 @@ body {
     font-size: 18px;
     /* Subtle texture for analog warmth */
     background-image: 
-        url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQwIDc5LjE2MDQ1MSwgMjAxNy8wNS8wNi0wMTowODoyMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTggKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkYxRjUzQzBGNjQ5RDExRThBNjQ0QzRFMDUwM0QyNzM1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkYxRjUzQzExNjQ5RDExRThBNjQ0QzRFMDUwM0QyNzM1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6RjFGNTNDMEQ2NDlEMTFEQUE2NDRDNEUwNTAzRDI3MzUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6RjFGNTNDMEU2NDlEMTFEQUE2NDRDNEUwNTAzRDI3MzUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz4/3cKNAAACFElEQVR42uyby47DMAwD4/T+D6UPJJAGDbNlHtkQ6aRpmqZJ+7CxzAhb5MfFxEsmWfzLZrPZlP88y+VSNptNHx3PZrNVn3G5XF6en5+vp/NyuRzL5ZLRaFTHF4vFOI5Rz7Nzc3Ol0+m02WxKjUaDarVqE4lEqFQqbTab/f392VRKJZVKpbBYLIZlWfgf8fr6mlAohN/vZ7Vatdlsxul0UigUmM1mOJ1OsVgMvV6Py+VCURSapnE6naLRKENDQ9rtNkEQGI1GhEKh0r/fEASB1WplNptlMpk0m02SyeQf4vPzcyQSCZRKJaRSKSaTCcPhkMPhgGEYKpWK1WqFYRi8Xi+j0QhjGAYSCTqdDjweD2q1Gk3TfH5+ptfrMRwOM5lMaLVaIpEIQqEQbrebTqeDYRhCoZDC4bA0TYfDYTAYDHq9nsFg0Ol0SktLyMvLo62tDWtry8rKCnNzc+bm5vj4+ERFRb2/r01LSyMvL4+WlhZaWhobGxvUajVBEHAcB8/zMAxDLBbDbDZD0zQcxwSDQQiFQiQSCQSB4XCIYRg0TWM2myEIAkEQ2O/3RUREHD10qKurQ1FREVVVValUilAohNlsptvtxuFwkMlkSKVSGAwGhMNhjMfjHA7nJ5tN0zQej4fb7UYoFMLv98MwDE3TMAyjy+WSz+cxx+N5nlAoBE3TMAxDIMR7vV6dTidjGMYwjDAMvF4vAEBRFGEYDgaDxWLRbDbj8XgwDAOPx0Mmk8GyrNvtptPpdDqddsU4HFYulxljGIRAiFgsRm9vr9vthmEYBEHgOA4AwHEcSJLEcrkkSRKNRmOMn5+fKJVKKpWKZVlEo1EIhULMZrPhcBiVSsVsNkNTU1O73SYSiZAkCbPZLEmS+L4PwzB4vV6MRiMOhwO2bDabqdVqrFar9vZ2rKysyMjIwNzcHHNzcyQSCZqamtTU1NDS0kJFRQVtbW3c3d1xcnJCtVqlVqsxmUx4PB5sNhuKogRB4HA4YLVasVgsUqkUbNvGNE3c3d0hSRLdbsdisSguLkZGRgapVMrj8aBUKjEGg6G3txdjGCIIAo/Hg2VZURQhm82GUqnEYDAgmUwyGAxIpVLE43GTyURTU5O8vDy0trZycnLC398fj8eDt7c3NTU1kMlkOBwOpFLp16sPvx5+fHyYzeZoNBrpdHo8HmfT6XRbLbfrdrtxOp1SqRRLliyXywSDQRRFobOzE4/HQ6vVYhgGkUiEUChEMBgkSRKPxwNBEENDQ+qSJCGE3Gw2sSwLnucEQQAAy7LQNA2e52EYouHhYaFQCDzPw7IsLMtijEqlEqFQCFKpFGEYHMfBtm2aplGr1VqtVsPhECMjIxRF4fV6kUqlaLVaEAhxOp3xeDzf39+r1ep/4h/8VfXw8DCPx4NWqwWAZrPJZDKl1+uJRCLE43ECQQjDMI7Hk/cLAQMAqH+0BbIMDDEAAAAASUVORK5CYII=),
+        url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU:bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQwIDc5LjE2MDQ1MSwgMjAxNy8wNS8wNi0wMTowODoyMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY: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),
         radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.01) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.01) 0%, transparent 50%);
 }
@@ -90,7 +90,6 @@ p {
 }
 
 a {
-    /* --- MODIFIED --- */
     color: #c9a47a; /* Warm amber/gold */
     text-decoration: none;
     transition: all 0.2s ease;
@@ -98,7 +97,6 @@ a {
 }
 
 a:hover {
-    /* --- MODIFIED --- */
     color: #e0c6a7; /* Brighter gold hover */
     border-bottom-color: #c9a47a;
 }
@@ -110,7 +108,6 @@ a:hover {
 header {
     text-align: center;
     padding-bottom: 2.5rem;
-    /* --- MODIFIED --- */
     border-bottom: 1px solid #2d2a25;
     /* Replaced with a gradient to soften the line */
     background: linear-gradient(to bottom, transparent 98%, #2d2a25 100%);
@@ -149,14 +146,12 @@ header {
 
 .accordion {
     margin-top: 2rem;
-    /* --- MODIFIED --- */
     border-top: 1px solid #2d2a25; /* Softened divider */
     padding-top: 1.25rem;
 }
 
 .accordion summary {
     cursor: pointer;
-    /* --- MODIFIED --- */
     color: #c9a47a; /* Warm amber/gold */
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-weight: 500;
@@ -170,7 +165,6 @@ header {
 }
 
 .accordion summary:hover {
-    /* --- MODIFIED --- */
     color: #e0c6a7; /* Brighter gold hover */
 }
 
@@ -256,7 +250,6 @@ header {
 
 .lesson-item a:hover {
     background-color: rgba(42, 38, 33, 0.5);
-    /* --- MODIFIED --- */
     border-left-color: #c9a47a; /* Warm amber/gold */
     transform: translateX(6px);
     border-bottom: none;
@@ -310,7 +303,6 @@ header {
 }
 
 .back-link a:hover {
-    /* --- MODIFIED --- */
     color: #c9a47a; /* Warm amber/gold */
     border-bottom-color: #c9a47a;
     transform: translateX(-4px);
@@ -324,7 +316,6 @@ header {
 .lesson-header {
     text-align: center;
     padding-bottom: 2.5rem;
-    /* --- MODIFIED --- */
     border-bottom: 1px solid #2d2a25; /* Softened divider */
     background: linear-gradient(to bottom, transparent 98%, #2d2a25 100%);
     margin-bottom: 3.5rem;
@@ -363,7 +354,6 @@ header {
 .song-section {
     text-align: center;
     padding: 3rem 0;
-    /* --- MODIFIED --- */
     /* Replaced hard lines with soft gradient borders */
     border-top: 1px solid #2d2a25;
     border-bottom: 1px solid #2d2a25;
@@ -405,7 +395,7 @@ header {
 }
 
 /* ===================================
-   CUSTOM AUDIO PLAYER
+   CUSTOM AUDIO PLAYER (TEXTURED)
    =================================== */
 
 .custom-audio-player {
@@ -416,9 +406,15 @@ header {
     max-width: 480px;
     margin: 2.5rem auto;
     padding: 0.5rem 1rem;
-    background-color: rgba(42, 38, 33, 0.4);
+    /* --- MODIFIED --- */
+    /* Added gradient for texture */
+    background: linear-gradient(to bottom, rgba(42, 38, 33, 0.4) 0%, rgba(30, 28, 25, 0.5) 100%);
     border-radius: 50px; /* Pill shape */
     border: 1px solid #3a3630;
+    /* Added shadows for depth */
+    box-shadow: 
+        inset 0 1px 3px rgba(0,0,0,0.4), 
+        0 1px 1px rgba(255,255,255,0.05);
 }
 
 .player-button {
@@ -434,6 +430,8 @@ header {
     height: 36px;
     fill: #d4d0c8;
     transition: all 0.2s ease;
+    /* Add a subtle shadow to the icon itself */
+    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.3));
 }
 
 .player-button:hover svg {
@@ -463,7 +461,11 @@ header {
     appearance: none;
     width: 100%;
     height: 4px;
-    background: #3a3630;
+    /* --- MODIFIED --- */
+    /* Changed to a gradient for "trough" effect */
+    background: linear-gradient(to bottom, #2a2622 0%, #3a3630 100%);
+    /* Added inset shadow for depth */
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.5);
     border-radius: 2px;
     outline: none;
     cursor: pointer;
@@ -478,6 +480,10 @@ header {
     border-radius: 50%;
     background: #d4d0c8;
     cursor: pointer;
+    /* --- MODIFIED --- */
+    /* Added border and shadow for 3D feel */
+    border: 1px solid rgba(0,0,0,0.2);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
     transition: background 0.2s ease;
 }
 
@@ -492,7 +498,10 @@ header {
     border-radius: 50%;
     background: #d4d0c8;
     cursor: pointer;
-    border: none;
+    /* --- MODIFIED --- */
+    /* Added border and shadow for 3D feel */
+    border: 1px solid rgba(0,0,0,0.2);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.5);
     transition: background 0.2s ease;
 }
 
@@ -504,307 +513,4 @@ header {
 .suno-link {
     margin-top: 1.5rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-size: 0.85rem;
-    color: #7a766d;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-}
-
-.suno-link a {
-    /* --- MODIFIED --- */
-    color: #c9a47a; /* Warm amber/gold */
-    font-weight: 500;
-}
-
-/* ===================================
-   NAVIGATION
-   =================================== */
-
-.lesson-navigation {
-    margin-top: 5rem;
-    padding-top: 2.5rem;
-    /* --- MODIFIED --- */
-    border-top: 1px solid #2d2a25; /* Softened divider */
-    background: linear-gradient(to top, transparent 98%, #2d2a25 100%);
-}
-
-.nav-links {
-    display: flex;
-    justify-content: space-between;
-    gap: 1.5rem;
-}
-
-.nav-link {
-    flex: 1;
-    padding: 1.25rem 1.5rem;
-    background-color: rgba(42, 38, 33, 0.3);
-    border: 1px solid #3a3630;
-    border-radius: 2px;
-    text-align: center;
-    /* --- MODIFIED --- */
-    color: #c9a47a; /* Warm amber/gold */
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-weight: 500;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    transition: all 0.25s ease;
-}
-
-.nav-link:hover {
-    background-color: rgba(42, 38, 33, 0.5);
-    /* --- MODIFIED --- */
-    border-color: #c9a47a; /* Warm amber/gold */
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    border-bottom-color: #c9a47a;
-}
-
-.prev-link {
-    text-align: left;
-}
-
-.next-link {
-    text-align: right;
-}
-
-.nav-link-placeholder {
-    flex: 1;
-}
-
-/* ===================================
-   SPECIAL TEXT ELEMENTS
-   =================================== */
-
-/* Scripture quotes within text */
-.scripture-quote {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-style: italic;
-    color: #e0ddd5;
-    padding-left: 2rem;
-    border-left: 2px solid #3a3630;
-    margin: 2.5rem 0;
-    font-size: 1.1rem;
-    line-height: 1.7;
-}
-
-em, i {
-    font-style: italic;
-    color: #e0ddd5;
-}
-
-strong, b {
-    font-weight: 600;
-    color: #e8e4dc;
-}
-
-/* ===================================
-   ERROR MESSAGE
-   =================================== */
-
-.error-message {
-    text-align: center;
-    padding: 5rem 2rem;
-}
-
-.error-message h1 {
-    color: #c98a7a;
-    margin-bottom: 1.5rem;
-}
-
-.error-message p {
-    margin-bottom: 2.5rem;
-    font-size: 1.1rem;
-}
-
-.button {
-    display: inline-block;
-    padding: 1rem 2rem;
-    /* --- MODIFIED --- */
-    background-color: #c9a47a; /* Warm amber/gold */
-    color: #1a1a1a;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-weight: 600;
-    border-radius: 2px;
-    transition: all 0.2s ease;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-size: 0.85rem;
-    border: none;
-}
-
-.button:hover {
-    /* --- MODIFIED --- */
-    background-color: #e0c6a7; /* Brighter gold hover */
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(201, 164, 122, 0.25);
-    border-bottom: none;
-}
-
-/* ===================================
-   RESPONSIVE DESIGN
-   =================================== */
-
-@media (max-width: 768px) {
-    body {
-        padding: 15px;
-        font-size: 17px;
-    }
-
-    .container {
-        padding: 30px 15px;
-    }
-
-    h1 {
-        font-size: 2rem;
-    }
-
-    h2 {
-        font-size: 0.8rem;
-        margin-top: 3rem;
-    }
-
-    h3 {
-        font-size: 1.2rem;
-    }
-
-    .emphasis-text,
-    .preview-text {
-        font-size: 1.15rem;
-        padding: 0 1rem;
-    }
-
-    .lesson-item a {
-        padding: 1.25rem 1.25rem;
-    }
-
-    .lesson-title {
-        font-size: 1.15rem;
-    }
-
-    /* Image remains balanced on mobile */
-    .song-image {
-        max-width: 75%;
-    }
-    
-    .custom-audio-player {
-        padding: 0.5rem 0.75rem;
-    }
-    
-    .time-display {
-        font-size: 0.8rem;
-        width: 35px;
-    }
-
-    .nav-links {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .prev-link,
-    .next-link {
-        text-align: center;
-    }
-
-    .accordion-content {
-        max-width: 100%;
-        font-size: 1.025rem;
-    }
-}
-
-@media (max-width: 480px) {
-    body {
-        font-size: 16px;
-    }
-
-    h1 {
-        font-size: 1.75rem;
-    }
-
-    .subtitle {
-        font-size: 0.95rem;
-    }
-
-    h2 {
-        font-size: 0.75rem;
-    }
-
-    h3 {
-        font-size: 1.1rem;
-    }
-
-    .emphasis-text,
-    .preview-text {
-        font-size: 1.05rem;
-    }
-
-    .about-preview {
-        font-size: 1.05rem;
-    }
-
-    /* Image scales down further on very small screens */
-    .song-image {
-        max-width: 85%;
-    }
-    
-    .custom-audio-player {
-        padding: 0.4rem 0.5rem;
-    }
-    
-    .player-button {
-        margin-right: 0.5rem;
-    }
-    
-    .player-button svg {
-        width: 32px;
-        height: 32px;
-    }
-
-    .time-display {
-        font-size: 0.75rem;
-        width: 32px;
-    }
-    
-    #current-time {
-        margin-right: 0.5rem;
-    }
-
-    #duration {
-        margin-left: 0.5rem;
-    }
-    
-    .seek-bar::-webkit-slider-thumb {
-        width: 14px;
-        height: 14px;
-    }
-    .seek-bar::-moz-range-thumb {
-        width: 14px;
-        height: 14px;
-    }
-
-    .accordion-content {
-        font-size: 1rem;
-        line-height: 1.75;
-    }
-}
-
-/* ===================================
-   UTILITY CLASSES
-   =================================== */
-
-.text-center {
-    text-align: center;
-}
-
-/* Subtle divider with warm tone */
-.divider {
-    border: 0;
-    height: 1px;
-    background: linear-gradient(to right, transparent, #3a3630, transparent);
-    margin: 3.5rem 0;
-}
-
-.small-caps {
-    font-variant: small-caps;
-    letter-spacing: 0.08em;
-}
+    font-size: 0
