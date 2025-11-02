@@ -13,12 +13,10 @@
         </div>
 
         <article id="lesson-content">
-            <!-- Content will be dynamically inserted here -->
-        </article>
+            </article>
 
         <nav class="lesson-navigation">
-            <!-- Previous/Next links will be inserted here -->
-        </nav>
+            </nav>
     </div>
 
     <script src="data.js"></script>
@@ -79,14 +77,18 @@
                     ${currentLesson.image_url ? `<img src="${currentLesson.image_url}" alt="${currentLesson.song_title}" class="song-image">` : ''}
                     
                     ${currentLesson.audio_file ? `
-                        <div class="audio-player">
-                            <audio controls>
-                                <source src="${currentLesson.audio_file}" type="audio/mpeg">
-                                Your browser does not support the audio player.
-                            </audio>
+                        <div class="custom-audio-player">
+                            <audio id="lesson-audio" src="${currentLesson.audio_file}"></audio>
+                            
+                            <button id="play-pause-btn" class="player-button">
+                                <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                <svg class="pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                            </button>
+                            <div id="current-time" class="time-display">0:00</div>
+                            <input type="range" id="seek-bar" class="seek-bar" value="0" min="0" max="100">
+                            <div id="duration" class="time-display">0:00</div>
                         </div>
                     ` : ''}
-                    
                     ${currentLesson.suno_link ? `
                         <p class="suno-link">
                             Can't play? <a href="${currentLesson.suno_link}" target="_blank" rel="noopener">Listen on Suno →</a>
@@ -127,6 +129,65 @@
             
             navHTML += '</div>';
             navSection.innerHTML = navHTML;
+
+            // === NEW JAVASCRIPT FOR CUSTOM PLAYER ===
+            // This code must run *after* the innerHTML is set
+            if (currentLesson.audio_file) {
+                const audio = document.getElementById('lesson-audio');
+                const playPauseBtn = document.getElementById('play-pause-btn');
+                const playIcon = playPauseBtn.querySelector('.play-icon');
+                const pauseIcon = playPauseBtn.querySelector('.pause-icon');
+                const seekBar = document.getElementById('seek-bar');
+                const currentTimeEl = document.getElementById('current-time');
+                const durationEl = document.getElementById('duration');
+
+                // Helper function to format time in 0:00
+                function formatTime(seconds) {
+                    const minutes = Math.floor(seconds / 60);
+                    const secs = Math.floor(seconds % 60);
+                    return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+                }
+
+                // Play/Pause functionality
+                playPauseBtn.addEventListener('click', () => {
+                    if (audio.paused) {
+                        audio.play();
+                        playIcon.style.display = 'none';
+                        pauseIcon.style.display = 'inline-block';
+                    } else {
+                        audio.pause();
+                        playIcon.style.display = 'inline-block';
+                        pauseIcon.style.display = 'none';
+                    }
+                });
+
+                // Update seek bar and time as audio plays
+                audio.addEventListener('timeupdate', () => {
+                    const progress = (audio.currentTime / audio.duration) * 100;
+                    seekBar.value = progress;
+                    currentTimeEl.textContent = formatTime(audio.currentTime);
+                });
+
+                // Set total duration when audio loads
+                audio.addEventListener('loadedmetadata', () => {
+                    durationEl.textContent = formatTime(audio.duration);
+                    seekBar.max = audio.duration; // Set max for easier seeking
+                });
+                
+                // Allow user to seek by dragging the bar
+                seekBar.addEventListener('input', () => {
+                    audio.currentTime = seekBar.value;
+                });
+                
+                // Reset player when audio ends
+                audio.addEventListener('ended', () => {
+                    playIcon.style.display = 'inline-block';
+                    pauseIcon.style.display = 'none';
+                    seekBar.value = 0;
+                    currentTimeEl.textContent = '0:00';
+                });
+            }
+            // === END NEW JAVASCRIPT ===
         }
     </script>
 </body>
