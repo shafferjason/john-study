@@ -163,8 +163,6 @@
 
                 // Update seek bar and time as audio plays
                 audio.addEventListener('timeupdate', () => {
-                    // Use audio.duration for the max value in the calculation
-                    const progress = (audio.currentTime / audio.duration) * 100;
                     // Update the range input's value based on time, not percentage
                     seekBar.value = audio.currentTime; 
                     currentTimeEl.textContent = formatTime(audio.currentTime);
