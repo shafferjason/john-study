@@ -1,133 +1,673 @@
-// ============================================
-// HURST CLASS STUDY: LESSON DATA
-// ============================================
-// 
-// HOW TO ADD A NEW LESSON:
-// 
-// 1. Copy the entire lesson object template below (from the opening { to the closing },)
-// 2. Paste it at the end of the array (before the final ];)
-// 3. Fill in your content for each field
-// 4. Make sure each lesson has a unique "id"
-// 5. Save this file
-// 
-// IMPORTANT: 
-// - Each lesson object must be separated by a comma
-// - The "id" must be unique and lowercase with hyphens (e.g., "lesson-1", "lesson-2")
-// - Keep the quotes around text values
-// - You can use both /audio/filename.mp3 OR full URLs like https://example.com/audio.mp3
-// 
-// ============================================
+/* ===================================
+   RESET & BASE STYLES
+   =================================== */
 
-const lessonData = [
-    {
-        // REQUIRED: Unique identifier (used in the URL)
-        id: "lesson-1",
-        
-        // REQUIRED: The lesson title
-        title: "Lesson 1: A Deep Dive into the Gospels",
-        
-        // REQUIRED: Scripture reference
-        scripture: "Matthew, Mark, Luke - Overview",
-        
-        // REQUIRED: Short 1-2 sentence preview of the lesson
-        summary_preview: "This foundational lesson explores the Synoptic Gospels—Matthew, Mark, and Luke—examining why we have four distinct accounts of Jesus's life and what makes each Gospel unique.",
-        
-        // REQUIRED: Full lesson summary (can be as long as you need)
-        summary_full: "This lesson served as a foundational study of the Synoptic Gospels (Matthew, Mark, and Luke) to prepare for a deeper study into the Gospel of John. The session explored the definition of 'the gospel,' the literary genre of ancient biography, and the crucial concept of 'target audience' to explain why we have four distinct accounts of Jesus's life. The lesson began with a foundational question: 'What does gospel mean?' The word comes from the Greek euangelion, meaning 'good news,' often used in ancient times to announce a military victory. In a Christian context, quoting 1 Corinthians 15:1-4, the Gospel is the record that 'Christ died for our sins, according to the scriptures, that he was buried, and that he was raised on the 3rd day according to the scriptures.' The discussion then shifted to the genre of the Gospels. While we consider them biographies of Jesus, they must be understood through the lens of ancient biography, which differs significantly from modern biography. Ancient biographers focused on what they deemed most important, often skipping large sections of a person's life—like the missing portions of Jesus's life from infancy to age 12, and from age 12 to 30. The central question was, 'Why do we need four different accounts?' The main reason is that each Gospel was written for a specific target audience. Matthew wrote for Jewish Christians, using heavy Old Testament references (60-100 times) and Jewish terminology. Mark wrote for Gentile Romans, incorporating Latin words and explaining Jewish customs his audience wouldn't know. Luke, a Gentile physician, wrote the most comprehensive gospel with historical detail, universal scope, special emphasis on women (43 mentions), and unique parables. The lesson concluded by emphasizing that the different details in the Gospels are not contradictions. These differences are a hallmark of authentic, independent testimony, all pointing to the same foundational truth.",
-        
-        // REQUIRED: Short 1-2 sentence preview of how the song connects
-        tie_in_preview: "The song 'Enough of the Road' captures the struggle of finding authentic words to share our faith story, inspired by the realization that each Gospel writer crafted their account for a specific audience.",
-        
-        // REQUIRED: Full explanation of the song's connection to the lesson
-        tie_in_full: "Our journey began not with an answer, but with a surprisingly difficult question. When our group leader, Ben, asked us to define the word 'gospel'—a word we use all the time—a quiet struggle filled the room. The definition felt clear in our hearts, yet we couldn't find the words to succinctly express it. That shared, public challenge is captured in the song's opening verse, which takes the struggle and places it in an intimate, one-on-one context. The song opens in the 'lamplight of her kitchen,' where the narrator's 'old Sunday phrases' crumble, forcing a search for a more honest way to share their story. The lesson then pivoted from that personal struggle to a historical revelation. The leader introduced a concept new to many of us: that each of the gospel writers crafted their story for a specific 'target audience.' With this new perspective, the differences between the Gospels no longer seemed like weaknesses to be defended. Instead, they became a strength, serving as powerful evidence of the story's authenticity. Like variations in eyewitness accounts, the unique details in each testimony pointed to the same core truth. The song finds its answer by looking to their example. It realizes that each gospel writer crafted a story from their own experiences, intentionally tailoring it to a unique audience. The 'different kindling' represents their individual perspectives, unique details, and even the seemingly contradictory parts of their accounts. But all of that different kindling serves to reveal the one 'same bright fire': the single, unchanging truth of the Gospel. This realization is more than a permission slip; it's a lesson and a challenge that we, too, must tell the story in a way tailored for our audience. It frees us from the pressure of getting every detail perfect, reminding us that it doesn't have to be 'the whole map,' just 'enough of the road' to help someone find their way.",
-        
-        // REQUIRED: The title of the song
-        song_title: "Enough of the Road",
-        
-        // OPTIONAL: Path to the song's image (can be /images/filename.jpg or a full URL)
-        image_url: "images/lesson-1.png",
-        
-        // OPTIONAL: Path to the audio file (can be /audio/filename.mp3 or a full URL)
-        audio_file: "audio/lesson-1.mp3",
-        
-        // OPTIONAL: Link to the song on Suno (backup for users who can't play the audio)
-        suno_link: "https://suno.com/s/3DKxQRvElIiDWZXN"
-    },
-    {
-        id: "lesson-2",
-        title: "Lesson 2: Reading the Gospels with Humility and Context",
-        scripture: "Matthew 8:1-4",
-        summary_preview: "This week, the group continued its introduction to the Gospels, moving from a recap of the previous week's discussion on the synoptic Gospels to the foundational principles of how to read and interpret scripture responsibly...",
-        summary_full: "This week, the group continued its introduction to the Gospels, moving from a recap of the previous week's discussion on the synoptic Gospels (Matthew, Mark, and Luke) to the foundational principles of how to read and interpret scripture responsibly. The central theme was the importance of understanding context—historical, literary, and authorial—to avoid misinterpretation and truly hear what the text is communicating about Jesus.\n\nKey Principles of Gospel Interpretation:\n\nThe lesson began by establishing two foundational questions that should guide any reading of the Gospels:\n\n1. What does this communicate about Jesus? This should be the primary question, grounding the reader in the central purpose of a Gospel before moving to personal application.\n\n2. What is the primary point of the passage? Identifying the main idea is crucial before dissecting individual verses or details.\n\nTo answer these questions accurately, several layers of context must be considered:\n\n• Historical Context: The text was written for us, but not to us. We read it through a 21st-century lens, but it was written in a 1st-century world. Understanding the original setting is vital. An example given was the crucifixion, which was a deeply terrifying and offensive public spectacle to a 1st-century audience, a reality whose sharp edges have been dulled for modern readers.\n\n• Literary Context (The Bull's-Eye Method): A verse should never be read in isolation. The leader, Ben, illustrated this with a 'bull's-eye' analogy for study: Start with the individual verse, zoom out to the surrounding passage and chapter, zoom out further to the entire book or letter to grasp the author's overarching message, consider the author's other writings, expand to the context of the entire New Testament, and finally, consider the full context of all of Scripture.\n\nDescription vs. Prescription: The Most Important Principle\n\nThe most significant teaching point of the lesson was discerning between description and prescription. Everything in the Gospels describes an event, a setting, or a conversation. However, not everything is a direct prescription or command for Christians today.\n\n• The Core Illustration (Matthew 8:1-4): Ben used the story of Jesus healing the man with a skin disease as the key example. Jesus commanded the man, 'See that you do not tell anyone, but go show yourself to the priest and offer the gift that Moses prescribed.' This was a descriptive command for a specific person living under the Old Covenant. It is not prescriptive for believers today. If it were, every time we recovered from an illness, we would be required to bring two birds, two male lambs, and a ewe lamb to a priest. This powerful example made it clear that we cannot treat every command from Jesus in the Gospels as a direct, universal law for the church today.\n\nClass Discussion: The Danger of Misinterpretation\n\nThe principles discussed were brought to life through personal stories and class participation.\n\n• Ben's Psalm 23 Story: Ben shared his own experience as a teenager misreading Psalm 23 ('The Lord is my shepherd, I shall not want'). He interpreted the shepherd's guidance as oppressive because he didn't understand the context of a shepherd's care. The story served as a personal and powerful reminder of how easy it is to misread scripture when we lack humility and proper context.\n\n• Parenting and Context: A class member shared the challenge of teaching their children, noting that one daughter could quote scripture but missed the context entirely, highlighting the real-world importance of these interpretive skills. This led to an encouragement for the group to be a resource for one another when facing difficult questions from their children.\n\nPractical Wisdom for Reading:\n\n• Parables: A warning was given against the urge to allegorize every single detail in a parable. Doing so can cause you to 'miss the forest for the trees.' The meaning is found in the main point of the story, not in analyzing why a detail was 'two and not four.'\n\n• Admitting 'I Don't Know': The lesson emphasized the importance of humility. It's better to admit you don't know the answer to a question than to give a wrong one. This was framed in the context of both parenting and personal study.\n\nThe session concluded by affirming that preparing our hearts and minds with these principles is like stretching before a run—it makes us ready to engage with the text of the Gospels properly and to see what they truly reveal about Jesus Christ.",
-        tie_in_preview: "This week's lesson didn't begin with a definition or a debate, but with a story — the simple, startling scene of a leper falling at Jesus' feet...",
-        tie_in_full: "This week's lesson didn't begin with a definition or a debate, but with a story — the simple, startling scene of a leper falling at Jesus' feet. Ben read aloud from Matthew 8, where Jesus not only heals the man but gives him an unusual command: 'Don't tell anyone, but go show yourself to the priest and offer the gift Moses commanded.' At first it sounded straightforward, yet Ben invited us to pause and ask what it really meant. Was this a command for every believer in every age, or something spoken into one man's specific moment?\n\nThat pause reframed everything. If we took the words prescriptively, then every Christian who recovers from an illness would need to find a priest and bring lambs or birds for sacrifice. Clearly, Jesus was speaking into one man's world under the old covenant, not laying down a law for every believer in every age. The lesson became clear: if we treat every description as a prescription, we pile up burdens never meant for us. But if we treat everything as only description, we risk losing the weight of Christ's true commands. Wisdom comes in knowing the difference, and humility is the only posture that makes us willing to learn.\n\nThe song 'Standing at the Doorway' gives voice to that same humility. It confesses how quickly we rush into Scripture, 'circling what proves us right, shaping ancient voices into what we want to hear.' But it doesn't stay there. It invites us to pause, to stand at the threshold of God's Word with hearts prepared, asking, 'Teach us how to listen, teach us how to read.' The lyrics echo Ben's counsel to step back and look for the primary point before chasing details, reminding us that 'a line's not the page' and that only by zooming out do we 'let the story breathe its truth.' They also reflect his encouragement not to be afraid of admitting 'I don't know' when the meaning isn't clear — because humility is part of true understanding.\n\nWhat the lesson spelled out, the song makes personal. Both are urging us to slow down, to read with context, and to let Scripture draw us not into our own assumptions but into Christ Himself.\n\nReflective Question for the Reader:\n\nWhen you open your Bible, what are you most tempted to rush toward — a quick answer, a personal application, or a proof for what you already think? What would it look like this week to pause at the doorway, read the verse in its larger context, and ask God, 'Show me what this reveals about Jesus'?",
-        song_title: "Standing at the Doorway",
-        image_url: "images/lesson-2.png",
-        audio_file: "audio/lesson-2.mp3",
-        suno_link: "https://suno.com/s/qyxWoygzR74r0Aqd"
-    },
-    {
-        id: "lesson-3",
-        title: "Lesson 3: Establishing the Historical Witness of John's Gospel",
-        scripture: "John 20:28, 30-31",
-        summary_preview: "This week, the lesson laid a historical foundation for the study of John's Gospel, moving it from the realm of 'church tradition' to a verifiable, eyewitness account...",
-        summary_full: "This week, the lesson laid a historical foundation for the study of John's Gospel, moving it from the realm of 'church tradition' to a verifiable, eyewitness account. The central goal was to demonstrate that John's Gospel is not just a story, but history—a testimony written by a specific person, for a specific audience, at a specific time in history. The session established this by building a case for the author, audience, and date of the writing using clues from within the text itself.\n\nThe Author and Audience:\n\nThe lesson began by confirming the author not just through tradition, but through a logical process of elimination within the Gospel's text, identifying the 'beloved disciple' as John the Apostle. The focus then shifted to the intended audience, identified as Greek-speaking Jews living outside of Israel—often called the Diaspora. Two key pieces of evidence support this:\n\n• Familiarity with Jewish Traditions: John assumes his audience understands core Jewish customs and doesn't explain them, suggesting they are Jewish.\n\n• Need for Specific Explanations: At the same time, he explains specific geographical details within Israel, implying his audience isn't from there. Ben used an analogy to clarify: he could assume any Christian knows what a baptistry is, but he would have to explain where the specific one at his church is located to an outsider.\n\nDating the Gospel: Building a Case for the 80s AD\n\nThe majority of the lesson focused on narrowing down the time of writing. While scholars place it broadly between 70-100 AD, a series of clues helps pinpoint it more precisely to the 80s AD.\n\n• Post-70 AD Clues: The text was almost certainly written after the destruction of the Jerusalem Temple in 70 AD. John puts a heavy emphasis on Jesus replacing the temple, a theme that would resonate deeply with a Jewish audience that had just lost their central place of worship. Furthermore, the Gospel only mentions the Pharisees and never the Sadducees, a powerful Jewish party that disbanded after the temple was destroyed.\n\n• The Domitian Coin: The 'Smoking Gun': The most compelling piece of evidence came from the reign of the Roman Emperor Domitian (81-96 AD). Coins minted during his rule have been found stamped with the title Dominus et Deus, which is Latin for 'Lord and God'. This exact phrase is the precise confession Thomas makes in John 20:28 when he sees the resurrected Jesus: 'My Lord and my God!'. This is likely a direct, intentional counter-confession by John, declaring that the true Lord and God is Jesus, not the emperor in Rome. Ben compared this to a modern writer using a well-known contemporary phrase to make a counterpoint.\n\n• Addressing John's Age: The group discussed the difficulty of an elderly John writing so long after the events. Ben addressed this by highlighting the power of the Holy Spirit to aid in recall and the profound, unforgettable nature of walking with the Messiah, similar to how people today have vivid memories of major life events like 9/11.\n\nThe Purpose: That You May Believe\n\nThe lesson concluded by stating the Gospel's explicit purpose, taken directly from John 20:30-31: 'these are written so that you may believe Jesus is the Messiah, the Son of God, and that by believing you may have life in his name'. The key word for the entire book is believe. John accomplishes this purpose by selectively recording specific miracles, which he calls 'signs,' to build a case for Jesus's divinity. He notes that Jesus did many other things, but these specific signs were chosen to lead the reader to belief.\n\nBen closed by emphasizing that this historical foundation is crucial. Understanding that the Gospel is a real historical document, written by a real man who witnessed these events, gives the profound theology within it a solid grounding in reality, making its message all the more powerful.",
-        tie_in_preview: "This week's lesson moved the Gospel of John from the category of 'church tradition' into sharp, historical focus. The most startling piece of evidence was a small, everyday object: a Roman coin...",
-        tie_in_full: "This week's lesson moved the Gospel of John from the category of 'church tradition' into sharp, historical focus. The journey began by uncovering clues within the text that pointed to a specific time and a specific audience: a scattered, Greek-speaking Jewish community struggling after the destruction of their temple in 70 AD. But the most startling piece of evidence was a small, everyday object: a Roman coin. Our leader, Ben, explained that coins from the reign of Emperor Domitian (81-96 AD) were stamped with the title Dominus et Deus—'Lord and God'. Suddenly, a historical detail became a key that unlocked the world in which John was writing.\n\nThe song, 'I'm Writing It Down,' takes that historical fact and places it directly on the table in front of the aging apostle. The 'coin beside my hand' with its 'Lord and God' stamped in silver' is no longer just a clue for scholars; it is the 'empire's blasphemy'. This single detail gives fire to John's purpose. His writing becomes an act of defiance, a direct response to the emperor's claim. He remembers Thomas falling before the resurrected Christ and confessing the truth—'My Lord and my God'—and he is compelled to write it down, throwing the empire's arrogant phrase back in its face.\n\nWhat the lesson established with facts, a song illuminates with feeling. The urgency in the lyrics—the 'lamplight burning down,' the 'unsteady hand,' the need to get the story to the 'scattered searching for home'—is fueled by this clash of two kingdoms. John isn't just recording a memory; he is bearing witness against a lie. His testimony, written so many years later, becomes a timeless declaration that the true Lord and God is not the one whose face is on the coin, but the One whose scars Thomas touched.\n\nReflective Question for the Reader:\n\nThe culture around us is constantly stamping its own version of 'Lord and God' on money, power, and identity, demanding our belief. In what area of your life do you feel the pressure of the 'empire's coin'? What simple, witnessed truth can you hold up in response—just as John held up Thomas's confession against Caesar's claim?",
-        song_title: "The Last Witness",
-        image_url: "images/lesson-3.png",
-        audio_file: "audio/lesson-3.mp3",
-        suno_link: "https://suno.com/s/J33ELRr9EsWyTzYM"
-    },
-    {
-        id: "lesson-4",
-        title: "Lesson 4: A Map to John's Gospel—Purpose, Signs, and the 'I AM' Statements",
-        scripture: "John 20:30-31, John 1:1-18",
-        summary_preview: "This lesson served as an essential introduction to the Gospel of John, providing a 'map' for the study ahead. The discussion moved past the Synoptic Gospels to explore John's unique structure, his core theological building blocks, and his single, stated purpose: 'that you may believe'...",
-        summary_full: "This lesson served as an essential introduction to the Gospel of John, providing a 'map' for the study ahead. The discussion moved past the Synoptic Gospels to explore John's unique structure, his core theological building blocks, and his single, stated purpose: 'that you may believe'.\n\nThe Purpose: That You May Believe\n\nThe session was grounded in John's explicit thesis statement from John 20:30-31: 'these are written so that you may believe Jesus is the Messiah, the Son of God, and by believing you may have life in his name'.\n\n• Key Word: The central word for the entire book is pistevo (to believe).\n\n• Frequency: This word appears 98 times in John's Gospel, a stark contrast to its infrequent use in Mark (11 times), Matthew (14 times), and Luke (9 times).\n\n• A Caution: The group was advised that 'believe' is a fluid term in John and does not always equate to a 'saving faith,' as some who 'believed' later abandoned Jesus.\n\nJohn's Unique Voice\n\nThe group explored what makes John's account so different from the other three.\n\n• No Parables: The first major difference noted is the complete absence of parables.\n\n• Reason: As the latest-written Gospel, John assumes his readers have already read the Synoptics and doesn't want to 'tell the same story'.\n\n• Intimacy: This decision makes John's Gospel 'the most intimate account of the life of Jesus,' with 90% of its content being unique to John.\n\nThe Building Blocks of Belief\n\nIf John doesn't use parables, how does he build his case for belief? The lesson identified three key components:\n\n1. Signs (Semeion)\n\nJohn selectively records specific miracles, which he calls 'signs,' to build his case.\n\n• Definition: A sign is not just a miracle; it's a miracle with a 'higher purpose'. It 'point[s] to something other than what is happening'.\n\n• Example: The feeding of the 5,000 is a miracle, but it's also a sign that 'points to who he is as the bread of life'.\n\n• The Goal: The signs are specifically recorded 'to stir up faith and belief' in the observer.\n\n• The Seven Signs: While there is some scholarly debate, the seven traditionally recognized signs are:\n  1. Turning water into wine\n  2. Healing the official's son\n  3. Healing the lame man\n  4. Feeding the 5,000\n  5. Healing the blind man\n  6. Raising of Lazarus\n  7. The seventh sign is debated. While many in the laity assume it is Jesus walking on water, some scholars argue it is the 'cleansing the temple,' as it points to a greater story beyond the event itself.\n\n2. Works (Ergon)\n\nWhen John uses the term 'works,' he mostly has in mind the works Jesus does. The key distinction is in ownership:\n\n• In John's Gospel, Jesus never says, 'my works,' though he does say, 'the works that I do'.\n\n• This is intentional, making it 'clear that the Father is involved in doing the works as well as Jesus'.\n\n3. The 'I AM' Statements\n\nThese statements are one of the most powerful apologetics in John's Gospel.\n\n• Claim to Divinity: When Jesus says, 'I AM,' he is making a direct claim to be God.\n\n• Old Testament Connection: This directly echoes God's self-identification to Moses at the burning bush: 'Tell them I AM sent you'.\n\n• The Counter-Argument: For those who claim Jesus never said he was God, these seven 'I AM' statements are a direct refutation.\n\nThe Prologue (John 1:1-18)\n\nThe lesson concluded with a reading of the prologue, which mirrors the creation story in Genesis 1:1 ('In the beginning...'). From the very first verse, John is communicating Jesus's 'pre-existence'—that He was not a created being, but 'existed with God, was God', and that 'All things that were created were created through him'. The group was left with a final question to consider: Why did John choose to call Jesus 'the Word'?",
-        tie_in_preview: "This week, the lesson pivoted from how to read the gospels to why John wrote his. The 'aha' moment came from a simple question: What's the difference between a 'miracle' and a 'sign'?...",
-        tie_in_full: "This week, the lesson pivoted from how to read the gospels to why John wrote his. The 'aha' moment came from a simple question: What's the difference between a 'miracle' and a 'sign'? Ben explained that while Jesus did many miracles, the 'signs' John recorded were different. They had a specific purpose: to point to something beyond the wonder itself.\n\nThe key example was the feeding of the 5,000. The miracle, Ben noted, wasn't just about the food; it also 'points to who he is as the bread of life'. These signs were recorded not just to impress, but 'to elicit faith in others'.\n\nThe song is the personal testimony of John, the very witness who made those connections. It's as if we are hearing the lesson's concept from the one who lived it. The lyrics open with John's eyewitness account of the lesson's primary example: 'I watched him take the bread with weathered hands... Five thousand hungry—he fed us all.' Then, in the very next breath, he makes the connection the sign was pointing to: 'I heard him say: I AM the Bread of Life.'\n\nThe song repeats this pattern, turning the lesson's definitions into a lived experience. John testifies to another sign, watching as Jesus 'pressed it on his closed eyes... The pool washed off the clay—and he saw the Light.' This wonder immediately points to the declaration: 'I AM the Light.' He sees the miracle of Lazarus ('Came walking back to life') and hears the ultimate truth it revealed: 'I AM the Resurrection and the Life.'\n\nWhat the lesson defined, the song demonstrates. The lesson explained that signs are wonders that point to a greater truth. The song is John's personal record, confirming that 'Every wonder spoke his name.'\n\nReflective Question for the Reader:\n\nJohn wrote down the 'signs' he witnessed—like the bread and the healing—so that others might believe. These wonders weren't just miracles; they were moments that pointed to who Jesus is. Where have you seen a 'sign' in your own life? What wonder, provision, or moment of clarity has pointed you to a deeper truth about who God is?",
-        song_title: "Every Wonder Spoke His Name",
-        image_url: "images/lesson-4.png",
-        audio_file: "audio/lesson-4.mp3",
-        suno_link: "https://suno.com/s/sCJVmoBBPZD71zHl"
-    },
-    {
-        id: "lesson-5",
-        title: "Lesson 5: John's Prologue—The Pre-existent Word and the Themes of the Gospel",
-        scripture: "John 1:1-18",
-        summary_preview: "This week, the group began its textual study of the Gospel of John by diving into the prologue (John 1:1-18). The lesson focused on how these first 18 verses serve as both a theological foundation for Jesus's identity and a 'Cliff Notes' version of the entire Gospel...",
-        summary_full: "This week, the group began its textual study of the Gospel of John by diving into the prologue (John 1:1-18). The lesson focused on how these first 18 verses serve as both a theological foundation for Jesus's identity and a 'Cliff Notes' version of the entire Gospel, laying out all the major themes John will explore.\n\nThe Word and The Beginning (v. 1-5)\n\nThe session began by reading the opening verses and immediately connecting them to Genesis 1:1.\n\n• 'In the beginning...': The leader, Ben, emphasized that John's choice to start with this phrase is intentional. He is speaking to his Jewish audience, immediately grounding his Gospel in the Torah and establishing that Jesus's story begins before creation.\n\n• Jesus's Deity: The lesson stressed that, unlike the synoptic Gospels, John leaves no doubt about Jesus's identity from the very first sentence. He is not just with God; he was God. This pre-existence and claim to deity is the framework for the entire book.\n\n• Life and Light: The prologue introduces the first major themes: the Word gave life to all creation, and that life brought light into the darkness, which the darkness cannot extinguish.\n\nJohn's word choice—Logos—was a masterstroke. For Jews, 'the Word' evoked God's creative speech in Genesis; for Greek readers, Logos meant the rational principle that ordered the universe. By using it, John united both audiences around one truth: the divine reason behind all creation is a person—Jesus.\n\nThe Prologue as 'Cliff Notes' (v. 6-18)\n\nThe discussion highlighted how John masterfully lays out every major theme of his Gospel in this short introduction. The leader provided a resource showing how concepts introduced in the prologue are revisited repeatedly throughout the book.\n\nKey themes introduced include:\n\n• Witness (v. 7)\n• Belief (v. 7, 12)\n• Rejection (v. 10-11)\n• Becoming Children of God (v. 12)\n• The Word Became Flesh (v. 14)\n• Glory (v. 14)\n\nThis structure gives the reader an 'omniscient' view, similar to the prologue of Job, where the reader is granted a divine perspective—seeing truths the characters themselves don't yet perceive.\n\nThe Climax: 'The Word Became Flesh' (v. 14-18)\n\nThe final section of the lesson focused on the climax of the prologue.\n\n• The Incarnation: Verse 14, 'The Word became human and made his home among us,' is the central miracle. The eternal, cosmic Word from verse 1 became a physical person.\n\n• Translation Differences: The group spent time on verse 18, comparing different translations (NLT, NIV, ESV) to understand the nuances of the text.\n  - NLT: '...the unique one, who is himself God...'\n  - NIV: '...the one and only Son, who is himself God...'\n  - ESV: '...the only God, who is at the Father's side...'\n\nThe class also discussed how translation differences arise from the discovery of older manuscripts and from language conventions like capitalization that didn't exist in ancient Greek. Ben reminded the group that these updates increase accuracy rather than diminish trust in Scripture.\n\n• The Revelation: Regardless of the specific translation, the point remains the same: 'No one has ever seen God,' but this pre-existent, unique, divine Word is God and has 'revealed God to us'. The prologue sets the stage for the rest of the Gospel. John's purpose is not to argue that point but to begin from it—his entire Gospel unfolds as the revelation of that divine Word in human form.",
-        tie_in_preview: "This week's lesson began where all of scripture begins: 'In the beginning...'. We explored how John's prologue is not just a poetic introduction but a profound theological claim, intentionally echoing the first words of Genesis...",
-        tie_in_full: "This week's lesson began where all of scripture begins: 'In the beginning...'. We explored how John's prologue is not just a poetic introduction but a profound theological claim, intentionally echoing the first words of Genesis. The 'aha' moment was realizing John's immediate purpose: to establish that the Word, who was God and was with God, is the same creative voice from the very start of the story. The lesson focused on this massive, cosmic truth—that Jesus is pre-existent and is Himself the Creator.\n\nThe song, 'Never The Same,' is the personal testimony of that truth finally sinking in. It's written from the perspective of the disciples, looking back with a sense of awe. They had sat with the scrolls (their Scriptures), their 'hearts still burning' as they read the ancient words. The song bridges two core ideas: the 'rain sent down'—the prophets' image of God's Word accomplishing its purpose (Isaiah 55)—ties their Genesis reading to Isaiah's promise of the 'One they said would come'. But they also had the memory of the Man they walked with, whose voice they heard, who broke bread at their table.\n\nThe song's climax is the collision of those two realities. The lesson's theology ('The Word was God') becomes the song's testimony ('The Word became flesh'). The disciples finally make the connection: the 'voice that spoke the stars to life' was the same voice that 'had called our names'. The cosmic, creative 'hands that shaped the stars' were the same physical 'hands... breaking bread' in front of them.\n\nWhat the lesson established as theology, the song reveals as a life-changing encounter. It's the moment all of history and creation becomes personal, sitting at their table. It's the awe-filled realization that the God who wrote the entire story had written Himself into it, and after beholding His glory, they were 'never the same'.\n\nReflective Question for the Reader:\n\nJohn's Gospel connects the cosmic Creator from Genesis to the physical person of Jesus. The disciples felt that awe when the 'big idea' of God became the personal Man breaking bread with them. When has a truth you've known about God—His power, His creativity, His Word—suddenly become personal and near to you?",
-        song_title: "Never The Same",
-        image_url: "images/lesson-5.png",
-        audio_file: "audio/lesson-5.mp3",
-        suno_link: "https://suno.com/s/V8QYmNKy4hBvczwK"
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    /* Warm, readable serif for that analog, testimonial feel */
+    font-family: 'Georgia', 'Iowan Old Style', 'Times New Roman', serif;
+    background-color: #1a1a1a;
+    color: #d4d0c8;
+    line-height: 1.75;
+    padding: 20px;
+    font-size: 18px;
+    /* Subtle texture for analog warmth */
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(255, 255, 255, 0.01) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.01) 0%, transparent 50%);
+}
+
+/* ===================================
+   CONTAINER & LAYOUT
+   =================================== */
+
+.container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+/* ===================================
+   TYPOGRAPHY
+   =================================== */
+
+h1 {
+    /* Restrained, weathered headline */
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 2.4rem;
+    font-weight: 400;
+    margin-bottom: 0.75rem;
+    color: #e8e4dc;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+
+h2 {
+    /* Section headers - quiet but present */
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-top: 3.5rem;
+    margin-bottom: 1.75rem;
+    color: #8a8577;
+    text-align: left;
+}
+
+h3 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: #c8c4bb;
+    margin-bottom: 1.25rem;
+    line-height: 1.4;
+}
+
+p {
+    margin-bottom: 1.5rem;
+    color: #d4d0c8;
+    font-size: 1.05rem;
+    line-height: 1.75;
+}
+
+/* Emphasis text - for preview/pull quotes */
+.emphasis-text,
+.preview-text {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.25rem;
+    line-height: 1.65;
+    color: #e0ddd5;
+    font-style: italic;
+    margin: 2.5rem 0;
+    padding: 0 1.5rem;
+}
+
+a {
+    color: #9db4c9;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid transparent;
+}
+
+a:hover {
+    color: #b8cfe0;
+    border-bottom-color: #9db4c9;
+}
+
+/* ===================================
+   HEADER
+   =================================== */
+
+header {
+    text-align: center;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid #2d2a25;
+    margin-bottom: 3rem;
+}
+
+.subtitle {
+    font-size: 1.05rem;
+    color: #7a766d;
+    font-style: italic;
+    margin-top: 1rem;
+    font-weight: 300;
+}
+
+/* ===================================
+   ABOUT SECTION
+   =================================== */
+
+.about-section {
+    margin-bottom: 4rem;
+}
+
+.about-preview {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.2rem;
+    color: #e0ddd5;
+    margin-bottom: 1.25rem;
+    line-height: 1.65;
+    font-style: italic;
+}
+
+/* ===================================
+   ACCORDION / DETAILS
+   For the "Read More" sections - optimized for extended reading
+   =================================== */
+
+.accordion {
+    margin-top: 2rem;
+    border-top: 1px solid #2d2a25;
+    padding-top: 1.25rem;
+}
+
+.accordion summary {
+    cursor: pointer;
+    color: #9db4c9;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    list-style: none;
+    padding: 0.75rem 0;
+    user-select: none;
+    transition: color 0.2s ease;
+}
+
+.accordion summary:hover {
+    color: #b8cfe0;
+}
+
+.accordion summary::-webkit-details-marker {
+    display: none;
+}
+
+.accordion summary::before {
+    content: "â–¸ ";
+    display: inline-block;
+    transition: transform 0.2s ease;
+    margin-right: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.accordion[open] summary::before {
+    transform: rotate(90deg);
+}
+
+/* Enhanced readability for long-form content */
+.accordion-content {
+    padding: 2rem 0 0 0;
+    color: #d4d0c8;
+    animation: fadeIn 0.4s ease;
+    
+    /* Optimized for extended reading */
+    font-size: 1.05rem;
+    line-height: 1.8;
+    max-width: 38rem; /* Optimal line length for reading */
+    
+    /* Add subtle paragraph spacing for easier scanning */
+    & p {
+        margin-bottom: 1.75rem;
     }
     
-    // ============================================
-    // TO ADD A NEW LESSON:
-    // 
-    // 1. Add a comma after the closing } above
-    // 2. Copy this template:
-    // 
-    // ,
-    // {
-    //     id: "lesson-3",
-    //     title: "Lesson 3: Your Title Here",
-    //     scripture: "John X:XX-XX",
-    //     summary_preview: "Short preview here...",
-    //     summary_full: "Full lesson text here...",
-    //     tie_in_preview: "Short song connection here...",
-    //     tie_in_full: "Full song explanation here...",
-    //     song_title: "Song Title Here",
-    //     image_url: "images/lesson-3.png",
-    //     audio_file: "audio/lesson-3.mp3",
-    //     suno_link: "https://suno.com/song/your-song-id"
-    // }
-    //
-    // 3. Fill in all the fields
-    // 4. Save the file
-    // ============================================
-];
+    /* Add breathing room between sections */
+    & p + p {
+        text-indent: 0;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===================================
+   LESSONS SECTION
+   =================================== */
+
+.lessons-section {
+    margin-top: 4rem;
+}
+
+.lessons-section h2 {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+#lessons-list {
+    margin-top: 2rem;
+}
+
+.lesson-item {
+    margin-bottom: 1.25rem;
+}
+
+.lesson-item a {
+    display: block;
+    padding: 1.5rem 1.5rem;
+    background-color: rgba(42, 38, 33, 0.3);
+    border-radius: 2px;
+    border-left: 2px solid #3a3630;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.lesson-item a:hover {
+    background-color: rgba(42, 38, 33, 0.5);
+    border-left-color: #9db4c9;
+    transform: translateX(6px);
+    border-bottom: none;
+}
+
+.lesson-title {
+    display: block;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #e8e4dc;
+    margin-bottom: 0.5rem;
+    line-height: 1.35;
+}
+
+.lesson-scripture {
+    display: block;
+    font-size: 0.95rem;
+    color: #8a8577;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.no-lessons {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: #7a766d;
+    font-style: italic;
+    font-size: 1.05rem;
+}
+
+/* ===================================
+   LESSON PAGE
+   =================================== */
+
+.back-link {
+    margin-bottom: 2.5rem;
+}
+
+.back-link a {
+    display: inline-block;
+    padding: 0.5rem 0;
+    color: #8a8577;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    border-bottom: 1px solid transparent;
+    transition: all 0.25s ease;
+}
+
+.back-link a:hover {
+    color: #9db4c9;
+    border-bottom-color: #9db4c9;
+    transform: translateX(-4px);
+}
+
+.back-link a::before {
+    content: "â† ";
+    margin-right: 0.4rem;
+}
+
+.lesson-header {
+    text-align: center;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid #2d2a25;
+    margin-bottom: 3.5rem;
+}
+
+.scripture-reference {
+    font-size: 1.05rem;
+    color: #8a8577;
+    font-style: italic;
+    margin-top: 1rem;
+    font-weight: 300;
+    letter-spacing: 0.01em;
+}
+
+.lesson-summary,
+.song-tie-in,
+.song-section {
+    margin-bottom: 4.5rem;
+}
+
+/* Section headers for lesson content */
+.lesson-summary h2,
+.song-tie-in h2 {
+    text-align: center;
+}
+
+.preview-text {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* ===================================
+   SONG SECTION
+   =================================== */
+
+.song-section {
+    text-align: center;
+    padding: 3rem 0;
+    border-top: 1px solid #2d2a25;
+    border-bottom: 1px solid #2d2a25;
+}
+
+.song-section h2 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.65rem;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: -0.01em;
+    margin-bottom: 2rem;
+    color: #e0ddd5;
+}
+
+/* Balanced image sizing - not overwhelming */
+.song-image {
+    max-width: 65%;
+    height: auto;
+    border-radius: 2px;
+    margin: 2rem auto;
+    display: block;
+    
+    /* Soft edges - old photograph feel for dark mode */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 
+        /* Darker inset vignette that shows on images */
+        inset 0 0 80px rgba(0, 0, 0, 0.5),
+        inset 0 0 40px rgba(0, 0, 0, 0.3),
+        /* Soft outer glow to blend edges with dark background */
+        0 0 20px rgba(0, 0, 0, 0.6),
+        0 4px 12px rgba(0, 0, 0, 0.4),
+        0 12px 32px rgba(0, 0, 0, 0.3);
+    
+    /* Subtle warmth and texture */
+    filter: contrast(0.95) brightness(0.95) saturate(0.92);
+    
+    /* Soft edge fade effect */
+    position: relative;
+}
+
+/* Alternative: Add a pseudo-element overlay for even softer edges */
+.song-image::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    border-radius: 2px;
+    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.4);
+}
+
+.audio-player {
+    margin: 2.5rem 0;
+}
+
+.audio-player audio {
+    width: 100%;
+    max-width: 480px;
+    height: 54px;
+    border-radius: 2px;
+    background-color: rgba(42, 38, 33, 0.4);
+}
+
+.suno-link {
+    margin-top: 1.5rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 0.85rem;
+    color: #7a766d;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.suno-link a {
+    color: #9db4c9;
+    font-weight: 500;
+}
+
+/* ===================================
+   NAVIGATION
+   =================================== */
+
+.lesson-navigation {
+    margin-top: 5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid #2d2a25;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    flex: 1;
+    padding: 1.25rem 1.5rem;
+    background-color: rgba(42, 38, 33, 0.3);
+    border: 1px solid #3a3630;
+    border-radius: 2px;
+    text-align: center;
+    color: #9db4c9;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 500;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: all 0.25s ease;
+}
+
+.nav-link:hover {
+    background-color: rgba(42, 38, 33, 0.5);
+    border-color: #9db4c9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border-bottom-color: #9db4c9;
+}
+
+.prev-link {
+    text-align: left;
+}
+
+.next-link {
+    text-align: right;
+}
+
+.nav-link-placeholder {
+    flex: 1;
+}
+
+/* ===================================
+   SPECIAL TEXT ELEMENTS
+   =================================== */
+
+/* Scripture quotes within text */
+.scripture-quote {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+    color: #e0ddd5;
+    padding-left: 2rem;
+    border-left: 2px solid #3a3630;
+    margin: 2.5rem 0;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+em, i {
+    font-style: italic;
+    color: #e0ddd5;
+}
+
+strong, b {
+    font-weight: 600;
+    color: #e8e4dc;
+}
+
+/* ===================================
+   ERROR MESSAGE
+   =================================== */
+
+.error-message {
+    text-align: center;
+    padding: 5rem 2rem;
+}
+
+.error-message h1 {
+    color: #c98a7a;
+    margin-bottom: 1.5rem;
+}
+
+.error-message p {
+    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+}
+
+.button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: #9db4c9;
+    color: #1a1a1a;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-weight: 600;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.85rem;
+    border: none;
+}
+
+.button:hover {
+    background-color: #b8cfe0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(157, 180, 201, 0.25);
+    border-bottom: none;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+        font-size: 17px;
+    }
+
+    .container {
+        padding: 30px 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 0.8rem;
+        margin-top: 3rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    .emphasis-text,
+    .preview-text {
+        font-size: 1.15rem;
+        padding: 0 1rem;
+    }
+
+    .lesson-item a {
+        padding: 1.25rem 1.25rem;
+    }
+
+    .lesson-title {
+        font-size: 1.15rem;
+    }
+
+    /* Image remains balanced on mobile */
+    .song-image {
+        max-width: 75%;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .prev-link,
+    .next-link {
+        text-align: center;
+    }
+
+    .accordion-content {
+        max-width: 100%;
+        font-size: 1.025rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 16px;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    .subtitle {
+        font-size: 0.95rem;
+    }
+
+    h2 {
+        font-size: 0.75rem;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    .emphasis-text,
+    .preview-text {
+        font-size: 1.05rem;
+    }
+
+    .about-preview {
+        font-size: 1.05rem;
+    }
+
+    /* Image scales down further on very small screens */
+    .song-image {
+        max-width: 85%;
+    }
+
+    .accordion-content {
+        font-size: 1rem;
+        line-height: 1.75;
+    }
+}
+
+/* ===================================
+   UTILITY CLASSES
+   =================================== */
+
+.text-center {
+    text-align: center;
+}
+
+/* Subtle divider with warm tone */
+.divider {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(to right, transparent, #3a3630, transparent);
+    margin: 3.5rem 0;
+}
+
+.small-caps {
+    font-variant: small-caps;
+    letter-spacing: 0.08em;
+}
