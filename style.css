@@ -364,37 +364,34 @@ header {
     color: #e0ddd5;
 }
 
-/* Balanced image sizing - not overwhelming */
 /* === THIS SECTION HAS BEEN MODIFIED === */
+/* === OPTION 1: "TORN PAPER" LOOK === */
 .song-image {
     max-width: 65%;
     height: auto;
-    border-radius: 2px;
     margin: 2rem auto;
     display: block;
     
-    /* --- NEW CHANGES START HERE --- */
+    /* This creates the jagged, torn-paper edge */
+    clip-path: polygon(0% 4%, 4% 0%, 97% 2%, 100% 5%, 98% 94%, 95% 100%, 3% 98%, 1% 95%);
 
-    /* Add a slight transparency to blend with the background */
-    opacity: 0.9;
-
-    /* Add sepia/grayscale to "tint" the image to match the site's warm tones */
-    filter: contrast(0.95) brightness(0.95) saturate(0.9) sepia(0.25);
-
-    /* --- END NEW CHANGES --- */
+    /* We remove border-radius as clip-path handles the shape */
     
-    /* Soft edges - old photograph feel for dark mode */
+    /* --- Your previous blend/tint settings --- */
+    opacity: 0.9;
+    filter: contrast(0.95) brightness(0.95) saturate(0.9) sepia(0.25);
+    
+    /* The box-shadow is "clipped" by the path, which looks great */
     border: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 
-        /* Darker inset vignette that shows on images */
         inset 0 0 80px rgba(0, 0, 0, 0.5),
         inset 0 0 40px rgba(0, 0, 0, 0.3),
-        /* Soft outer glow to blend edges with dark background */
         0 0 20px rgba(0, 0, 0, 0.6),
         0 4px 12px rgba(0, 0, 0, 0.4),
         0 12px 32px rgba(0, 0, 0, 0.3);
 }
 /* === END MODIFIED SECTION === */
+
 
 .audio-player {
     margin: 2.5rem 0;
