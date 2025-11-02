@@ -45,10 +45,10 @@ const lessonData = [
         song_title: "Enough of the Road",
         
         // OPTIONAL: Path to the song's image (can be /images/filename.jpg or a full URL)
-        image_url: "/images/lesson-1.png",
+        image_url: "images/lesson-1.png",
         
         // OPTIONAL: Path to the audio file (can be /audio/filename.mp3 or a full URL)
-        audio_file: "/audio/lesson-1.mp3",
+        audio_file: "audio/lesson-1.mp3",
         
         // OPTIONAL: Link to the song on Suno (backup for users who can't play the audio)
         suno_link: "https://suno.com/s/3DKxQRvElIiDWZXN"
@@ -62,16 +62,16 @@ const lessonData = [
     // 
     // ,
     // {
-    //     id: "lesson-4",
-    //     title: "Lesson 4: Your Title Here",
+    //     id: "lesson-2",
+    //     title: "Lesson 2: Your Title Here",
     //     scripture: "John X:XX-XX",
     //     summary_preview: "Short preview here...",
     //     summary_full: "Full lesson text here...",
     //     tie_in_preview: "Short song connection here...",
     //     tie_in_full: "Full song explanation here...",
     //     song_title: "Song Title Here",
-    //     image_url: "/images/lesson-4.jpg",
-    //     audio_file: "/audio/lesson-4.mp3",
+    //     image_url: "images/lesson-2.png",
+    //     audio_file: "audio/lesson-2.mp3",
     //     suno_link: "https://suno.com/song/your-song-id"
     // }
     //
