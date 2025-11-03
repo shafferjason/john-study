@@ -342,7 +342,7 @@ header {
 }
 
 .back-link a::before {
-    content: "â†  ";
+    content: "←  ";
     margin-right: 0.4rem;
 }
 
@@ -1002,7 +1002,7 @@ strong, b {
 }
 
 .divider-ornate::after {
-    content: 'âœ¦';
+    content: '✦';
     position: absolute;
     left: 50%;
     top: 50%;
@@ -1061,7 +1061,7 @@ strong, b {
 }
 
 .back-to-top::before {
-    content: 'â†‘';
+    content: '↑';
     color: #d4a574;
     font-size: 24px;
     font-weight: 300;
