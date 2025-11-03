@@ -395,19 +395,21 @@ header {
 
 .song-section h2 {
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: 1.65rem;
-    font-weight: 400;
+    font-size: 2rem; /* Increased from 1.65rem */
+    font-weight: 500; /* Increased from 400 for more presence */
     text-transform: none;
     letter-spacing: -0.01em;
-    margin-bottom: 2rem;
-    color: #e0ddd5;
+    margin-bottom: 2.5rem; /* Increased from 2rem for more space */
+    color: #e8e4dc; /* Brighter than before */
+    /* Enhanced Johannine glow for prominence */
+    text-shadow: 0 0 25px rgba(232, 228, 220, 0.15);
 }
 
 /* === "Faded & Rounded" Look === */
 .song-image {
-    max-width: 65%;
+    max-width: 55%; /* Reduced from 65% to be less dominant */
     height: auto;
-    margin: 2rem auto;
+    margin: 2.5rem auto; /* Increased top/bottom margin */
     display: block;
     
     /* 1. Add rounded corners for the "old photo" shape */
@@ -417,9 +419,9 @@ header {
     mask-image: radial-gradient(ellipse at center, black 60%, transparent 90%);
     -webkit-mask-image: radial-gradient(ellipse at center, black 60%, transparent 90%);
 
-    /* 3. Add the tint and opacity */
-    opacity: 0.9;
-    filter: contrast(0.95) brightness(0.95) saturate(0.9) sepia(0.25);
+    /* 3. Reduced opacity for subtlety - less overpowering */
+    opacity: 0.85; /* Reduced from 0.9 */
+    filter: contrast(0.9) brightness(0.9) saturate(0.85) sepia(0.3); /* Adjusted for cohesion */
     
     /* 4. Keep the *inset* shadow for the vignette effect. */
     box-shadow: 
@@ -816,9 +818,9 @@ strong, b {
         font-size: 1.15rem;
     }
 
-    /* Image remains balanced on mobile */
+    /* Image balanced on mobile - reduced to match desktop proportion */
     .song-image {
-        max-width: 75%;
+        max-width: 65%; /* Reduced from 75% for better balance */
     }
     
     .custom-audio-player {
@@ -907,9 +909,9 @@ strong, b {
         font-size: 1.05rem;
     }
 
-    /* Image scales down further on very small screens */
+    /* Image scales appropriately on very small screens */
     .song-image {
-        max-width: 85%;
+        max-width: 75%; /* Reduced from 85% for better balance */
     }
     
     .custom-audio-player {
