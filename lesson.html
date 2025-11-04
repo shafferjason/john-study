@@ -80,6 +80,21 @@
                     </details>
                 </section>
 
+                ${currentLesson.song_lyrics ? `
+                    <!-- Ornate divider before lyrics -->
+                    <div class="divider-ornate"></div>
+
+                    <section class="song-lyrics-section">
+                        <h2>Song Lyrics</h2>
+                        <details class="accordion">
+                            <summary>Read the Lyrics</summary>
+                            <div class="accordion-content lyrics-content">
+                                <div class="lyrics-text">${currentLesson.song_lyrics}</div>
+                            </div>
+                        </details>
+                    </section>
+                ` : ''}
+
                 <!-- Ornate divider before song section -->
                 <div class="divider-ornate"></div>
 

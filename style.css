@@ -416,6 +416,45 @@ header {
     background: linear-gradient(to bottom, #2d2a25 0%, transparent 10%, transparent 90%, #2d2a25 100%);
 }
 
+/* ===================================
+   SONG LYRICS SECTION
+   =================================== */
+
+.song-lyrics-section {
+    margin-bottom: 4.5rem;
+}
+
+.song-lyrics-section h2 {
+    text-align: center;
+}
+
+.lyrics-content {
+    /* Center the lyrics container */
+    display: flex;
+    justify-content: center;
+}
+
+.lyrics-text {
+    /* Poetic, centered formatting */
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: #e0ddd5;
+    font-style: italic;
+    max-width: 32rem; /* Narrower than regular content for poetic feel */
+    
+    /* Preserve line breaks from data */
+    white-space: pre-line;
+    
+    /* Subtle glow for contemplative feel */
+    text-shadow: 0 0 12px rgba(224, 221, 213, 0.08);
+    
+    /* Extra spacing for stanzas (double line breaks) */
+    margin: 0 auto;
+    padding: 1rem 2rem;
+}
+
 .song-section h2 {
     font-family: Georgia, 'Times New Roman', serif;
     font-size: 2rem; /* Increased from 1.65rem */
@@ -915,6 +954,14 @@ strong, b {
         font-size: 1.025rem;
     }
     
+    /* Mobile-optimized lyrics display */
+    .lyrics-text {
+        font-size: 1rem;
+        line-height: 1.8;
+        padding: 1rem;
+        max-width: 100%;
+    }
+    
     /* Larger tap target for accordion summary */
     .accordion summary {
         padding: 1rem 0;
@@ -1013,6 +1060,13 @@ strong, b {
     .accordion-content {
         font-size: 1rem;
         line-height: 1.75;
+    }
+    
+    /* Optimized lyrics for small screens */
+    .lyrics-text {
+        font-size: 0.95rem;
+        line-height: 1.75;
+        padding: 0.75rem;
     }
     
     /* Comfortable tap targets on small screens */
