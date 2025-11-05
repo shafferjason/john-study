@@ -168,11 +168,17 @@ header {
 
 .about-preview {
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: 1.2rem;
-    color: #e0ddd5;
-    margin-bottom: 1.25rem;
+    font-size: 1.3rem; /* Increased from 1.2rem for more prominence */
+    color: #e8e4dc; /* Brighter color for emphasis */
+    margin-bottom: 1.5rem; /* Increased spacing */
     line-height: 1.65;
     font-style: italic;
+    text-align: center; /* Center the text */
+    max-width: 42rem; /* Constrain width for readability */
+    margin-left: auto;
+    margin-right: auto;
+    /* Enhanced glow to make it stand out */
+    text-shadow: 0 0 20px rgba(232, 228, 220, 0.12);
 }
 
 /* ===================================
@@ -1093,7 +1099,7 @@ strong, b {
     }
 
     .about-preview {
-        font-size: 1.05rem;
+        font-size: 1.15rem; /* Slightly larger on mobile for prominence */
     }
 
     /* Image scales appropriately on very small screens */
