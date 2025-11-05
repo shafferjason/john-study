@@ -168,17 +168,20 @@ header {
 
 .about-preview {
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: 1.3rem; /* Increased from 1.2rem for more prominence */
-    color: #e8e4dc; /* Brighter color for emphasis */
-    margin-bottom: 1.5rem; /* Increased spacing */
-    line-height: 1.65;
+    font-size: 1.6rem !important; /* Much larger - very prominent */
+    color: #f5f3ed !important; /* Almost white - very bright */
+    margin-bottom: 2rem;
+    line-height: 1.75;
     font-style: italic;
-    text-align: center; /* Center the text */
-    max-width: 42rem; /* Constrain width for readability */
+    text-align: center !important;
+    max-width: 42rem;
     margin-left: auto;
     margin-right: auto;
-    /* Enhanced glow to make it stand out */
-    text-shadow: 0 0 20px rgba(232, 228, 220, 0.12);
+    font-weight: 500; /* Bolder weight */
+    letter-spacing: 0.01em; /* Slight spacing for elegance */
+    /* Very strong Johannine glow */
+    text-shadow: 0 0 40px rgba(245, 243, 237, 0.3) !important;
+    padding: 1rem 2rem; /* Add padding for breathing room */
 }
 
 /* ===================================
@@ -417,7 +420,7 @@ header {
 }
 
 .back-link a::before {
-    content: "←  ";
+    content: "â†  ";
     margin-right: 0.4rem;
 }
 
@@ -1099,7 +1102,8 @@ strong, b {
     }
 
     .about-preview {
-        font-size: 1.15rem; /* Slightly larger on mobile for prominence */
+        font-size: 1.3rem !important; /* Still prominent on mobile */
+        padding: 0.75rem 1rem;
     }
 
     /* Image scales appropriately on very small screens */
@@ -1215,7 +1219,7 @@ strong, b {
 }
 
 .divider-ornate::after {
-    content: '✦';
+    content: 'âœ¦';
     position: absolute;
     left: 50%;
     top: 50%;
@@ -1285,7 +1289,7 @@ strong, b {
 }
 
 .back-to-top::before {
-    content: '↑';
+    content: 'â†‘';
     color: #d4a574;
     font-size: 24px;
     font-weight: 300;
