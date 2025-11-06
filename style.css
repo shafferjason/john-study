@@ -266,6 +266,33 @@ header {
     padding-top: 1.25rem;
 }
 
+/* Smooth closing: fade out content when closing */
+.accordion[closing] .accordion-content {
+    animation: accordionFadeOut 1.2s ease-in-out forwards; /* Slower: 0.6s → 1.2s, gentler easing */
+    pointer-events: none;
+}
+
+/* Rotate arrow gently when closing */
+.accordion[closing] summary::before {
+    transform: rotate(0deg);
+    transition: transform 0.8s ease-out;
+}
+
+@keyframes accordionFadeOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    60% {
+        opacity: 0.3; /* Linger a bit before fully fading */
+        transform: translateY(-5px);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-8px); /* Less movement */
+    }
+}
+
 .accordion summary {
     cursor: pointer;
     color: #d4a574; /* Warmer Johannine gold */
@@ -313,7 +340,7 @@ header {
 .accordion-content {
     padding: 2rem 0 0 0;
     color: #d4d0c8;
-    animation: fadeIn 0.8s ease; /* Slower, more contemplative reveal */
+    animation: fadeIn 1.4s ease; /* Much slower: 0.8s → 1.4s */
     
     /* Optimized for extended reading */
     font-size: 1.05rem;
@@ -330,13 +357,42 @@ header {
 .accordion-content p + p {
     text-indent: 0;
 }
+
+/* Cascading fade for accordion children - SLOWER */
+.accordion-content > * {
+    animation: cascadeAccordionFade 1.2s ease-out backwards; /* Slightly slower */
+}
+
+.accordion-content > *:nth-child(1) { animation-delay: 0.15s; } /* Increased from 0.1s */
+.accordion-content > *:nth-child(2) { animation-delay: 0.35s; } /* Was 0.2s, now 0.35s */
+.accordion-content > *:nth-child(3) { animation-delay: 0.55s; } /* Was 0.3s, now 0.55s */
+.accordion-content > *:nth-child(4) { animation-delay: 0.75s; } /* Was 0.4s, now 0.75s */
+.accordion-content > *:nth-child(5) { animation-delay: 0.95s; } /* Was 0.5s, now 0.95s */
+.accordion-content > *:nth-child(6) { animation-delay: 1.15s; } /* Was 0.6s, now 1.15s */
+
+@keyframes cascadeAccordionFade {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Disable animations temporarily (used to force restart) */
+.no-animate,
+.no-animate > * {
+    animation: none !important;
+}
 /* === END FIX === */
 
 
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(-8px);
+        transform: translateY(-12px); /* Slightly more movement */
     }
     to {
         opacity: 1;
@@ -1636,7 +1692,7 @@ strong, b {
 /* Sections start hidden, awaiting light */
 .awaiting-light {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px); /* Increased from 30px */
     transition: none; /* No transition until illuminated */
 }
 
@@ -1644,12 +1700,37 @@ strong, b {
 .illuminate {
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 1.2s ease-out, 
-                transform 1.2s ease-out,
-                box-shadow 1.2s ease-out;
+    transition: opacity 1.8s ease-out, /* Slower: 1.2s → 1.8s */
+                transform 1.8s ease-out,
+                box-shadow 1.8s ease-out;
     
     /* Subtle golden glow as section comes into light */
     animation: candleGlow 3s ease-in-out infinite;
+}
+
+/* Cascading fade: child elements appear progressively from top to bottom */
+.illuminate > * {
+    animation: cascadeFadeIn 1.2s ease-out backwards;
+}
+
+.illuminate > *:nth-child(1) { animation-delay: 0s; }
+.illuminate > *:nth-child(2) { animation-delay: 0.15s; }
+.illuminate > *:nth-child(3) { animation-delay: 0.3s; }
+.illuminate > *:nth-child(4) { animation-delay: 0.45s; }
+.illuminate > *:nth-child(5) { animation-delay: 0.6s; }
+.illuminate > *:nth-child(6) { animation-delay: 0.75s; }
+.illuminate > *:nth-child(7) { animation-delay: 0.9s; }
+.illuminate > *:nth-child(8) { animation-delay: 1.05s; }
+
+@keyframes cascadeFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Gentle pulsing candlelight effect */
@@ -1671,13 +1752,17 @@ strong, b {
 /* Mobile: Slightly faster, less dramatic for smaller screens */
 @media (max-width: 768px) {
     .awaiting-light {
-        transform: translateY(20px); /* Less distance */
+        transform: translateY(25px); /* Less distance */
     }
     
     .illuminate {
-        transition: opacity 0.9s ease-out, 
-                    transform 0.9s ease-out,
-                    box-shadow 0.9s ease-out;
+        transition: opacity 1.3s ease-out, /* Slower than before */
+                    transform 1.3s ease-out,
+                    box-shadow 1.3s ease-out;
+    }
+    
+    .illuminate > * {
+        animation-duration: 0.9s; /* Slightly faster on mobile */
     }
     
     @keyframes candleGlow {
@@ -1693,3 +1778,4 @@ strong, b {
 /* ===================================
    END OF STYLESHEET
    =================================== */
+

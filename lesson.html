@@ -278,7 +278,11 @@
         const sectionObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
+                    // Add illuminate class when entering view
                     entry.target.classList.add('illuminate');
+                } else {
+                    // Remove illuminate class when leaving view (so it can re-animate)
+                    entry.target.classList.remove('illuminate');
                 }
             });
         }, observerOptions);
@@ -295,6 +299,44 @@
             header.classList.add('illuminate');
         }
         // === END LIGHT ON SCROLL ===
+        
+        // === ACCORDION ANIMATION REPLAY ===
+        // Force animations to replay every time accordion opens + smooth closing
+        document.querySelectorAll('.accordion').forEach(accordion => {
+            accordion.addEventListener('toggle', function(e) {
+                const content = this.querySelector('.accordion-content');
+                
+                if (this.open) {
+                    // OPENING: Force animation replay with cascading
+                    if (content) {
+                        // Remove closing state if present
+                        this.removeAttribute('closing');
+                        
+                        // Remove temporary class (forces browser to recalculate all child animations)
+                        content.classList.add('no-animate');
+                        
+                        // Force reflow
+                        void content.offsetWidth;
+                        
+                        // Remove the class (animations will restart with delays intact)
+                        content.classList.remove('no-animate');
+                    }
+                } else {
+                    // CLOSING: Fade out smoothly before actually closing
+                    e.preventDefault(); // Prevent immediate close
+                    
+                    // Add closing state for animation
+                    this.setAttribute('closing', '');
+                    
+                    // Wait for fade out animation, then actually close
+                    setTimeout(() => {
+                        this.removeAttribute('open');
+                        this.removeAttribute('closing');
+                    }, 1200); // Match accordionFadeOut duration (1.2s)
+                }
+            });
+        });
+        // === END ACCORDION REPLAY ===
     </script>
 
     <!-- UX Enhancements: Progress Bar & Back-to-Top Button -->
