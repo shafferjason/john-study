@@ -269,16 +269,15 @@ header {
 .accordion summary {
     cursor: pointer;
     color: #d4a574; /* Warmer Johannine gold */
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    font-weight: 500;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
+    font-family: 'Georgia', 'Iowan Old Style', 'Times New Roman', serif; /* Match body text */
+    font-weight: normal;
+    font-style: italic; /* Gentle invitation, not command */
+    font-size: 1rem; /* Slightly larger for readability */
+    letter-spacing: 0.02em; /* Subtle spacing */
     list-style: none;
     padding: 0.75rem 0;
     user-select: none;
-    transition: color 0.2s ease;
-    /* Center the Read More buttons for better visibility */
+    transition: color 0.3s ease; /* Slower, more contemplative */
     text-align: center;
 }
 
@@ -314,7 +313,7 @@ header {
 .accordion-content {
     padding: 2rem 0 0 0;
     color: #d4d0c8;
-    animation: fadeIn 0.4s ease;
+    animation: fadeIn 0.8s ease; /* Slower, more contemplative reveal */
     
     /* Optimized for extended reading */
     font-size: 1.05rem;
@@ -1627,6 +1626,68 @@ strong, b {
 .back-to-top:hover::before {
     color: #f0d4a8;
     text-shadow: 0 0 12px rgba(240, 212, 168, 0.6);
+}
+
+/* ===================================
+   LIGHT ON SCROLL EFFECT
+   Candle illuminating testimony
+   =================================== */
+
+/* Sections start hidden, awaiting light */
+.awaiting-light {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: none; /* No transition until illuminated */
+}
+
+/* When section scrolls into view, it illuminates with candlelight glow */
+.illuminate {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1.2s ease-out, 
+                transform 1.2s ease-out,
+                box-shadow 1.2s ease-out;
+    
+    /* Subtle golden glow as section comes into light */
+    animation: candleGlow 3s ease-in-out infinite;
+}
+
+/* Gentle pulsing candlelight effect */
+@keyframes candleGlow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(212, 165, 116, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(240, 212, 168, 0.15);
+    }
+}
+
+/* Header is always illuminated (it's the title/witness) */
+.lesson-header {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Mobile: Slightly faster, less dramatic for smaller screens */
+@media (max-width: 768px) {
+    .awaiting-light {
+        transform: translateY(20px); /* Less distance */
+    }
+    
+    .illuminate {
+        transition: opacity 0.9s ease-out, 
+                    transform 0.9s ease-out,
+                    box-shadow 0.9s ease-out;
+    }
+    
+    @keyframes candleGlow {
+        0%, 100% {
+            box-shadow: 0 0 15px rgba(212, 165, 116, 0.08);
+        }
+        50% {
+            box-shadow: 0 0 25px rgba(240, 212, 168, 0.12);
+        }
+    }
 }
 
 /* ===================================
