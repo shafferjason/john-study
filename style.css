@@ -739,17 +739,17 @@ header {
     
     /* Brass corners positioned to match the rounded border-radius */
     background: 
-        /* Top-left corner - positioned inward to match curve */
-        radial-gradient(circle at 10px 10px, rgba(240, 212, 168, 1) 0%, rgba(212, 165, 116, 0.9) 8%, rgba(201, 164, 122, 0.6) 20%, transparent 50%),
+        /* Top-left corner - subtle aged brass, less shiny */
+        radial-gradient(circle at 10px 10px, rgba(184, 147, 95, 0.5) 0%, rgba(160, 125, 74, 0.3) 8%, rgba(144, 112, 68, 0.15) 20%, transparent 45%),
         /* Top-right corner */
-        radial-gradient(circle at calc(100% - 10px) 10px, rgba(240, 212, 168, 1) 0%, rgba(212, 165, 116, 0.9) 8%, rgba(201, 164, 122, 0.6) 20%, transparent 50%),
+        radial-gradient(circle at calc(100% - 10px) 10px, rgba(184, 147, 95, 0.5) 0%, rgba(160, 125, 74, 0.3) 8%, rgba(144, 112, 68, 0.15) 20%, transparent 45%),
         /* Bottom-left corner */
-        radial-gradient(circle at 10px calc(100% - 10px), rgba(240, 212, 168, 1) 0%, rgba(212, 165, 116, 0.9) 8%, rgba(201, 164, 122, 0.6) 20%, transparent 50%),
+        radial-gradient(circle at 10px calc(100% - 10px), rgba(184, 147, 95, 0.5) 0%, rgba(160, 125, 74, 0.3) 8%, rgba(144, 112, 68, 0.15) 20%, transparent 45%),
         /* Bottom-right corner */
-        radial-gradient(circle at calc(100% - 10px) calc(100% - 10px), rgba(240, 212, 168, 1) 0%, rgba(212, 165, 116, 0.9) 8%, rgba(201, 164, 122, 0.6) 20%, transparent 50%);
+        radial-gradient(circle at calc(100% - 10px) calc(100% - 10px), rgba(184, 147, 95, 0.5) 0%, rgba(160, 125, 74, 0.3) 8%, rgba(144, 112, 68, 0.15) 20%, transparent 45%);
     
     pointer-events: none;
-    opacity: 0.9;
+    opacity: 0.5; /* Reduced from 0.9 for subtlety */
     transition: all 0.3s ease;
 }
 
@@ -765,38 +765,38 @@ header {
     
     /* Corner accent triangles positioned to align with rounded corners */
     background: 
-        linear-gradient(135deg, rgba(212, 165, 116, 0.4) 0%, transparent 12%) top left,
-        linear-gradient(225deg, rgba(212, 165, 116, 0.4) 0%, transparent 12%) top right,
-        linear-gradient(45deg, rgba(212, 165, 116, 0.4) 0%, transparent 12%) bottom left,
-        linear-gradient(315deg, rgba(212, 165, 116, 0.4) 0%, transparent 12%) bottom right;
+        linear-gradient(135deg, rgba(160, 125, 74, 0.25) 0%, transparent 10%) top left,
+        linear-gradient(225deg, rgba(160, 125, 74, 0.25) 0%, transparent 10%) top right,
+        linear-gradient(45deg, rgba(160, 125, 74, 0.25) 0%, transparent 10%) bottom left,
+        linear-gradient(315deg, rgba(160, 125, 74, 0.25) 0%, transparent 10%) bottom right;
     
-    background-size: 60px 60px;
+    background-size: 50px 50px; /* Smaller */
     background-repeat: no-repeat;
     pointer-events: none;
-    opacity: 0.8;
+    opacity: 0.5; /* More subtle */
     transition: all 0.3s ease;
 }
 
 /* Brass corners glow intensely when playing - fire effect */
 .custom-audio-player.playing::before {
-    opacity: 1;
+    opacity: 0.8; /* Not fully bright */
     background: 
-        /* Intense golden glow at all corners - positioned to match curve */
-        radial-gradient(circle at 10px 10px, rgba(255, 235, 180, 1) 0%, rgba(240, 212, 168, 1) 10%, rgba(212, 165, 116, 0.8) 25%, transparent 55%),
-        radial-gradient(circle at calc(100% - 10px) 10px, rgba(255, 235, 180, 1) 0%, rgba(240, 212, 168, 1) 10%, rgba(212, 165, 116, 0.8) 25%, transparent 55%),
-        radial-gradient(circle at 10px calc(100% - 10px), rgba(255, 235, 180, 1) 0%, rgba(240, 212, 168, 1) 10%, rgba(212, 165, 116, 0.8) 25%, transparent 55%),
-        radial-gradient(circle at calc(100% - 10px) calc(100% - 10px), rgba(255, 235, 180, 1) 0%, rgba(240, 212, 168, 1) 10%, rgba(212, 165, 116, 0.8) 25%, transparent 55%);
+        /* Warm ember glow at corners - not overly bright */
+        radial-gradient(circle at 10px 10px, rgba(212, 165, 116, 0.8) 0%, rgba(184, 147, 95, 0.5) 10%, rgba(160, 125, 74, 0.3) 25%, transparent 50%),
+        radial-gradient(circle at calc(100% - 10px) 10px, rgba(212, 165, 116, 0.8) 0%, rgba(184, 147, 95, 0.5) 10%, rgba(160, 125, 74, 0.3) 25%, transparent 50%),
+        radial-gradient(circle at 10px calc(100% - 10px), rgba(212, 165, 116, 0.8) 0%, rgba(184, 147, 95, 0.5) 10%, rgba(160, 125, 74, 0.3) 25%, transparent 50%),
+        radial-gradient(circle at calc(100% - 10px) calc(100% - 10px), rgba(212, 165, 116, 0.8) 0%, rgba(184, 147, 95, 0.5) 10%, rgba(160, 125, 74, 0.3) 25%, transparent 50%);
 }
 
 .custom-audio-player.playing::after {
-    opacity: 1;
+    opacity: 0.7; /* Subtle increase */
     background: 
-        linear-gradient(135deg, rgba(240, 212, 168, 0.7) 0%, transparent 15%) top left,
-        linear-gradient(225deg, rgba(240, 212, 168, 0.7) 0%, transparent 15%) top right,
-        linear-gradient(45deg, rgba(240, 212, 168, 0.7) 0%, transparent 15%) bottom left,
-        linear-gradient(315deg, rgba(240, 212, 168, 0.7) 0%, transparent 15%) bottom right;
+        linear-gradient(135deg, rgba(184, 147, 95, 0.4) 0%, transparent 12%) top left,
+        linear-gradient(225deg, rgba(184, 147, 95, 0.4) 0%, transparent 12%) top right,
+        linear-gradient(45deg, rgba(184, 147, 95, 0.4) 0%, transparent 12%) bottom left,
+        linear-gradient(315deg, rgba(184, 147, 95, 0.4) 0%, transparent 12%) bottom right;
     
-    background-size: 70px 70px;
+    background-size: 55px 55px;
     background-repeat: no-repeat;
 }
 
