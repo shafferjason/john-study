@@ -25,6 +25,82 @@ body {
     position: relative;
 }
 
+/* Reading Progress Bar */
+.reading-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 5px; /* Thicker: 3px → 5px */
+    /* Light blooming gradient - grows brighter as you progress */
+    background: linear-gradient(to right, 
+        #b8935f, 
+        #d4a574, 
+        #f0d4a8, 
+        #fffdf7);
+    z-index: 1000;
+    transition: width 0.1s ease;
+    /* MUCH MORE VISIBLE divine light glow */
+    box-shadow: 
+        0 0 15px rgba(212, 165, 116, 0.8),
+        0 0 30px rgba(240, 212, 168, 0.6),
+        0 0 45px rgba(255, 253, 247, 0.3);
+}
+
+/* Desktop fire: Progress bar pulses with growing light - BRIGHTER */
+@keyframes progressGlow {
+    0%, 100% {
+        box-shadow: 
+            0 0 15px rgba(212, 165, 116, 0.8),
+            0 0 30px rgba(240, 212, 168, 0.6),
+            0 0 45px rgba(255, 253, 247, 0.3);
+    }
+    50% {
+        /* Light blooms MUCH brighter at peak */
+        box-shadow: 
+            0 0 25px rgba(212, 165, 116, 1),
+            0 0 50px rgba(240, 212, 168, 0.8),
+            0 0 75px rgba(255, 253, 247, 0.5);
+    }
+}
+
+.reading-progress {
+    animation: progressGlow 2.5s ease-in-out infinite; /* Faster pulse */
+}
+
+/* MUCH LARGER and MORE VISIBLE symbolic light marker */
+.reading-progress::after {
+    content: '✦';
+    position: absolute;
+    right: -12px; /* Further out so it's fully visible */
+    top: 50%;
+    transform: translateY(-50%);
+    color: #fffdf7; /* Brighter white-gold */
+    font-size: 18px; /* Much larger: 12px → 18px */
+    text-shadow: 
+        0 0 20px rgba(255, 253, 247, 1),
+        0 0 35px rgba(240, 212, 168, 0.9),
+        0 0 50px rgba(212, 165, 116, 0.6);
+    animation: markerpulse 2s ease-in-out infinite;
+}
+
+@keyframes markerpulse {
+    0%, 100% {
+        text-shadow: 
+            0 0 20px rgba(255, 253, 247, 1),
+            0 0 35px rgba(240, 212, 168, 0.9),
+            0 0 50px rgba(212, 165, 116, 0.6);
+        transform: translateY(-50%) scale(1);
+    }
+    50% {
+        text-shadow: 
+            0 0 30px rgba(255, 253, 247, 1),
+            0 0 50px rgba(240, 212, 168, 1),
+            0 0 70px rgba(212, 165, 116, 0.7);
+        transform: translateY(-50%) scale(1.4); /* Bigger pulse */
+    }
+}
+
 
 /* ===================================
    CONTAINER & LAYOUT
@@ -513,7 +589,7 @@ header {
         0 0 20px rgba(240, 212, 168, 0.8),
         0 0 35px rgba(240, 212, 168, 0.5),
         0 0 50px rgba(212, 165, 116, 0.3);
-    animation: scripturePulse 3s ease-in-out 3; /* Pulse 3 times then stop */
+    animation: scripturePulse 3s ease-in-out infinite;
     font-weight: 400; /* Slightly bolder when glowing */
 }
 
@@ -538,21 +614,15 @@ header {
     margin-bottom: 4.5rem;
 }
 
-/* Desktop fire: Subtle left border that intensifies on hover */
+/* Subtle left border styling - transitions removed for performance */
 .lesson-summary,
 .song-tie-in,
 .song-lyrics-section {
     border-left: 2px solid transparent;
     padding-left: 0.5rem;
-    transition: all 0.4s ease;
 }
 
-.lesson-summary:hover,
-.song-tie-in:hover,
-.song-lyrics-section:hover {
-    border-left-color: rgba(212, 165, 116, 0.3);
-    padding-left: 1rem;
-}
+/* Section hover effects removed for performance */
 
 /* Section headers for lesson content */
 .lesson-summary h2,
@@ -1397,13 +1467,12 @@ strong, b {
         }
     }
     
-    /* Add subtle left border pulse to sections on mobile */
+    /* Subtle left border styling on mobile - animation removed for performance */
     .lesson-summary,
     .song-tie-in,
     .song-lyrics-section {
-        border-left: 2px solid transparent;
+        border-left: 2px solid rgba(212, 165, 116, 0.2);
         padding-left: 1rem;
-        animation: sectionPulse 4s ease-in-out infinite;
     }
     
     /* Enhanced glow on headings for mobile */
@@ -1717,8 +1786,11 @@ strong, b {
     opacity: 1;
     transform: translateY(0);
     transition: opacity 1.8s ease-out, /* Slower: 1.2s → 1.8s */
-                transform 1.8s ease-out;
-    /* Removed infinite candleGlow animation for performance */
+                transform 1.8s ease-out,
+                box-shadow 1.8s ease-out;
+    
+    /* Subtle golden glow as section comes into light */
+    animation: candleGlow 3s ease-in-out infinite;
 }
 
 /* Cascading fade: child elements appear progressively from top to bottom */
