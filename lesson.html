@@ -208,6 +208,47 @@
                 audio.addEventListener('loadedmetadata', () => {
                     durationEl.textContent = formatTime(audio.duration);
                     seekBar.max = audio.duration; 
+                    
+                    // Set up Media Session API for lock screen/control center display
+                    if ('mediaSession' in navigator) {
+                        navigator.mediaSession.metadata = new MediaMetadata({
+                            title: currentLesson.song_title,
+                            artist: 'The Tenth Hour',
+                            album: 'Hurst Class Study: Book of John',
+                            artwork: currentLesson.image_url ? [
+                                { src: currentLesson.image_url, sizes: '512x512', type: 'image/jpeg' }
+                            ] : []
+                        });
+                        
+                        // Set up action handlers for media controls
+                        navigator.mediaSession.setActionHandler('play', () => {
+                            audio.play();
+                            playIcon.style.display = 'none';
+                            pauseIcon.style.display = 'inline-block';
+                            audioPlayer.classList.add('playing');
+                        });
+                        
+                        navigator.mediaSession.setActionHandler('pause', () => {
+                            audio.pause();
+                            playIcon.style.display = 'inline-block';
+                            pauseIcon.style.display = 'none';
+                            audioPlayer.classList.remove('playing');
+                        });
+                        
+                        navigator.mediaSession.setActionHandler('seekbackward', () => {
+                            audio.currentTime = Math.max(audio.currentTime - 10, 0);
+                        });
+                        
+                        navigator.mediaSession.setActionHandler('seekforward', () => {
+                            audio.currentTime = Math.min(audio.currentTime + 10, audio.duration);
+                        });
+                        
+                        navigator.mediaSession.setActionHandler('seekto', (details) => {
+                            if (details.seekTime) {
+                                audio.currentTime = details.seekTime;
+                            }
+                        });
+                    }
                 });
                 
                 // Allow user to seek by dragging the bar
