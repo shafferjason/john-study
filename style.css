@@ -630,23 +630,39 @@ header {
     margin: 3rem auto;
     padding: 1.25rem 1.75rem;
     
-    /* Worn black leather texture - like a journal cover */
+    /* Realistic worn black leather texture - like a vintage journal cover */
     background: 
-        /* Leather grain texture */
+        /* Fine leather grain (horizontal) */
         repeating-linear-gradient(
             90deg,
-            rgba(30, 27, 24, 0.3) 0px,
+            rgba(35, 32, 28, 0.4) 0px,
+            rgba(30, 27, 24, 0.3) 0.5px,
             transparent 1px,
-            transparent 3px
+            transparent 2.5px,
+            rgba(30, 27, 24, 0.3) 3px,
+            transparent 3.5px,
+            transparent 5px
         ),
+        /* Fine leather grain (vertical) */
         repeating-linear-gradient(
             0deg,
-            rgba(25, 22, 19, 0.2) 0px,
+            rgba(32, 29, 25, 0.35) 0px,
+            rgba(28, 25, 21, 0.25) 0.5px,
             transparent 1px,
-            transparent 2px
+            transparent 2px,
+            rgba(28, 25, 21, 0.25) 2.5px,
+            transparent 3px,
+            transparent 4px
         ),
-        /* Deep leather color with subtle gradient */
-        linear-gradient(135deg, #1c1a17 0%, #0f0e0c 100%);
+        /* Larger worn patches and variation */
+        radial-gradient(ellipse at 20% 30%, rgba(40, 36, 32, 0.3) 0%, transparent 40%),
+        radial-gradient(ellipse at 80% 70%, rgba(35, 31, 27, 0.25) 0%, transparent 50%),
+        radial-gradient(ellipse at 60% 20%, rgba(38, 34, 30, 0.2) 0%, transparent 35%),
+        /* Subtle wear and highlight on edges */
+        radial-gradient(ellipse at 10% 50%, rgba(45, 40, 35, 0.3) 0%, transparent 25%),
+        radial-gradient(ellipse at 90% 50%, rgba(45, 40, 35, 0.3) 0%, transparent 25%),
+        /* Deep leather base color with realistic gradient */
+        linear-gradient(145deg, #1f1d19 0%, #1c1a17 30%, #0f0e0c 70%, #0a0908 100%);
     
     /* Rectangular book/journal shape with softened corners */
     border-radius: 6px;
@@ -715,31 +731,73 @@ header {
 .custom-audio-player::before {
     content: '';
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     border-radius: 6px;
     
-    /* Brass corners */
+    /* Much larger, more visible brass corners with layered effect */
     background: 
-        /* Top-left corner */
-        radial-gradient(circle at 0% 0%, rgba(201, 164, 122, 0.5) 0%, transparent 30%),
+        /* Top-left corner - larger and brighter */
+        radial-gradient(circle at 0% 0%, rgba(240, 212, 168, 1) 0%, rgba(212, 165, 116, 0.9) 8%, rgba(201, 164, 122, 0.6) 25%, transparent 60%),
         /* Top-right corner */
-        radial-gradient(circle at 100% 0%, rgba(201, 164, 122, 0.5) 0%, transparent 30%),
+        radial-gradient(circle at 100% 0%, rgba(240, 212, 168, 1) 0%, rgba(212, 165, 116, 0.9) 8%, rgba(201, 164, 122, 0.6) 25%, transparent 60%),
         /* Bottom-left corner */
-        radial-gradient(circle at 0% 100%, rgba(201, 164, 122, 0.5) 0%, transparent 30%),
+        radial-gradient(circle at 0% 100%, rgba(240, 212, 168, 1) 0%, rgba(212, 165, 116, 0.9) 8%, rgba(201, 164, 122, 0.6) 25%, transparent 60%),
         /* Bottom-right corner */
-        radial-gradient(circle at 100% 100%, rgba(201, 164, 122, 0.5) 0%, transparent 30%);
+        radial-gradient(circle at 100% 100%, rgba(240, 212, 168, 1) 0%, rgba(212, 165, 116, 0.9) 8%, rgba(201, 164, 122, 0.6) 25%, transparent 60%);
     
     pointer-events: none;
-    opacity: 0.4;
-    transition: opacity 0.3s ease;
+    opacity: 0.9;
+    transition: all 0.3s ease;
 }
 
-/* Brass corners glow brighter when playing */
+/* Additional brass corner accents using ::after for double-layer effect */
+.custom-audio-player::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 6px;
+    
+    /* Inner brass corner highlights - creates depth */
+    background: 
+        linear-gradient(135deg, rgba(212, 165, 116, 0.4) 0%, transparent 15%) top left,
+        linear-gradient(225deg, rgba(212, 165, 116, 0.4) 0%, transparent 15%) top right,
+        linear-gradient(45deg, rgba(212, 165, 116, 0.4) 0%, transparent 15%) bottom left,
+        linear-gradient(315deg, rgba(212, 165, 116, 0.4) 0%, transparent 15%) bottom right;
+    
+    background-size: 80px 80px;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    opacity: 0.8;
+    transition: all 0.3s ease;
+}
+
+/* Brass corners glow intensely when playing - fire effect */
 .custom-audio-player.playing::before {
-    opacity: 0.7;
+    opacity: 1;
+    background: 
+        /* Intense golden glow at all corners */
+        radial-gradient(circle at 0% 0%, rgba(255, 235, 180, 1) 0%, rgba(240, 212, 168, 1) 10%, rgba(212, 165, 116, 0.8) 30%, transparent 65%),
+        radial-gradient(circle at 100% 0%, rgba(255, 235, 180, 1) 0%, rgba(240, 212, 168, 1) 10%, rgba(212, 165, 116, 0.8) 30%, transparent 65%),
+        radial-gradient(circle at 0% 100%, rgba(255, 235, 180, 1) 0%, rgba(240, 212, 168, 1) 10%, rgba(212, 165, 116, 0.8) 30%, transparent 65%),
+        radial-gradient(circle at 100% 100%, rgba(255, 235, 180, 1) 0%, rgba(240, 212, 168, 1) 10%, rgba(212, 165, 116, 0.8) 30%, transparent 65%);
+}
+
+.custom-audio-player.playing::after {
+    opacity: 1;
+    background: 
+        linear-gradient(135deg, rgba(240, 212, 168, 0.7) 0%, transparent 18%) top left,
+        linear-gradient(225deg, rgba(240, 212, 168, 0.7) 0%, transparent 18%) top right,
+        linear-gradient(45deg, rgba(240, 212, 168, 0.7) 0%, transparent 18%) bottom left,
+        linear-gradient(315deg, rgba(240, 212, 168, 0.7) 0%, transparent 18%) bottom right;
+    
+    background-size: 90px 90px;
+    background-repeat: no-repeat;
 }
 
 /* Brass Play Button - Like striking a match */
@@ -1546,4 +1604,3 @@ strong, b {
 /* ===================================
    END OF STYLESHEET
    =================================== */
-
