@@ -999,44 +999,93 @@ header {
     text-align: center;
     margin-bottom: 4.5rem;
     
-    /* Vellum insert - sheet music on aged paper */
+    /* Full leather journal panel - matches other sections */
     background: 
-        /* Subtle paper fiber texture */
+        /* Fine leather grain */
         repeating-linear-gradient(
-            45deg,
-            transparent 0px,
-            rgba(210, 200, 185, 0.06) 1px,
-            transparent 2px,
-            transparent 4px
+            90deg,
+            rgba(42, 38, 33, 0.15) 0px,
+            rgba(35, 32, 28, 0.1) 0.5px,
+            transparent 1px,
+            transparent 3px
         ),
-        repeating-linear-gradient(
-            -45deg,
-            transparent 0px,
-            rgba(210, 200, 185, 0.04) 1px,
-            transparent 2px,
-            transparent 4px
-        ),
-        /* Horizontal paper grain */
-        repeating-linear-gradient(
-            180deg,
-            transparent 0px,
-            rgba(200, 190, 175, 0.03) 1px,
-            transparent 2px,
-            transparent 6px
-        ),
-        /* Aged off-white vellum */
-        #f8f5ee;
+        /* Subtle wear and highlights */
+        radial-gradient(ellipse at 30% 30%, rgba(50, 45, 40, 0.3) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 60%, rgba(45, 40, 35, 0.25) 0%, transparent 45%),
+        /* Base leather panel color */
+        rgba(42, 38, 33, 0.5);
     
-    /* Sheet music inset */
+    /* Organic rounded corners */
+    border-radius: 12px;
+    
+    /* Padding for breathing room */
     padding: 3rem 2rem;
-    border-radius: 8px;
     
-    /* Subtle aged paper vignette */
+    /* ENHANCED 3D: Same stacked journal depth as other panels */
     box-shadow: 
-        inset 0 0 60px rgba(0, 0, 0, 0.04),
-        inset 0 1px 2px rgba(0, 0, 0, 0.06),
-        /* Outer separation from leather page */
-        0 2px 12px rgba(0, 0, 0, 0.15);
+        /* Light catch on top-left (embossed) */
+        inset 1px 1px 0 rgba(212, 165, 116, 0.15),
+        inset 0 2px 3px rgba(240, 212, 168, 0.08),
+        /* Deep inset shadows for recessed leather */
+        inset 0 3px 10px rgba(0, 0, 0, 0.5),
+        inset 0 1px 3px rgba(0, 0, 0, 0.6),
+        /* Darker left edge (spine side) */
+        inset 4px 0 12px rgba(0, 0, 0, 0.4),
+        /* Stacked page layers - 7 layers for maximum depth */
+        0 2px 4px rgba(0, 0, 0, 0.35),
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        0 6px 12px rgba(0, 0, 0, 0.28),
+        0 10px 20px rgba(0, 0, 0, 0.25),
+        0 15px 30px rgba(0, 0, 0, 0.2),
+        0 20px 40px rgba(0, 0, 0, 0.15),
+        0 30px 60px rgba(0, 0, 0, 0.1),
+        /* Page edge effect on right */
+        2px 0 2px rgba(40, 37, 33, 0.4),
+        3px 0 4px rgba(35, 32, 28, 0.3),
+        4px 0 6px rgba(30, 27, 23, 0.2);
+    
+    /* Gentle candlelight glow animation - same as other sections */
+    animation: leatherGlow 5s ease-in-out infinite;
+    
+    /* Brass corner accents */
+    position: relative;
+    
+    /* Spine stitching on left */
+    border-left: 2px dotted rgba(212, 165, 116, 0.15);
+    
+    /* Page edges visible on right */
+    border-right: 3px solid rgba(35, 32, 28, 0.3);
+}
+
+/* Brass corner tabs - TOP-RIGHT and BOTTOM-RIGHT */
+.song-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    border-top: 2.5px solid rgba(212, 165, 116, 0.5);
+    border-right: 2.5px solid rgba(212, 165, 116, 0.5);
+    border-top-right-radius: 12px;
+    box-shadow: 
+        0 0 8px rgba(212, 165, 116, 0.2),
+        inset -1px 1px 2px rgba(240, 212, 168, 0.15);
+}
+
+.song-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 24px;
+    height: 24px;
+    border-bottom: 2.5px solid rgba(212, 165, 116, 0.5);
+    border-right: 2.5px solid rgba(212, 165, 116, 0.5);
+    border-bottom-right-radius: 12px;
+    box-shadow: 
+        0 0 8px rgba(212, 165, 116, 0.2),
+        inset -1px -1px 2px rgba(240, 212, 168, 0.15);
 }
 
 /* ===================================
@@ -1108,14 +1157,14 @@ header {
 
 .song-section h2 {
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: 1.8rem; /* Slightly smaller for vellum context */
+    font-size: 1.9rem;
     font-weight: 500;
     text-transform: none;
     letter-spacing: -0.01em;
     margin-bottom: 2rem;
-    color: #5a5548; /* Darker for readability on off-white */
-    /* Subtle warmth instead of glow */
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    color: #e8e4dc; /* Bright on dark leather */
+    /* Johannine glow */
+    text-shadow: 0 0 20px rgba(232, 228, 220, 0.15);
 }
 
 /* === Worn photograph on vellum === */
@@ -1596,13 +1645,13 @@ header {
     margin-top: 1.5rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 0.85rem;
-    color: #6a665d; /* Darker for vellum background */
+    color: #7a766d;
     text-transform: uppercase;
     letter-spacing: 0.08em;
 }
 
 .suno-link a {
-    color: #8b7355; /* Darker brass for readability on vellum */
+    color: #c9a47a; /* Warm brass on dark */
     font-weight: 500;
 }
 
