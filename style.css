@@ -331,24 +331,36 @@ header {
 
 /* === SYNTAX ERROR FIXED HERE === */
 .accordion-content {
-    /* TRUE OFF-WHITE aged vellum - like real book pages */
+    /* TRUE OFF-WHITE aged vellum with MORE VISIBLE texture */
     background: 
-        /* Very subtle paper fiber texture */
+        /* Stronger paper fiber texture - crosshatch pattern */
         repeating-linear-gradient(
             45deg,
             transparent 0px,
-            rgba(210, 200, 185, 0.03) 1px,
+            rgba(210, 200, 185, 0.08) 1px,
             transparent 2px,
             transparent 4px
         ),
         repeating-linear-gradient(
             -45deg,
             transparent 0px,
-            rgba(210, 200, 185, 0.025) 1px,
+            rgba(210, 200, 185, 0.06) 1px,
             transparent 2px,
             transparent 4px
         ),
-        /* Pure aged off-white - warm cream tone */
+        /* Fine horizontal paper grain */
+        repeating-linear-gradient(
+            180deg,
+            transparent 0px,
+            rgba(200, 190, 175, 0.04) 1px,
+            transparent 2px,
+            transparent 6px
+        ),
+        /* Subtle aged spots/variations */
+        radial-gradient(ellipse at 25% 30%, rgba(210, 200, 180, 0.06) 0%, transparent 40%),
+        radial-gradient(ellipse at 75% 60%, rgba(205, 195, 175, 0.05) 0%, transparent 35%),
+        radial-gradient(ellipse at 50% 80%, rgba(215, 205, 185, 0.04) 0%, transparent 30%),
+        /* Pure aged off-white base - warm cream tone */
         #f8f5ee;
     
     /* Create nested reading panel */
@@ -356,14 +368,14 @@ header {
     padding: 2.5rem 2rem;
     border-radius: 8px;
     
-    /* Subtle aged paper vignette - very gentle */
+    /* Subtle aged paper vignette */
     box-shadow: 
         inset 0 0 80px rgba(0, 0, 0, 0.04),
         inset 0 1px 2px rgba(0, 0, 0, 0.06),
         /* Slight outer glow for separation from leather */
         0 2px 8px rgba(0, 0, 0, 0.15);
     
-    /* COMPLETELY BLACK ink on off-white paper - maximum contrast */
+    /* PURE BLACK ink on off-white paper - maximum contrast */
     color: #000000 !important;
     animation: fadeIn 1.4s ease;
     
@@ -371,6 +383,9 @@ header {
     font-size: 1.05rem;
     line-height: 1.85;
     max-width: 38rem;
+    
+    /* NO opacity issues */
+    opacity: 1 !important;
 }
 
 /* FORCE PURE BLACK TEXT - Maximum specificity */
@@ -381,6 +396,21 @@ header {
 .accordion-content div {
     color: #000000 !important;
     opacity: 1 !important;
+}
+
+/* Elegant drop cap on first paragraph - illuminated manuscript style */
+.accordion-content > p:first-of-type::first-letter {
+    float: left;
+    font-size: 3.5em;
+    line-height: 0.85;
+    margin: 0.05em 0.1em 0 0;
+    padding-right: 0.05em;
+    font-weight: 400;
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #c9a47a !important; /* Brass/gold - override black */
+    text-shadow: 
+        0 0 10px rgba(212, 165, 116, 0.3),
+        1px 1px 0 rgba(240, 212, 168, 0.2);
 }
 
 /* Enhanced paragraph spacing for better scannability */
@@ -626,14 +656,38 @@ header {
         0 20px 40px rgba(0, 0, 0, 0.15),
         0 30px 60px rgba(0, 0, 0, 0.1);
     
-    /* Gentle candlelight glow animation */
-    animation: leatherGlow 3s ease-in-out infinite; /* Faster: 4s → 3s */
+    /* Gentle candlelight glow animation - slowed down */
+    animation: leatherGlow 5s ease-in-out infinite; /* Slower: 3s → 5s */
     
     /* Brass corner accents */
     position: relative;
+    
+    /* Page edge effect on right side - shows book thickness */
+    border-right: 3px solid rgba(35, 32, 28, 0.3);
+    box-shadow: 
+        /* Light catch on top-left (embossed) */
+        inset 1px 1px 0 rgba(212, 165, 116, 0.15),
+        inset 0 2px 3px rgba(240, 212, 168, 0.08),
+        /* Deep inset shadows for recessed leather */
+        inset 0 3px 10px rgba(0, 0, 0, 0.5),
+        inset 0 1px 3px rgba(0, 0, 0, 0.6),
+        /* Darker left edge (spine side) */
+        inset 4px 0 12px rgba(0, 0, 0, 0.4),
+        /* Stacked page layers - 7 layers for maximum depth */
+        0 2px 4px rgba(0, 0, 0, 0.35),
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        0 6px 12px rgba(0, 0, 0, 0.28),
+        0 10px 20px rgba(0, 0, 0, 0.25),
+        0 15px 30px rgba(0, 0, 0, 0.2),
+        0 20px 40px rgba(0, 0, 0, 0.15),
+        0 30px 60px rgba(0, 0, 0, 0.1),
+        /* Page edge effect on right */
+        2px 0 2px rgba(40, 37, 33, 0.4),
+        3px 0 4px rgba(35, 32, 28, 0.3),
+        4px 0 6px rgba(30, 27, 23, 0.2);
 }
 
-/* DRAMATIC pulsing candlelight on leather panels */
+/* Contemplative pulsing candlelight on leather panels */
 @keyframes leatherGlow {
     0%, 100% {
         box-shadow: 
@@ -648,28 +702,35 @@ header {
             0 10px 20px rgba(0, 0, 0, 0.25),
             0 15px 30px rgba(0, 0, 0, 0.2),
             0 20px 40px rgba(0, 0, 0, 0.15),
-            0 30px 60px rgba(0, 0, 0, 0.1);
+            0 30px 60px rgba(0, 0, 0, 0.1),
+            /* Page edge effect on right */
+            2px 0 2px rgba(40, 37, 33, 0.4),
+            3px 0 4px rgba(35, 32, 28, 0.3),
+            4px 0 6px rgba(30, 27, 23, 0.2);
     }
     50% {
         box-shadow: 
-            /* MUCH BRIGHTER light catch at peak */
-            inset 1px 1px 0 rgba(255, 240, 200, 0.4),
-            inset 0 2px 3px rgba(255, 240, 200, 0.25),
-            inset 0 3px 10px rgba(0, 0, 0, 0.4),
-            inset 0 1px 3px rgba(0, 0, 0, 0.5),
-            inset 4px 0 12px rgba(0, 0, 0, 0.3),
-            /* MORE lifted at glow peak */
-            0 4px 8px rgba(0, 0, 0, 0.25),
-            0 6px 12px rgba(0, 0, 0, 0.2),
-            0 10px 20px rgba(0, 0, 0, 0.18),
-            0 15px 30px rgba(0, 0, 0, 0.15),
-            0 22px 40px rgba(0, 0, 0, 0.12),
-            0 30px 50px rgba(0, 0, 0, 0.1),
-            0 40px 70px rgba(0, 0, 0, 0.06),
-            /* DRAMATIC golden glow - MUCH more visible */
-            0 0 60px rgba(240, 212, 168, 0.4),
-            0 0 80px rgba(212, 165, 116, 0.3),
-            0 0 100px rgba(255, 200, 100, 0.15);
+            /* Brighter light catch at peak - but not excessive */
+            inset 1px 1px 0 rgba(255, 240, 200, 0.3),
+            inset 0 2px 3px rgba(240, 212, 168, 0.18),
+            inset 0 3px 10px rgba(0, 0, 0, 0.45),
+            inset 0 1px 3px rgba(0, 0, 0, 0.55),
+            inset 4px 0 12px rgba(0, 0, 0, 0.35),
+            /* Slightly lifted at glow peak */
+            0 3px 6px rgba(0, 0, 0, 0.3),
+            0 5px 10px rgba(0, 0, 0, 0.25),
+            0 8px 16px rgba(0, 0, 0, 0.22),
+            0 12px 24px rgba(0, 0, 0, 0.18),
+            0 18px 35px rgba(0, 0, 0, 0.14),
+            0 25px 45px rgba(0, 0, 0, 0.1),
+            0 35px 60px rgba(0, 0, 0, 0.06),
+            /* Page edge slightly more visible at glow */
+            2px 0 2px rgba(45, 42, 38, 0.45),
+            3px 0 4px rgba(40, 37, 33, 0.35),
+            4px 0 6px rgba(35, 32, 28, 0.25),
+            /* Focused golden glow - tighter spread */
+            0 0 35px rgba(240, 212, 168, 0.25),
+            0 0 50px rgba(212, 165, 116, 0.15);
     }
 }
 
@@ -710,7 +771,66 @@ header {
         inset -1px -1px 2px rgba(240, 212, 168, 0.15);
 }
 
-/* Remove old left border styling */
+/* Subtle spine stitching on left edge - journal binding detail */
+.lesson-summary,
+.song-tie-in,
+.song-lyrics-section {
+    border-left: 2px dotted rgba(212, 165, 116, 0.15);
+}
+
+/* Worn corners - darker/aged on high-traffic areas */
+.lesson-summary::after,
+.song-tie-in::after,
+.song-lyrics-section::after {
+    /* Add worn corner darkening beneath brass */
+    background: radial-gradient(
+        circle at 100% 100%,
+        rgba(25, 22, 18, 0.15) 0%,
+        transparent 60%
+    );
+    width: 40px;
+    height: 40px;
+    border-radius: 0 0 12px 0;
+    pointer-events: none;
+}
+
+/* Additional worn effect on top-right corner */
+.lesson-summary::before,
+.song-tie-in::before,
+.song-lyrics-section::before {
+    background: radial-gradient(
+        circle at 100% 0%,
+        rgba(25, 22, 18, 0.12) 0%,
+        transparent 60%
+    );
+    width: 40px;
+    height: 40px;
+    border-radius: 0 12px 0 0;
+    pointer-events: none;
+}
+
+/* Brass corner tabs layer on top of worn corners */
+.lesson-summary::before,
+.song-tie-in::before,
+.song-lyrics-section::before {
+    /* Brass styling preserved */
+    border-top: 2.5px solid rgba(212, 165, 116, 0.5);
+    border-right: 2.5px solid rgba(212, 165, 116, 0.5);
+    box-shadow: 
+        0 0 8px rgba(212, 165, 116, 0.2),
+        inset -1px 1px 2px rgba(240, 212, 168, 0.15);
+}
+
+.lesson-summary::after,
+.song-tie-in::after,
+.song-lyrics-section::after {
+    /* Brass styling preserved */
+    border-bottom: 2.5px solid rgba(212, 165, 116, 0.5);
+    border-right: 2.5px solid rgba(212, 165, 116, 0.5);
+    box-shadow: 
+        0 0 8px rgba(212, 165, 116, 0.2),
+        inset -1px -1px 2px rgba(240, 212, 168, 0.15);
+}
 
 /* Section hover effects removed for performance */
 
