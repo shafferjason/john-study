@@ -25,83 +25,6 @@ body {
     position: relative;
 }
 
-/* Reading Progress Bar */
-.reading-progress {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 0%;
-    height: 5px; /* Thicker: 3px → 5px */
-    /* Light blooming gradient - grows brighter as you progress */
-    background: linear-gradient(to right, 
-        #b8935f, 
-        #d4a574, 
-        #f0d4a8, 
-        #fffdf7);
-    z-index: 1000;
-    transition: width 0.1s ease;
-    /* MUCH MORE VISIBLE divine light glow */
-    box-shadow: 
-        0 0 15px rgba(212, 165, 116, 0.8),
-        0 0 30px rgba(240, 212, 168, 0.6),
-        0 0 45px rgba(255, 253, 247, 0.3);
-}
-
-/* Desktop fire: Progress bar pulses with growing light - BRIGHTER */
-@keyframes progressGlow {
-    0%, 100% {
-        box-shadow: 
-            0 0 15px rgba(212, 165, 116, 0.8),
-            0 0 30px rgba(240, 212, 168, 0.6),
-            0 0 45px rgba(255, 253, 247, 0.3);
-    }
-    50% {
-        /* Light blooms MUCH brighter at peak */
-        box-shadow: 
-            0 0 25px rgba(212, 165, 116, 1),
-            0 0 50px rgba(240, 212, 168, 0.8),
-            0 0 75px rgba(255, 253, 247, 0.5);
-    }
-}
-
-.reading-progress {
-    animation: progressGlow 2.5s ease-in-out infinite; /* Faster pulse */
-}
-
-/* MUCH LARGER and MORE VISIBLE symbolic light marker */
-.reading-progress::after {
-    content: '✦';
-    position: absolute;
-    right: -12px; /* Further out so it's fully visible */
-    top: 50%;
-    transform: translateY(-50%);
-    color: #fffdf7; /* Brighter white-gold */
-    font-size: 18px; /* Much larger: 12px → 18px */
-    text-shadow: 
-        0 0 20px rgba(255, 253, 247, 1),
-        0 0 35px rgba(240, 212, 168, 0.9),
-        0 0 50px rgba(212, 165, 116, 0.6);
-    animation: markerpulse 2s ease-in-out infinite;
-}
-
-@keyframes markerpulse {
-    0%, 100% {
-        text-shadow: 
-            0 0 20px rgba(255, 253, 247, 1),
-            0 0 35px rgba(240, 212, 168, 0.9),
-            0 0 50px rgba(212, 165, 116, 0.6);
-        transform: translateY(-50%) scale(1);
-    }
-    50% {
-        text-shadow: 
-            0 0 30px rgba(255, 253, 247, 1),
-            0 0 50px rgba(240, 212, 168, 1),
-            0 0 70px rgba(212, 165, 116, 0.7);
-        transform: translateY(-50%) scale(1.4); /* Bigger pulse */
-    }
-}
-
-
 /* ===================================
    CONTAINER & LAYOUT
    =================================== */
@@ -578,40 +501,26 @@ header {
     margin-top: 1rem;
     font-weight: 300;
     letter-spacing: 0.01em;
-    /* Divine illumination when visible */
-    transition: all 1s ease;
 }
 
-/* Scripture glows when illuminated - MUCH MORE VISIBLE */
-.illuminate .scripture-reference {
-    color: #f0d4a8; /* Much brighter brass */
-    text-shadow: 
-        0 0 20px rgba(240, 212, 168, 0.8),
-        0 0 35px rgba(240, 212, 168, 0.5),
-        0 0 50px rgba(212, 165, 116, 0.3);
-    animation: scripturePulse 3s ease-in-out infinite;
-    font-weight: 400; /* Slightly bolder when glowing */
-}
-
-@keyframes scripturePulse {
-    0%, 100% {
-        text-shadow: 
-            0 0 20px rgba(240, 212, 168, 0.8),
-            0 0 35px rgba(240, 212, 168, 0.5),
-            0 0 50px rgba(212, 165, 116, 0.3);
-    }
-    50% {
-        text-shadow: 
-            0 0 30px rgba(255, 253, 247, 1),
-            0 0 50px rgba(240, 212, 168, 0.7),
-            0 0 70px rgba(212, 165, 116, 0.4);
-    }
-}
+/* Scripture reference styling - glow removed for cleaner experience */
 
 .lesson-summary,
 .song-tie-in,
 .song-section {
     margin-bottom: 4.5rem;
+}
+
+/* Lesson text sections slightly quieter so song section pops */
+.lesson-summary,
+.song-tie-in,
+.song-lyrics-section {
+    opacity: 0.92;
+}
+
+/* Song section stays full brightness */
+.song-section {
+    opacity: 1;
 }
 
 /* Subtle left border styling - transitions removed for performance */
@@ -641,11 +550,16 @@ header {
 
 .song-section {
     text-align: center;
-    padding: 3rem 0;
-    /* Replaced hard lines with soft gradient borders */
+    padding: 4rem 0; /* Increased from 3rem for more breathing room */
+    /* Stronger visual separation with darker gradient */
     border-top: 1px solid #2d2a25;
     border-bottom: 1px solid #2d2a25;
-    background: linear-gradient(to bottom, #2d2a25 0%, transparent 10%, transparent 90%, #2d2a25 100%);
+    background: 
+        /* Subtle spotlight effect around the player area */
+        radial-gradient(ellipse at center, rgba(212, 165, 116, 0.03) 0%, transparent 60%),
+        /* Darker inset panel for emphasis */
+        linear-gradient(to bottom, rgba(20, 18, 16, 0.4) 0%, transparent 15%, transparent 85%, rgba(20, 18, 16, 0.4) 100%),
+        linear-gradient(to bottom, #2d2a25 0%, transparent 10%, transparent 90%, #2d2a25 100%);
 }
 
 /* ===================================
@@ -761,7 +675,7 @@ header {
     justify-content: center;
     width: 100%;
     max-width: 420px; /* Reduced from 520px */
-    margin: 3rem auto;
+    margin: 3.5rem auto; /* Increased from 3rem for more breathing room */
     padding: 1rem 1.25rem; /* Reduced from 1.25rem 1.75rem */
     
     /* Realistic worn black leather texture - like a vintage journal cover */
@@ -813,46 +727,49 @@ header {
         rgba(184, 147, 95, 0.6) 100%
     ) 1;
     
-    /* Deep recessed into leather - tactile depth */
+    /* Deep recessed into leather - tactile depth with enhanced presence */
     box-shadow: 
         /* Deep inset for recessed feel */
         inset 0 4px 15px rgba(0, 0, 0, 0.9),
         inset 0 2px 8px rgba(0, 0, 0, 0.8),
         inset 0 -2px 6px rgba(0, 0, 0, 0.6),
-        /* Brass edge catch light */
-        inset 0 1px 0 rgba(184, 147, 95, 0.1),
-        /* Outer leather shadow */
-        0 8px 20px rgba(0, 0, 0, 0.8),
-        0 4px 10px rgba(0, 0, 0, 0.6);
+        /* Brass edge catch light - more luminous */
+        inset 0 1px 0 rgba(212, 165, 116, 0.15),
+        /* Outer leather shadow - deeper for more presence */
+        0 12px 30px rgba(0, 0, 0, 0.9),
+        0 6px 15px rgba(0, 0, 0, 0.7),
+        /* Subtle golden aura when resting */
+        0 0 50px rgba(212, 165, 116, 0.08);
     
     position: relative;
     transition: all 0.4s ease;
 }
 
-/* Fire effect: Glows from within like embers, brass catches firelight */
+/* Fire effect: Glows from within like embers, brass catches firelight - MORE DRAMATIC */
 @keyframes playerFire {
     0%, 100% {
         box-shadow: 
             inset 0 4px 15px rgba(0, 0, 0, 0.9),
             inset 0 2px 8px rgba(0, 0, 0, 0.8),
             inset 0 -2px 6px rgba(0, 0, 0, 0.6),
-            inset 0 1px 0 rgba(184, 147, 95, 0.15),
-            0 8px 20px rgba(0, 0, 0, 0.8),
-            0 4px 10px rgba(0, 0, 0, 0.6),
-            0 0 25px rgba(212, 165, 116, 0.3);
+            inset 0 1px 0 rgba(212, 165, 116, 0.2),
+            0 12px 30px rgba(0, 0, 0, 0.9),
+            0 6px 15px rgba(0, 0, 0, 0.7),
+            0 0 40px rgba(212, 165, 116, 0.4);
     }
     50% {
         box-shadow: 
             inset 0 4px 15px rgba(0, 0, 0, 0.8),
             inset 0 2px 8px rgba(0, 0, 0, 0.7),
             inset 0 -2px 6px rgba(0, 0, 0, 0.5),
-            /* Brass catches more firelight */
-            inset 0 1px 0 rgba(240, 212, 168, 0.3),
-            0 8px 24px rgba(0, 0, 0, 0.7),
-            0 4px 12px rgba(0, 0, 0, 0.5),
-            /* Ember glow from within */
-            0 0 40px rgba(240, 212, 168, 0.6),
-            inset 0 0 30px rgba(212, 165, 116, 0.08);
+            /* Brass catches more firelight - brighter */
+            inset 0 1px 0 rgba(240, 212, 168, 0.4),
+            0 12px 35px rgba(0, 0, 0, 0.8),
+            0 6px 18px rgba(0, 0, 0, 0.6),
+            /* Ember glow from within - MORE INTENSE */
+            0 0 60px rgba(240, 212, 168, 0.7),
+            0 0 30px rgba(212, 165, 116, 0.5),
+            inset 0 0 35px rgba(212, 165, 116, 0.12);
     }
 }
 
@@ -861,7 +778,7 @@ header {
     animation: playerFire 3s ease-in-out infinite;
 }
 
-/* Brass corner accents - like book binding corners */
+/* Brass corner accents - like book binding corners - MORE LUMINOUS */
 .custom-audio-player::before {
     content: '';
     position: absolute;
@@ -871,12 +788,12 @@ header {
     bottom: 0;
     border-radius: 8px;
     
-    /* Layered shadows for textured brass effect */
+    /* Layered shadows for textured brass effect - brighter and more prominent */
     box-shadow: 
-        inset 0 0 0 1px rgba(201, 164, 122, 0.45),
-        inset 0 0 12px 2px rgba(212, 165, 116, 0.35),
-        inset 2px 2px 4px rgba(184, 147, 95, 0.3),
-        inset -1px -1px 3px rgba(160, 125, 74, 0.25);
+        inset 0 0 0 1px rgba(212, 165, 116, 0.55),
+        inset 0 0 14px 2px rgba(240, 212, 168, 0.45),
+        inset 2px 2px 4px rgba(212, 165, 116, 0.4),
+        inset -1px -1px 3px rgba(184, 147, 95, 0.35);
     
     /* Add subtle texture pattern */
     background: 
