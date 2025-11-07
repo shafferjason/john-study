@@ -363,14 +363,24 @@ header {
         /* Slight outer glow for separation from leather */
         0 2px 8px rgba(0, 0, 0, 0.15);
     
-    /* BLACK ink on off-white paper - high contrast */
-    color: #1a1614;
+    /* COMPLETELY BLACK ink on off-white paper - maximum contrast */
+    color: #000000 !important;
     animation: fadeIn 1.4s ease;
     
     /* Optimized for extended reading */
     font-size: 1.05rem;
     line-height: 1.85;
     max-width: 38rem;
+}
+
+/* FORCE PURE BLACK TEXT - Maximum specificity */
+.accordion-content,
+.accordion-content *,
+.accordion-content p,
+.accordion-content span,
+.accordion-content div {
+    color: #000000 !important;
+    opacity: 1 !important;
 }
 
 /* Enhanced paragraph spacing for better scannability */
@@ -563,14 +573,10 @@ header {
     margin-bottom: 4.5rem;
 }
 
-/* Lesson text sections slightly quieter so song section pops */
+/* All sections full brightness - no opacity reduction */
 .lesson-summary,
 .song-tie-in,
-.song-lyrics-section {
-    opacity: 0.92;
-}
-
-/* Song section stays full brightness */
+.song-lyrics-section,
 .song-section {
     opacity: 1;
 }
@@ -621,13 +627,13 @@ header {
         0 30px 60px rgba(0, 0, 0, 0.1);
     
     /* Gentle candlelight glow animation */
-    animation: leatherGlow 4s ease-in-out infinite;
+    animation: leatherGlow 3s ease-in-out infinite; /* Faster: 4s → 3s */
     
     /* Brass corner accents */
     position: relative;
 }
 
-/* Gentle pulsing candlelight on leather panels */
+/* DRAMATIC pulsing candlelight on leather panels */
 @keyframes leatherGlow {
     0%, 100% {
         box-shadow: 
@@ -646,42 +652,44 @@ header {
     }
     50% {
         box-shadow: 
-            /* Brighter light catch at peak */
-            inset 1px 1px 0 rgba(240, 212, 168, 0.25),
-            inset 0 2px 3px rgba(240, 212, 168, 0.15),
-            inset 0 3px 10px rgba(0, 0, 0, 0.45),
-            inset 0 1px 3px rgba(0, 0, 0, 0.55),
-            inset 4px 0 12px rgba(0, 0, 0, 0.35),
-            /* Slightly lifted at glow peak */
-            0 3px 6px rgba(0, 0, 0, 0.3),
-            0 5px 10px rgba(0, 0, 0, 0.25),
-            0 8px 16px rgba(0, 0, 0, 0.23),
-            0 12px 24px rgba(0, 0, 0, 0.2),
-            0 18px 35px rgba(0, 0, 0, 0.15),
-            0 25px 45px rgba(0, 0, 0, 0.12),
-            0 35px 65px rgba(0, 0, 0, 0.08),
-            /* Subtle golden glow */
-            0 0 40px rgba(212, 165, 116, 0.15);
+            /* MUCH BRIGHTER light catch at peak */
+            inset 1px 1px 0 rgba(255, 240, 200, 0.4),
+            inset 0 2px 3px rgba(255, 240, 200, 0.25),
+            inset 0 3px 10px rgba(0, 0, 0, 0.4),
+            inset 0 1px 3px rgba(0, 0, 0, 0.5),
+            inset 4px 0 12px rgba(0, 0, 0, 0.3),
+            /* MORE lifted at glow peak */
+            0 4px 8px rgba(0, 0, 0, 0.25),
+            0 6px 12px rgba(0, 0, 0, 0.2),
+            0 10px 20px rgba(0, 0, 0, 0.18),
+            0 15px 30px rgba(0, 0, 0, 0.15),
+            0 22px 40px rgba(0, 0, 0, 0.12),
+            0 30px 50px rgba(0, 0, 0, 0.1),
+            0 40px 70px rgba(0, 0, 0, 0.06),
+            /* DRAMATIC golden glow - MUCH more visible */
+            0 0 60px rgba(240, 212, 168, 0.4),
+            0 0 80px rgba(212, 165, 116, 0.3),
+            0 0 100px rgba(255, 200, 100, 0.15);
     }
 }
 
-/* Brass corner tabs - MORE PROMINENT for 3D journal effect */
+/* Brass corner tabs - TOP-RIGHT and BOTTOM-RIGHT (journal opens from left) */
 .lesson-summary::before,
 .song-tie-in::before,
 .song-lyrics-section::before {
     content: '';
     position: absolute;
     top: 0;
-    left: 0;
-    width: 24px; /* Larger: 20px → 24px */
+    right: 0; /* Changed from left to right */
+    width: 24px;
     height: 24px;
-    border-top: 2.5px solid rgba(212, 165, 116, 0.5); /* Thicker and brighter */
-    border-left: 2.5px solid rgba(212, 165, 116, 0.5);
-    border-top-left-radius: 12px;
+    border-top: 2.5px solid rgba(212, 165, 116, 0.5);
+    border-right: 2.5px solid rgba(212, 165, 116, 0.5); /* Changed from left to right */
+    border-top-right-radius: 12px; /* Changed from top-left to top-right */
     /* Add subtle glow to brass */
     box-shadow: 
         0 0 8px rgba(212, 165, 116, 0.2),
-        inset 1px 1px 2px rgba(240, 212, 168, 0.15);
+        inset -1px 1px 2px rgba(240, 212, 168, 0.15); /* Adjusted for right corner */
 }
 
 .lesson-summary::after,
@@ -691,9 +699,9 @@ header {
     position: absolute;
     bottom: 0;
     right: 0;
-    width: 24px; /* Larger: 20px → 24px */
+    width: 24px;
     height: 24px;
-    border-bottom: 2.5px solid rgba(212, 165, 116, 0.5); /* Thicker and brighter */
+    border-bottom: 2.5px solid rgba(212, 165, 116, 0.5);
     border-right: 2.5px solid rgba(212, 165, 116, 0.5);
     border-bottom-right-radius: 12px;
     /* Add subtle glow to brass */
@@ -1525,8 +1533,8 @@ strong, b {
         opacity: 1 !important;
         padding: 1.5rem 1rem !important;
         margin-top: 1rem !important;
-        /* BLACK text on off-white for mobile */
-        color: #1a1614 !important;
+        /* PURE BLACK text on off-white for mobile */
+        color: #000000 !important;
         /* Pure off-white background - simpler for mobile */
         background: #f8f5ee !important;
         /* Subtle shadow for depth */
@@ -1534,6 +1542,12 @@ strong, b {
             inset 0 0 60px rgba(0, 0, 0, 0.03),
             0 2px 6px rgba(0, 0, 0, 0.12) !important;
         min-height: 50px !important;
+    }
+    
+    /* Force all mobile accordion text to pure black */
+    .accordion-content *,
+    .accordion-content p {
+        color: #000000 !important;
     }
     
     /* Mobile-optimized lyrics display */
@@ -1874,5 +1888,26 @@ strong, b {
 }
 
 /* ===================================
+   SCROLL FADE-IN EFFECT (One-time)
+   Sections illuminate as you scroll down
+   =================================== */
+
+/* Sections start hidden */
+.awaiting-light {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: none;
+}
+
+/* When scrolled into view, they fade in smoothly */
+.illuminate {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 1.2s ease-out,
+                transform 1.2s ease-out;
+}
+
+/* ===================================
    END OF STYLESHEET
    =================================== */
+

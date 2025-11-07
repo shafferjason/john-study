@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lesson - Hurst Class Study</title>
     <!-- Updated CSS file with all UX enhancements -->
-    <link rel="stylesheet" href="style.css?v=17">
+    <link rel="stylesheet" href="style.css?v=18">
 </head>
 <body>
 
@@ -267,6 +267,37 @@
             // === END AUDIO PLAYER JAVASCRIPT ===
         }
         
+        
+        // === ONE-TIME SCROLL FADE-IN ===
+        // Sections fade in once as you scroll down, then stay visible
+        const fadeObserverOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // Only add illuminate class if not already added
+                if (entry.isIntersecting && !entry.target.classList.contains('illuminate')) {
+                    entry.target.classList.add('illuminate');
+                    // Stop observing this element (one-time only)
+                    fadeObserver.unobserve(entry.target);
+                }
+            });
+        }, fadeObserverOptions);
+        
+        // Observe all major sections
+        document.querySelectorAll('.lesson-summary, .song-tie-in, .song-lyrics-section, .song-section').forEach(section => {
+            section.classList.add('awaiting-light');
+            fadeObserver.observe(section);
+        });
+        
+        // Header is always visible immediately
+        const header = document.querySelector('.lesson-header');
+        if (header) {
+            header.classList.add('illuminate');
+        }
+        // === END ONE-TIME SCROLL FADE-IN ===
         
         // === ACCORDION ANIMATION REPLAY ===
         // Force animations to replay every time accordion opens + smooth closing
