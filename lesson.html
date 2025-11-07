@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lesson - Hurst Class Study</title>
     <!-- Updated CSS file with all UX enhancements -->
-    <link rel="stylesheet" href="style.css?v=23">
+    <link rel="stylesheet" href="style.css?v=24">
 </head>
 <body>
 
@@ -45,13 +45,6 @@
             // Update page title
             document.title = currentLesson.title + ' - Hurst Class Study';
 
-            // Extract lyrics preview (first 4 lines)
-            let lyricsPreview = '';
-            if (currentLesson.song_lyrics) {
-                const lyricsLines = currentLesson.song_lyrics.split('\n');
-                lyricsPreview = lyricsLines.slice(0, 4).join('\n');
-            }
-
             // Build the lesson content
             const lessonContent = document.getElementById('lesson-content');
             
@@ -86,22 +79,6 @@
                     </details>
                 </section>
 
-                ${currentLesson.song_lyrics ? `
-                    <!-- Ornate divider before lyrics -->
-                    <div class="divider-ornate"></div>
-
-                    <section class="song-lyrics-section">
-                        <h3>${currentLesson.song_title}</h3>
-                        <p class="preview-text">${lyricsPreview}</p>
-                        <details class="accordion">
-                            <summary>Read the Full Lyrics</summary>
-                            <div class="accordion-content lyrics-content">
-                                <div class="lyrics-text">${currentLesson.song_lyrics}</div>
-                            </div>
-                        </details>
-                    </section>
-                ` : ''}
-
                 <!-- Ornate divider before song section -->
                 <div class="divider-ornate"></div>
 
@@ -122,6 +99,16 @@
                             <div id="duration" class="time-display">0:00</div>
                         </div>
                     ` : ''}
+                    
+                    ${currentLesson.song_lyrics ? `
+                        <details class="accordion lyrics-accordion">
+                            <summary>Read the lyrics...</summary>
+                            <div class="accordion-content lyrics-content">
+                                <div class="lyrics-text">${currentLesson.song_lyrics}</div>
+                            </div>
+                        </details>
+                    ` : ''}
+                    
                     ${currentLesson.suno_link ? `
                         <p class="suno-link">
                             Can't play? <a href="${currentLesson.suno_link}" target="_blank" rel="noopener">Listen on Suno →</a>
@@ -286,8 +273,8 @@
             });
         }, fadeObserverOptions);
         
-        // Observe all major sections
-        document.querySelectorAll('.lesson-summary, .song-tie-in, .song-lyrics-section, .song-section').forEach(section => {
+        // Observe all major sections (removed .song-lyrics-section)
+        document.querySelectorAll('.lesson-summary, .song-tie-in, .song-section').forEach(section => {
             section.classList.add('awaiting-light');
             fadeObserver.observe(section);
         });

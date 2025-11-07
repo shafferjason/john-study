@@ -1088,6 +1088,37 @@ header {
         inset -1px -1px 2px rgba(240, 212, 168, 0.15);
 }
 
+/* Lyrics accordion within song section */
+.song-section .lyrics-accordion {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Ensure lyrics content maintains proper styling */
+.song-section .lyrics-content {
+    /* Center the lyrics container */
+    display: flex;
+    justify-content: center;
+}
+
+.song-section .lyrics-text {
+    /* Poetic, centered formatting on vellum */
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: #000000 !important; /* Pure black on vellum */
+    font-style: italic;
+    max-width: 32rem; /* Narrower for poetic feel */
+    
+    /* Preserve line breaks from data */
+    white-space: pre-line;
+    
+    /* Extra spacing for stanzas */
+    margin: 0 auto;
+    padding: 1rem 2rem;
+}
+
 /* ===================================
    SONG LYRICS SECTION
    =================================== */
