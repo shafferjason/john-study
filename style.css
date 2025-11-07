@@ -331,51 +331,46 @@ header {
 
 /* === SYNTAX ERROR FIXED HERE === */
 .accordion-content {
-    /* Aged off-white vellum reading surface emerges from within leather panel */
+    /* TRUE OFF-WHITE aged vellum - like real book pages */
     background: 
         /* Very subtle paper fiber texture */
         repeating-linear-gradient(
             45deg,
             transparent 0px,
-            rgba(248, 245, 238, 0.03) 1px,
+            rgba(210, 200, 185, 0.03) 1px,
             transparent 2px,
             transparent 4px
         ),
         repeating-linear-gradient(
             -45deg,
             transparent 0px,
-            rgba(248, 245, 238, 0.025) 1px,
+            rgba(210, 200, 185, 0.025) 1px,
             transparent 2px,
             transparent 4px
         ),
-        /* Aged off-white gradient - warmer, slightly yellowed old paper */
-        linear-gradient(to bottom, 
-            rgba(248, 245, 238, 0.12) 0%, 
-            rgba(245, 242, 235, 0.10) 100%
-        ),
-        /* Dark base for high contrast */
-        #1a1816;
+        /* Pure aged off-white - warm cream tone */
+        #f8f5ee;
     
     /* Create nested reading panel */
     margin-top: 1.5rem;
     padding: 2.5rem 2rem;
     border-radius: 8px;
     
-    /* Subtle aged paper vignette and inset */
+    /* Subtle aged paper vignette - very gentle */
     box-shadow: 
-        inset 0 0 60px rgba(0, 0, 0, 0.3),
-        inset 0 2px 4px rgba(0, 0, 0, 0.2),
-        /* Slight outer glow */
+        inset 0 0 80px rgba(0, 0, 0, 0.04),
+        inset 0 1px 2px rgba(0, 0, 0, 0.06),
+        /* Slight outer glow for separation from leather */
         0 2px 8px rgba(0, 0, 0, 0.15);
     
-    /* Brighter text for high readability on vellum */
-    color: #ebe7df;
-    animation: fadeIn 1.4s ease; /* Much slower: 0.8s → 1.4s */
+    /* BLACK ink on off-white paper - high contrast */
+    color: #1a1614;
+    animation: fadeIn 1.4s ease;
     
     /* Optimized for extended reading */
     font-size: 1.05rem;
-    line-height: 1.85; /* More generous */
-    max-width: 38rem; /* Optimal line length for reading */
+    line-height: 1.85;
+    max-width: 38rem;
 }
 
 /* Enhanced paragraph spacing for better scannability */
@@ -606,21 +601,68 @@ header {
     /* Padding for breathing room */
     padding: 2.5rem 2rem;
     
-    /* ENHANCED 3D: Stacked journal pages with depth */
+    /* ENHANCED 3D: Maximum stacked journal depth with light catch */
     box-shadow: 
-        /* Multiple page layers - creates thickness/depth */
-        inset 0 2px 8px rgba(0, 0, 0, 0.4),
-        inset 0 1px 2px rgba(0, 0, 0, 0.5),
+        /* Light catch on top-left (embossed) */
+        inset 1px 1px 0 rgba(212, 165, 116, 0.15),
+        inset 0 2px 3px rgba(240, 212, 168, 0.08),
+        /* Deep inset shadows for recessed leather */
+        inset 0 3px 10px rgba(0, 0, 0, 0.5),
+        inset 0 1px 3px rgba(0, 0, 0, 0.6),
         /* Darker left edge (spine side) */
-        inset 3px 0 8px rgba(0, 0, 0, 0.3),
-        /* Stacked page effect - multiple shadows for thickness */
-        0 4px 6px rgba(0, 0, 0, 0.3),
-        0 6px 12px rgba(0, 0, 0, 0.25),
-        0 10px 20px rgba(0, 0, 0, 0.2),
-        0 15px 30px rgba(0, 0, 0, 0.15);
+        inset 4px 0 12px rgba(0, 0, 0, 0.4),
+        /* Stacked page layers - 7 layers for maximum depth */
+        0 2px 4px rgba(0, 0, 0, 0.35),
+        0 4px 8px rgba(0, 0, 0, 0.3),
+        0 6px 12px rgba(0, 0, 0, 0.28),
+        0 10px 20px rgba(0, 0, 0, 0.25),
+        0 15px 30px rgba(0, 0, 0, 0.2),
+        0 20px 40px rgba(0, 0, 0, 0.15),
+        0 30px 60px rgba(0, 0, 0, 0.1);
+    
+    /* Gentle candlelight glow animation */
+    animation: leatherGlow 4s ease-in-out infinite;
     
     /* Brass corner accents */
     position: relative;
+}
+
+/* Gentle pulsing candlelight on leather panels */
+@keyframes leatherGlow {
+    0%, 100% {
+        box-shadow: 
+            inset 1px 1px 0 rgba(212, 165, 116, 0.15),
+            inset 0 2px 3px rgba(240, 212, 168, 0.08),
+            inset 0 3px 10px rgba(0, 0, 0, 0.5),
+            inset 0 1px 3px rgba(0, 0, 0, 0.6),
+            inset 4px 0 12px rgba(0, 0, 0, 0.4),
+            0 2px 4px rgba(0, 0, 0, 0.35),
+            0 4px 8px rgba(0, 0, 0, 0.3),
+            0 6px 12px rgba(0, 0, 0, 0.28),
+            0 10px 20px rgba(0, 0, 0, 0.25),
+            0 15px 30px rgba(0, 0, 0, 0.2),
+            0 20px 40px rgba(0, 0, 0, 0.15),
+            0 30px 60px rgba(0, 0, 0, 0.1);
+    }
+    50% {
+        box-shadow: 
+            /* Brighter light catch at peak */
+            inset 1px 1px 0 rgba(240, 212, 168, 0.25),
+            inset 0 2px 3px rgba(240, 212, 168, 0.15),
+            inset 0 3px 10px rgba(0, 0, 0, 0.45),
+            inset 0 1px 3px rgba(0, 0, 0, 0.55),
+            inset 4px 0 12px rgba(0, 0, 0, 0.35),
+            /* Slightly lifted at glow peak */
+            0 3px 6px rgba(0, 0, 0, 0.3),
+            0 5px 10px rgba(0, 0, 0, 0.25),
+            0 8px 16px rgba(0, 0, 0, 0.23),
+            0 12px 24px rgba(0, 0, 0, 0.2),
+            0 18px 35px rgba(0, 0, 0, 0.15),
+            0 25px 45px rgba(0, 0, 0, 0.12),
+            0 35px 65px rgba(0, 0, 0, 0.08),
+            /* Subtle golden glow */
+            0 0 40px rgba(212, 165, 116, 0.15);
+    }
 }
 
 /* Brass corner tabs - MORE PROMINENT for 3D journal effect */
@@ -1478,21 +1520,19 @@ strong, b {
     .accordion-content {
         max-width: 100%;
         font-size: 1.025rem;
-        /* MOBILE FIX: Ensure visibility */
+        /* MOBILE FIX: Ensure visibility with true off-white */
         display: block !important;
         opacity: 1 !important;
-        padding: 1.5rem 1rem !important; /* Reduce padding on mobile */
+        padding: 1.5rem 1rem !important;
         margin-top: 1rem !important;
-        /* Brighter text for mobile screens */
-        color: #f0ede5 !important;
-        /* Simpler vellum for mobile performance */
-        background: 
-            linear-gradient(to bottom, 
-                rgba(248, 245, 238, 0.15) 0%, 
-                rgba(245, 242, 235, 0.12) 100%
-            ),
-            #1a1816 !important;
-        /* Ensure box shows */
+        /* BLACK text on off-white for mobile */
+        color: #1a1614 !important;
+        /* Pure off-white background - simpler for mobile */
+        background: #f8f5ee !important;
+        /* Subtle shadow for depth */
+        box-shadow: 
+            inset 0 0 60px rgba(0, 0, 0, 0.03),
+            0 2px 6px rgba(0, 0, 0, 0.12) !important;
         min-height: 50px !important;
     }
     
@@ -1836,4 +1876,3 @@ strong, b {
 /* ===================================
    END OF STYLESHEET
    =================================== */
-
