@@ -788,11 +788,11 @@ header {
 .lesson-title {
     display: block;
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: 1.1rem; /* Slightly reduced for better fit when wrapping */
+    font-size: 1.05rem; /* Reduced from 1.1rem */
     font-weight: 600; /* Bold for spine readability */
     color: #e8e4dc;
-    margin-bottom: 0.3rem;
-    line-height: 1.3;
+    margin-bottom: 0.25rem;
+    line-height: 1.25;
     letter-spacing: 0.01em;
     /* Embossed into brass plate */
     text-shadow: 
@@ -808,10 +808,10 @@ header {
 
 .lesson-scripture {
     display: block;
-    font-size: 0.85rem; /* Slightly smaller */
+    font-size: 0.8rem; /* Reduced from 0.85rem */
     color: #b8b4a8;
     font-style: italic;
-    line-height: 1.4;
+    line-height: 1.3;
     /* Allow wrapping */
     word-wrap: break-word;
     overflow-wrap: break-word;
