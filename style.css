@@ -959,34 +959,8 @@ header {
     /* Brass corner accents */
     position: relative;
     
-    /* DISTINCTIVE BRASS STITCHING on left (spine) edge */
-    border-left: 3px solid rgba(212, 165, 116, 0.3);
-    /* Stitching pattern using background */
-    background-image:
-        /* Stitch marks */
-        repeating-linear-gradient(
-            to bottom,
-            transparent 0px,
-            transparent 18px,
-            rgba(212, 165, 116, 0.5) 18px,
-            rgba(212, 165, 116, 0.5) 22px,
-            transparent 22px,
-            transparent 40px
-        ),
-        /* Leather texture (existing) */
-        repeating-linear-gradient(
-            90deg,
-            rgba(42, 38, 33, 0.15) 0px,
-            rgba(35, 32, 28, 0.1) 0.5px,
-            transparent 1px,
-            transparent 3px
-        ),
-        radial-gradient(ellipse at 30% 30%, rgba(50, 45, 40, 0.3) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 60%, rgba(45, 40, 35, 0.25) 0%, transparent 45%),
-        rgba(42, 38, 33, 0.5);
-    background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
-    background-size: 3px 100%, auto, auto, auto, auto;
-    background-repeat: repeat-y, repeat, no-repeat, no-repeat, repeat;
+    /* DISTINCTIVE BRASS STITCHING on left (spine) edge - using pseudo-element */
+    border-left: 2px solid rgba(212, 165, 116, 0.4);
     
     /* Page edge effect on right side - shows book thickness */
     border-right: 3px solid rgba(35, 32, 28, 0.3);
@@ -1097,11 +1071,11 @@ header {
         inset -1px -1px 2px rgba(240, 212, 168, 0.15);
 }
 
-/* Subtle spine stitching on left edge - journal binding detail */
+/* Distinctive brass stitching on left edge - journal binding detail */
 .lesson-summary,
 .song-tie-in,
 .song-lyrics-section {
-    border-left: 2px dotted rgba(212, 165, 116, 0.15);
+    border-left: 3px dotted rgba(212, 165, 116, 0.4); /* Increased from 2px and 0.15 opacity */
 }
 
 /* Worn corners - darker/aged on high-traffic areas */
@@ -2392,27 +2366,47 @@ details .divider-ornate {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    /* VERTICAL OVAL background */
-    background: radial-gradient(ellipse 40px 60px at center, rgba(21, 21, 21, 0.95) 0%, rgba(21, 21, 21, 0.98) 70%, rgba(21, 21, 21, 1) 100%);
-    width: 80px;
-    height: 100px; /* Taller oval */
-    border-radius: 50%; /* Makes it elliptical */
-    /* Stronger brass glow to make cross more visible */
+    /* CIRCULAR BRASS SEAL/MEDALLION */
+    width: 60px; /* Reduced from 80px */
+    height: 60px; /* Reduced from 100px - now circular */
+    border-radius: 50%;
+    /* Brass seal with embossed rings */
+    background: 
+        /* Outer ring */
+        radial-gradient(circle at center, 
+            transparent 45%,
+            rgba(212, 165, 116, 0.6) 45%,
+            rgba(212, 165, 116, 0.6) 48%,
+            transparent 48%
+        ),
+        /* Inner ring */
+        radial-gradient(circle at center,
+            transparent 35%,
+            rgba(212, 165, 116, 0.4) 35%,
+            rgba(212, 165, 116, 0.4) 37%,
+            transparent 37%
+        ),
+        /* Dark background */
+        radial-gradient(circle at center, rgba(21, 21, 21, 0.98) 0%, rgba(21, 21, 21, 1) 100%);
+    /* Embossed brass effect */
     box-shadow: 
-        0 0 20px rgba(212, 165, 116, 0.25),
-        0 0 40px rgba(240, 212, 168, 0.15),
-        inset 0 0 20px rgba(0, 0, 0, 0.5);
+        /* Outer glow */
+        0 0 15px rgba(212, 165, 116, 0.2),
+        0 0 30px rgba(240, 212, 168, 0.1),
+        /* Recessed depth */
+        inset 0 2px 4px rgba(0, 0, 0, 0.6),
+        inset 0 -1px 2px rgba(240, 212, 168, 0.2);
 }
 
-/* Cross icon as separate layer on top */
+/* Cross icon smaller to fit in seal */
 .divider-ornate::before {
     content: '';
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 70px;
-    height: 70px;
+    width: 45px; /* Reduced from 70px */
+    height: 45px; /* Reduced from 70px */
     background: url('cross-icon.svg') center center no-repeat;
     background-size: contain;
     z-index: 1;
