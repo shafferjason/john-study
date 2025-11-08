@@ -931,8 +931,8 @@ header {
     /* Organic rounded corners */
     border-radius: 12px;
     
-    /* Padding for breathing room - extra left for hand-stitched binding */
-    padding: 2.5rem 2rem 2.5rem 3rem;
+    /* Padding for breathing room - extra top/bottom for cross-stitch borders */
+    padding: 3rem 2rem;
     
     /* ENHANCED 3D: Maximum stacked journal depth with light catch */
     box-shadow: 
@@ -1040,17 +1040,36 @@ header {
 .song-lyrics-section::before {
     content: '';
     position: absolute;
-    top: 0;
-    right: 0; /* Changed from left to right */
-    width: 24px;
-    height: 24px;
-    border-top: 2.5px solid rgba(212, 165, 116, 0.5);
-    border-right: 2.5px solid rgba(212, 165, 116, 0.5); /* Changed from left to right */
-    border-top-right-radius: 12px; /* Changed from top-left to top-right */
-    /* Add subtle glow to brass */
-    box-shadow: 
-        0 0 8px rgba(212, 165, 116, 0.2),
-        inset -1px 1px 2px rgba(240, 212, 168, 0.15); /* Adjusted for right corner */
+    top: 12px;
+    left: 20px;
+    right: 20px;
+    height: 16px;
+    /* Cross-stitch X pattern - dark thread */
+    background-image: 
+        /* First diagonal / */
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 7px,
+            rgba(45, 40, 35, 0.8) 7px,
+            rgba(45, 40, 35, 0.8) 9px,
+            transparent 9px,
+            transparent 16px
+        ),
+        /* Second diagonal \ */
+        repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 7px,
+            rgba(45, 40, 35, 0.8) 7px,
+            rgba(45, 40, 35, 0.8) 9px,
+            transparent 9px,
+            transparent 16px
+        );
+    background-size: 16px 16px;
+    background-position: 0 0, 8px 0;
+    z-index: 1;
+    pointer-events: none;
 }
 
 .lesson-summary::after,
@@ -1058,57 +1077,39 @@ header {
 .song-lyrics-section::after {
     content: '';
     position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 24px;
-    height: 24px;
-    border-bottom: 2.5px solid rgba(212, 165, 116, 0.5);
-    border-right: 2.5px solid rgba(212, 165, 116, 0.5);
-    border-bottom-right-radius: 12px;
-    /* Add subtle glow to brass */
-    box-shadow: 
-        0 0 8px rgba(212, 165, 116, 0.2),
-        inset -1px -1px 2px rgba(240, 212, 168, 0.15);
-}
-
-/* Distinctive hand-stitched binding on left edge */
-.lesson-summary,
-.song-tie-in,
-.song-lyrics-section {
-    border-left: 5px dotted rgba(212, 165, 116, 0.5); /* Increased from 3px to 5px for larger stitches */
-    padding-left: 3rem; /* Increased left padding to move content away from stitches */
-}
-
-/* Worn corners - darker/aged on high-traffic areas */
-.lesson-summary::after,
-.song-tie-in::after,
-.song-lyrics-section::after {
-    /* Add worn corner darkening beneath brass */
-    background: radial-gradient(
-        circle at 100% 100%,
-        rgba(25, 22, 18, 0.15) 0%,
-        transparent 60%
-    );
-    width: 40px;
-    height: 40px;
-    border-radius: 0 0 12px 0;
+    bottom: 12px;
+    left: 20px;
+    right: 20px;
+    height: 16px;
+    /* Cross-stitch X pattern - dark thread */
+    background-image: 
+        /* First diagonal / */
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 7px,
+            rgba(45, 40, 35, 0.8) 7px,
+            rgba(45, 40, 35, 0.8) 9px,
+            transparent 9px,
+            transparent 16px
+        ),
+        /* Second diagonal \ */
+        repeating-linear-gradient(
+            -45deg,
+            transparent,
+            transparent 7px,
+            rgba(45, 40, 35, 0.8) 7px,
+            rgba(45, 40, 35, 0.8) 9px,
+            transparent 9px,
+            transparent 16px
+        );
+    background-size: 16px 16px;
+    background-position: 0 0, 8px 0;
+    z-index: 1;
     pointer-events: none;
 }
 
-/* Additional worn effect on top-right corner */
-.lesson-summary::before,
-.song-tie-in::before,
-.song-lyrics-section::before {
-    background: radial-gradient(
-        circle at 100% 0%,
-        rgba(25, 22, 18, 0.12) 0%,
-        transparent 60%
-    );
-    width: 40px;
-    height: 40px;
-    border-radius: 0 12px 0 0;
-    pointer-events: none;
-}
+/* Cross-stitch borders added above - no additional effects needed */
 
 /* Brass corner tabs layer on top of worn corners */
 .lesson-summary::before,
