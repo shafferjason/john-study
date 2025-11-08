@@ -30,7 +30,7 @@ body {
    =================================== */
 
 .container {
-    max-width: 900px; /* Increased from 680px for wider spines */
+    max-width: 750px; /* Increased from 680px */
     margin: 0 auto;
     padding: 40px 20px;
     /* Johannine candlelight glow - light shining in darkness */
@@ -571,7 +571,7 @@ header {
     display: block;
     /* SPINE PROPORTIONS - wider than tall, like looking at book spine */
     padding: 1.75rem 4rem; /* Increased horizontal padding from 3rem to 4rem */
-    min-height: 100px; /* Changed to min-height, increased from 90px */
+    min-height: 110px; /* Increased from 100px to accommodate text wrapping */
     
     /* Rich leather spine texture - MORE REALISTIC */
     background: 
@@ -653,6 +653,21 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    
+    /* Ensure text stays within brass plate bounds */
+    position: relative;
+    overflow: hidden;
+}
+
+/* Text container - keeps text within brass plate */
+.lesson-item a > * {
+    position: relative;
+    z-index: 1;
+    /* Add horizontal padding to keep text away from edges */
+    padding-left: 1rem;
+    padding-right: 1rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* BRASS TITLE PLATE - embossed/stamped into spine */
@@ -773,11 +788,11 @@ header {
 .lesson-title {
     display: block;
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: 1.15rem; /* Increased from 1.05rem */
+    font-size: 1.1rem; /* Slightly reduced for better fit when wrapping */
     font-weight: 600; /* Bold for spine readability */
     color: #e8e4dc;
-    margin-bottom: 0.35rem; /* More spacing */
-    line-height: 1.2;
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
     letter-spacing: 0.01em;
     /* Embossed into brass plate */
     text-shadow: 
@@ -786,21 +801,20 @@ header {
         0 0 8px rgba(232, 228, 220, 0.15);
     position: relative;
     z-index: 1;
-    /* Prevent wrapping */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    /* Allow wrapping - removed nowrap */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
 }
 
 .lesson-scripture {
     display: block;
-    font-size: 0.9rem; /* Increased from 0.8rem */
+    font-size: 0.85rem; /* Slightly smaller */
     color: #b8b4a8;
     font-style: italic;
-    /* Prevent wrapping */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    line-height: 1.4;
+    /* Allow wrapping */
+    word-wrap: break-word;
+    overflow-wrap: break-word;
     font-style: italic;
     font-weight: 300;
     letter-spacing: 0.01em;
