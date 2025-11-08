@@ -551,153 +551,211 @@ header {
 }
 
 .lesson-item {
-    margin-bottom: 0.5rem; /* Reduced for tighter stacking */
+    margin-bottom: 0.75rem; /* Spacing between stacked spines */
     position: relative;
-    /* Slight offset for stacked appearance */
+    /* Remove horizontal offset - they're stacked vertically */
     margin-left: 0;
-    transition: margin-left 0.3s ease;
 }
 
-/* Each lesson offset slightly more for stacked effect */
-.lesson-item:nth-child(2) { margin-left: 3px; }
-.lesson-item:nth-child(3) { margin-left: 6px; }
-.lesson-item:nth-child(4) { margin-left: 9px; }
-.lesson-item:nth-child(5) { margin-left: 12px; }
-.lesson-item:nth-child(n+6) { margin-left: 15px; } /* Cap at 15px */
+/* Remove old stacking offset */
+.lesson-item:nth-child(2),
+.lesson-item:nth-child(3),
+.lesson-item:nth-child(4),
+.lesson-item:nth-child(5),
+.lesson-item:nth-child(n+6) { 
+    margin-left: 0;
+}
 
 .lesson-item a {
     display: block;
-    padding: 1.25rem 2rem 1.25rem 1.5rem;
+    /* SPINE PROPORTIONS - wider than tall, like looking at book spine */
+    padding: 1rem 3rem;
+    height: 70px; /* Fixed height for consistent spine thickness */
     
-    /* Leather journal spine texture */
+    /* Rich leather spine texture */
     background: 
-        /* Fine leather grain */
+        /* Horizontal leather grain (spine runs horizontally) */
         repeating-linear-gradient(
-            90deg,
-            rgba(42, 38, 33, 0.15) 0px,
-            rgba(35, 32, 28, 0.1) 0.5px,
+            0deg,
+            rgba(52, 48, 43, 0.3) 0px,
+            rgba(45, 42, 38, 0.2) 0.5px,
             transparent 1px,
-            transparent 3px
+            transparent 2px
         ),
-        /* Worn areas */
-        radial-gradient(ellipse at 20% 50%, rgba(50, 45, 40, 0.2) 0%, transparent 40%),
-        radial-gradient(ellipse at 80% 50%, rgba(45, 40, 35, 0.15) 0%, transparent 40%),
-        /* Base leather color */
-        rgba(42, 38, 33, 0.4);
+        /* Worn leather patches */
+        radial-gradient(ellipse at 30% 50%, rgba(58, 54, 48, 0.4) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 50%, rgba(55, 51, 45, 0.35) 0%, transparent 45%),
+        /* Base rich leather */
+        linear-gradient(180deg, 
+            rgba(52, 48, 43, 0.7) 0%,
+            rgba(48, 44, 39, 0.8) 50%,
+            rgba(44, 40, 35, 0.75) 100%
+        );
     
-    /* Rectangular spine shape */
-    border-radius: 6px;
+    /* Minimal rounding - book spines are fairly squared */
+    border-radius: 4px;
     
-    /* Spine stitching on left */
-    border-left: 2px dotted rgba(212, 165, 116, 0.25);
+    /* TOP EDGE - light catching the top of spine */
+    border-top: 1px solid rgba(212, 165, 116, 0.3);
     
-    /* Page edges visible on right */
-    border-right: 3px solid rgba(35, 32, 28, 0.4);
+    /* BOTTOM EDGE - shadow underneath */
+    border-bottom: 2px solid rgba(20, 18, 15, 0.6);
     
-    /* 3D journal depth */
+    /* LEFT/RIGHT EDGES - spine edges */
+    border-left: 1px solid rgba(35, 32, 28, 0.4);
+    border-right: 1px solid rgba(35, 32, 28, 0.4);
+    
+    /* DRAMATIC 3D DEPTH - multiple shadow layers */
     box-shadow: 
-        /* Inset leather texture */
-        inset 0 1px 3px rgba(0, 0, 0, 0.3),
-        inset 2px 0 6px rgba(0, 0, 0, 0.2),
-        /* Page stack on right */
-        2px 0 2px rgba(40, 37, 33, 0.3),
-        3px 0 4px rgba(35, 32, 28, 0.25),
-        4px 0 6px rgba(30, 27, 23, 0.2),
-        /* Outer shadow for depth */
-        0 2px 8px rgba(0, 0, 0, 0.3);
+        /* TOP LIGHT - highlight on upper edge */
+        inset 0 1px 0 rgba(240, 212, 168, 0.15),
+        inset 0 2px 4px rgba(255, 255, 255, 0.05),
+        
+        /* INNER DEPTH - recessed spine surface */
+        inset 0 4px 12px rgba(0, 0, 0, 0.4),
+        inset 0 -2px 8px rgba(0, 0, 0, 0.3),
+        
+        /* BOTTOM SHADOW - spine sitting on surface below */
+        0 4px 0 rgba(30, 27, 23, 0.5),
+        0 6px 2px rgba(25, 22, 18, 0.4),
+        0 8px 4px rgba(20, 18, 15, 0.3),
+        0 12px 8px rgba(15, 13, 10, 0.25),
+        0 16px 12px rgba(10, 8, 5, 0.2),
+        
+        /* AMBIENT SHADOW - overall depth */
+        0 20px 25px rgba(0, 0, 0, 0.4);
     
     transition: all 0.3s ease;
     text-decoration: none;
     position: relative;
+    
+    /* Flex for vertical centering of text */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-/* Brass corner tab on top-right (like journal protector) */
+/* BRASS TITLE PLATE - embossed into spine */
 .lesson-item a::before {
     content: '';
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 16px;
-    height: 16px;
-    border-top: 2px solid rgba(212, 165, 116, 0.4);
-    border-right: 2px solid rgba(212, 165, 116, 0.4);
-    border-top-right-radius: 6px;
-    box-shadow: 0 0 6px rgba(212, 165, 116, 0.2);
+    left: 2rem;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 45px;
+    
+    /* Brass plate recessed into leather */
+    background: linear-gradient(180deg,
+        rgba(212, 165, 116, 0.15) 0%,
+        rgba(212, 165, 116, 0.08) 50%,
+        rgba(212, 165, 116, 0.12) 100%
+    );
+    
+    border-radius: 3px;
+    border: 1px solid rgba(212, 165, 116, 0.25);
+    
+    /* Recessed effect */
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.4),
+        inset 0 -1px 2px rgba(240, 212, 168, 0.1);
+    
+    z-index: 0;
 }
 
-/* Fire effect on hover - journal glows */
+/* Fire glow on hover */
 .lesson-item a:hover {
+    /* Brighter leather */
     background: 
         repeating-linear-gradient(
-            90deg,
-            rgba(42, 38, 33, 0.2) 0px,
-            rgba(35, 32, 28, 0.15) 0.5px,
+            0deg,
+            rgba(58, 54, 48, 0.35) 0px,
+            rgba(52, 48, 43, 0.25) 0.5px,
             transparent 1px,
-            transparent 3px
+            transparent 2px
         ),
-        radial-gradient(ellipse at 20% 50%, rgba(50, 45, 40, 0.25) 0%, transparent 40%),
-        radial-gradient(ellipse at 80% 50%, rgba(45, 40, 35, 0.2) 0%, transparent 40%),
-        rgba(42, 38, 33, 0.6);
+        radial-gradient(ellipse at 30% 50%, rgba(65, 60, 54, 0.5) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 50%, rgba(62, 57, 51, 0.45) 0%, transparent 45%),
+        linear-gradient(180deg, 
+            rgba(58, 54, 48, 0.8) 0%,
+            rgba(54, 50, 45, 0.9) 50%,
+            rgba(50, 46, 41, 0.85) 100%
+        );
     
-    border-left-color: #d4a574; /* Brighter stitching */
-    transform: translateX(6px);
-    border-bottom: none;
+    /* Glowing edges */
+    border-top-color: rgba(240, 212, 168, 0.5);
     
-    /* Enhanced fire glow */
+    /* Enhanced shadow + golden glow */
     box-shadow: 
-        inset 0 1px 3px rgba(0, 0, 0, 0.25),
-        inset 2px 0 6px rgba(0, 0, 0, 0.15),
-        2px 0 2px rgba(45, 42, 38, 0.4),
-        3px 0 4px rgba(40, 37, 33, 0.3),
-        4px 0 6px rgba(35, 32, 28, 0.25),
-        0 2px 10px rgba(0, 0, 0, 0.4),
-        /* Golden fire glow */
-        -3px 0 15px rgba(212, 165, 116, 0.3),
-        -6px 0 25px rgba(240, 212, 168, 0.2);
+        inset 0 1px 0 rgba(240, 212, 168, 0.25),
+        inset 0 2px 4px rgba(255, 255, 255, 0.08),
+        inset 0 4px 12px rgba(0, 0, 0, 0.35),
+        inset 0 -2px 8px rgba(0, 0, 0, 0.25),
+        0 4px 0 rgba(35, 32, 28, 0.6),
+        0 6px 2px rgba(30, 27, 23, 0.5),
+        0 8px 4px rgba(25, 22, 18, 0.4),
+        0 12px 8px rgba(20, 18, 15, 0.35),
+        0 16px 12px rgba(15, 13, 10, 0.3),
+        0 20px 30px rgba(0, 0, 0, 0.5),
+        /* GOLDEN FIRE GLOW */
+        0 0 20px rgba(212, 165, 116, 0.3),
+        0 0 40px rgba(240, 212, 168, 0.15);
 }
 
-/* Brass corner glows on hover */
+/* Brass plate glows on hover */
 .lesson-item a:hover::before {
-    border-color: rgba(240, 212, 168, 0.6);
-    box-shadow: 0 0 10px rgba(212, 165, 116, 0.4);
+    background: linear-gradient(180deg,
+        rgba(212, 165, 116, 0.25) 0%,
+        rgba(212, 165, 116, 0.15) 50%,
+        rgba(212, 165, 116, 0.2) 100%
+    );
+    border-color: rgba(240, 212, 168, 0.4);
+    box-shadow: 
+        inset 0 2px 4px rgba(0, 0, 0, 0.35),
+        inset 0 -1px 2px rgba(240, 212, 168, 0.2),
+        0 0 8px rgba(212, 165, 116, 0.2);
 }
 
-/* Mobile active state - fires on tap */
+/* Mobile tap state */
 .lesson-item a:active {
-    background: rgba(52, 48, 43, 0.7);
-    border-left-color: #f0d4a8;
-    transform: translateX(8px);
-    /* Brighter fire on tap */
+    /* Pressed down - reduced shadow */
     box-shadow: 
-        inset 0 1px 3px rgba(0, 0, 0, 0.2),
-        inset 2px 0 6px rgba(0, 0, 0, 0.1),
-        2px 0 2px rgba(50, 47, 43, 0.5),
-        3px 0 4px rgba(45, 42, 38, 0.4),
-        4px 0 6px rgba(40, 37, 33, 0.3),
-        0 2px 12px rgba(0, 0, 0, 0.5),
-        -5px 0 20px rgba(240, 212, 168, 0.4),
-        -8px 0 30px rgba(240, 212, 168, 0.25);
+        inset 0 1px 0 rgba(240, 212, 168, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.1),
+        inset 0 4px 12px rgba(0, 0, 0, 0.3),
+        inset 0 -2px 8px rgba(0, 0, 0, 0.2),
+        0 2px 0 rgba(35, 32, 28, 0.7),
+        0 4px 2px rgba(30, 27, 23, 0.6),
+        0 6px 4px rgba(25, 22, 18, 0.5),
+        0 8px 8px rgba(20, 18, 15, 0.4),
+        0 0 25px rgba(240, 212, 168, 0.4);
+    
+    transform: translateY(2px);
 }
 
 .lesson-title {
     display: block;
     font-family: Georgia, 'Times New Roman', serif;
-    font-size: 1.15rem; /* Slightly smaller for spine */
-    font-weight: 500; /* Bolder for spine readability */
+    font-size: 1.1rem;
+    font-weight: 600; /* Bold for spine readability */
     color: #e8e4dc;
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.2rem;
     line-height: 1.3;
-    letter-spacing: 0.02em; /* Slight spacing for elegance */
-    /* Subtle embossed effect like spine lettering */
+    letter-spacing: 0.03em;
+    /* Embossed into brass plate */
     text-shadow: 
-        0 1px 0 rgba(0, 0, 0, 0.3),
-        0 0 10px rgba(232, 228, 220, 0.1);
+        0 1px 2px rgba(0, 0, 0, 0.5),
+        0 -1px 0 rgba(240, 212, 168, 0.1),
+        0 0 8px rgba(232, 228, 220, 0.15);
+    position: relative;
+    z-index: 1;
 }
 
 .lesson-scripture {
     display: block;
-    font-size: 0.9rem;
-    color: #a8a49b; /* Slightly brighter for readability */
+    font-size: 0.85rem;
+    color: #b8b4a8;
+    font-style: italic;
     font-style: italic;
     font-weight: 300;
     letter-spacing: 0.01em;
@@ -2342,4 +2400,3 @@ details .divider-ornate {
 /* ===================================
    END OF STYLESHEET
    =================================== */
-
