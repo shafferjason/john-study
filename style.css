@@ -15,7 +15,7 @@ html {
 body {
     /* Warm, readable serif for that analog, testimonial feel */
     font-family: 'Georgia', 'Iowan Old Style', 'Times New Roman', serif;
-    background-color: #151515; /* Darkened from #1a1a1a for deeper leather */
+    background-color: #0f0f0f; /* Darkened from #151515 for even deeper leather */
     color: #d4d0c8;
     line-height: 1.75;
     padding: 20px;
@@ -176,14 +176,14 @@ header {
 /* "Presented by" text above logo */
 .subtitle-text {
     font-size: 1.3rem; /* Increased from 1.1rem */
-    color: #d4a574; /* Brass color instead of gray */
+    color: #c9a47a; /* Warm muted beige/tan - matches leather tones */
     font-style: italic;
     margin-top: 0.75rem;
     margin-bottom: -1.5rem; /* Much closer - overlapping into logo */
     font-weight: 300;
     text-align: center;
     letter-spacing: 0.03em;
-    text-shadow: 0 0 10px rgba(212, 165, 116, 0.3); /* Subtle brass glow */
+    text-shadow: 0 0 8px rgba(201, 164, 122, 0.2); /* Subtle warm glow */
 }
 
 /* The Tenth Hour logo */
@@ -1049,15 +1049,14 @@ header {
     font-family: Arial, sans-serif;
     font-size: 22px;
     font-weight: 900;
-    color: #2d2823;
+    color: #1a1612; /* Very dark brown/black - like worn thread */
     letter-spacing: 2px;
     line-height: 1;
     text-align: center;
     z-index: 999;
     pointer-events: none;
     text-shadow: 
-        2px 2px 4px rgba(0, 0, 0, 0.6);
-    background: rgba(255, 0, 0, 0.1); /* Testing visibility - red tint */
+        1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .lesson-summary::after,
@@ -1073,15 +1072,14 @@ header {
     font-family: Arial, sans-serif;
     font-size: 22px;
     font-weight: 900;
-    color: #2d2823;
+    color: #1a1612; /* Very dark brown/black - like worn thread */
     letter-spacing: 2px;
     line-height: 1;
     text-align: center;
     z-index: 999;
     pointer-events: none;
     text-shadow: 
-        2px 2px 4px rgba(0, 0, 0, 0.6);
-    background: rgba(255, 0, 0, 0.1); /* Testing visibility - red tint */
+        1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Cross-stitch borders added above - no additional effects needed */
