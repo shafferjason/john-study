@@ -175,14 +175,15 @@ header {
 
 /* "Presented by" text above logo */
 .subtitle-text {
-    font-size: 1.1rem; /* Increased from 0.9rem */
-    color: #a8a49b; /* Slightly brighter */
+    font-size: 1.3rem; /* Increased from 1.1rem */
+    color: #d4a574; /* Brass color instead of gray */
     font-style: italic;
     margin-top: 0.75rem;
-    margin-bottom: -0.5rem; /* Negative margin to overlap into logo space */
+    margin-bottom: -1.5rem; /* Much closer - overlapping into logo */
     font-weight: 300;
     text-align: center;
     letter-spacing: 0.03em;
+    text-shadow: 0 0 10px rgba(212, 165, 116, 0.3); /* Subtle brass glow */
 }
 
 /* The Tenth Hour logo */
@@ -1038,51 +1039,49 @@ header {
 .lesson-summary::before,
 .song-tie-in::before,
 .song-lyrics-section::before {
-    content: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
+    content: 'X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X';
+    display: block;
     position: absolute;
-    top: 18px;
-    left: 20px;
-    right: 20px;
-    height: auto;
-    font-family: monospace;
-    font-size: 20px; /* Increased from 18px */
-    font-weight: bold;
-    color: rgba(45, 40, 35, 0.95); /* Much darker/more opaque */
-    letter-spacing: 8px;
+    top: 15px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: #2d2823;
+    letter-spacing: 2px;
     line-height: 1;
     text-align: center;
-    overflow: hidden;
-    white-space: nowrap;
-    z-index: 10; /* Much higher - was 1 */
+    z-index: 999;
     pointer-events: none;
     text-shadow: 
-        1px 1px 3px rgba(0, 0, 0, 0.5),
-        0 0 6px rgba(45, 40, 35, 0.3);
+        2px 2px 4px rgba(0, 0, 0, 0.6);
+    background: rgba(255, 0, 0, 0.1); /* Testing visibility - red tint */
 }
 
 .lesson-summary::after,
 .song-tie-in::after,
 .song-lyrics-section::after {
-    content: 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
+    content: 'X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X  X';
+    display: block;
     position: absolute;
-    bottom: 18px;
-    left: 20px;
-    right: 20px;
-    height: auto;
-    font-family: monospace;
-    font-size: 20px; /* Increased from 18px */
-    font-weight: bold;
-    color: rgba(45, 40, 35, 0.95); /* Much darker/more opaque */
-    letter-spacing: 8px;
+    bottom: 15px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: #2d2823;
+    letter-spacing: 2px;
     line-height: 1;
     text-align: center;
-    overflow: hidden;
-    white-space: nowrap;
-    z-index: 10; /* Much higher - was 1 */
+    z-index: 999;
     pointer-events: none;
     text-shadow: 
-        1px 1px 3px rgba(0, 0, 0, 0.5),
-        0 0 6px rgba(45, 40, 35, 0.3);
+        2px 2px 4px rgba(0, 0, 0, 0.6);
+    background: rgba(255, 0, 0, 0.1); /* Testing visibility - red tint */
 }
 
 /* Cross-stitch borders added above - no additional effects needed */
