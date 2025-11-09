@@ -2159,10 +2159,10 @@ strong, b {
     /* FULL EXPANSION: When accordion is open, expand entire journal panel edge-to-edge */
     .lesson-summary:has(.accordion[open]),
     .song-tie-in:has(.accordion:not(.lyrics-accordion)[open]) {
-        width: calc(100vw - 20px) !important;
-        margin-left: calc(-50vw + 50% + 10px) !important;
-        margin-right: calc(-50vw + 50% + 10px) !important;
-        padding: 2.5rem 1rem !important;
+        width: 100vw !important;
+        margin-left: calc(-50vw + 50%) !important;
+        margin-right: calc(-50vw + 50%) !important;
+        padding: 2.5rem 1.5rem !important;
         border-radius: 0 !important; /* Square edges when expanded */
     }
     

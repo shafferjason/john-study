@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lesson - Hurst Class Study</title>
     <!-- Updated CSS file with all UX enhancements -->
-    <link rel="stylesheet" href="style.css?v=23">
+    <link rel="stylesheet" href="style.css?v=24">
 </head>
 <body>
 
@@ -94,7 +94,7 @@
                     
                     <!-- "A song by The Tenth Hour" with logo -->
                     <p class="song-attribution">
-                        A song by The <img src="tenth-hour-logo.svg" alt="Tenth Hour" class="inline-logo">
+                        A song by The <img src="logo.svg" alt="Tenth Hour" class="inline-logo">
                     </p>
                     
                     ${currentLesson.image_url ? `<img src="${currentLesson.image_url}" alt="${currentLesson.song_title}" class="song-image">` : ''}
@@ -363,19 +363,25 @@
                 const closeBtn = document.createElement('button');
                 closeBtn.className = 'accordion-close-btn';
                 closeBtn.textContent = 'Close';
-                closeBtn.onclick = function(e) {
+                closeBtn.addEventListener('click', function(e) {
                     e.preventDefault();
                     e.stopPropagation();
+                    
                     const accordion = this.closest('.accordion');
                     if (accordion && accordion.open) {
-                        accordion.setAttribute('closing', '');
+                        // Scroll to the accordion's top BEFORE starting close animation
+                        accordion.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        
+                        // Small delay to let scroll start, then begin close animation
                         setTimeout(() => {
-                            accordion.removeAttribute('open');
-                            accordion.removeAttribute('closing');
-                        }, 1600);
+                            accordion.setAttribute('closing', '');
+                            setTimeout(() => {
+                                accordion.removeAttribute('open');
+                                accordion.removeAttribute('closing');
+                            }, 1600);
+                        }, 100);
                     }
-                    return false;
-                };
+                });
                 content.appendChild(closeBtn);
             });
         }
