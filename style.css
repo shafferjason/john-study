@@ -435,7 +435,7 @@ header {
     
     /* Create nested reading panel */
     margin-top: 1.5rem;
-    padding: 2.5rem 2rem;
+    padding: 2.5rem 2rem 3.5rem 2rem; /* Added extra bottom padding */
     border-radius: 8px;
     
     /* Subtle aged paper vignette */
@@ -1039,7 +1039,7 @@ header {
 .lesson-summary::before,
 .song-tie-in::before,
 .song-lyrics-section::before {
-    content: 'X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X';
+    content: 'X        X        X        X        X        X        X        X        X        X        X        X        X        X        X        X';
     display: block;
     position: absolute;
     top: 15px;
@@ -1050,7 +1050,7 @@ header {
     font-size: 22px;
     font-weight: 900;
     color: #1a1612; /* Very dark brown/black - like worn thread */
-    letter-spacing: 4px; /* Increased spacing */
+    letter-spacing: 8px; /* Much more spacing */
     line-height: 1;
     text-align: center;
     z-index: 999;
@@ -1073,7 +1073,7 @@ header {
 .lesson-summary::after,
 .song-tie-in::after,
 .song-lyrics-section::after {
-    content: 'X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X    X';
+    content: 'X        X        X        X        X        X        X        X        X        X        X        X        X        X        X        X';
     display: block;
     position: absolute;
     bottom: 15px;
@@ -1084,7 +1084,7 @@ header {
     font-size: 22px;
     font-weight: 900;
     color: #1a1612; /* Very dark brown/black - like worn thread */
-    letter-spacing: 4px; /* Increased spacing */
+    letter-spacing: 8px; /* Much more spacing */
     line-height: 1;
     text-align: center;
     z-index: 999;
