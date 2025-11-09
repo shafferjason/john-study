@@ -1008,7 +1008,7 @@ header {
 }
 
 .inline-logo {
-    height: 1.5rem;
+    height: 2.5rem; /* Increased from 1.5rem */
     width: auto;
     vertical-align: middle;
     filter: drop-shadow(0 0 8px rgba(201, 164, 122, 0.3));
@@ -2237,6 +2237,22 @@ strong, b {
     .time-display {
         font-size: 0.8rem;
         width: 35px;
+    }
+    
+    /* Make inline logo even larger on mobile */
+    .inline-logo {
+        height: 3rem; /* Larger on mobile for better visibility */
+    }
+    
+    /* Make divider cross icons more visible on mobile */
+    .divider-ornate::before {
+        width: 50px; /* Larger on mobile */
+        height: 50px; /* Larger on mobile */
+    }
+    
+    .divider-ornate::after {
+        width: 60px; /* Larger brass seal on mobile */
+        height: 75px; /* Larger brass seal on mobile */
     }
 
     /* Mobile navigation improvements */

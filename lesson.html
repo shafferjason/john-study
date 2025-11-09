@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lesson - Hurst Class Study</title>
     <!-- Updated CSS file with all UX enhancements -->
-    <link rel="stylesheet" href="style.css?v=24">
+    <link rel="stylesheet" href="style.css?v=25">
 </head>
 <body>
 
@@ -311,6 +311,9 @@
                         const isMainAccordion = this.closest('.lesson-summary, .song-tie-in') && !this.classList.contains('lyrics-accordion');
                         
                         if (isMainAccordion) {
+                            // Scroll to this accordion FIRST to prevent jump
+                            this.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            
                             // Find all other main accordions (excluding lyrics)
                             const mainAccordions = document.querySelectorAll('.lesson-summary .accordion, .song-tie-in .accordion:not(.lyrics-accordion)');
                             
