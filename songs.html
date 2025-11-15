@@ -41,12 +41,15 @@
             border-radius: 12px;
             padding: 2rem 1.5rem;
             height: fit-content;
+            max-height: calc(100vh - 100px);
             position: sticky;
             top: 20px;
             box-shadow: 
                 inset 0 3px 10px rgba(0, 0, 0, 0.5),
                 0 4px 15px rgba(0, 0, 0, 0.4);
             border-left: 2px solid rgba(212, 165, 116, 0.4);
+            display: flex;
+            flex-direction: column;
         }
         
         .sidebar h2 {
@@ -55,15 +58,16 @@
             margin: 0 0 1.5rem 0;
             text-transform: uppercase;
             letter-spacing: 0.1em;
+            flex-shrink: 0;
         }
         
         .song-list-compact {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
-            max-height: calc(100vh - 200px);
             overflow-y: auto;
             padding-right: 0.5rem;
+            flex: 1;
         }
         
         /* Custom scrollbar */
@@ -86,12 +90,15 @@
         }
         
         .song-item-compact {
-            padding: 0.75rem;
+            padding: 0.6rem;
             border-radius: 6px;
             cursor: pointer;
             transition: all 0.2s ease;
             background: rgba(0, 0, 0, 0.2);
             border: 1px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
         
         .song-item-compact:hover {
@@ -108,21 +115,46 @@
             box-shadow: 0 0 12px rgba(240, 212, 168, 0.3);
         }
         
-        .song-item-number {
-            display: inline-block;
-            width: 2rem;
+        .song-item-thumbnail {
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            object-fit: cover;
+            flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+        
+        .song-item-thumbnail.placeholder {
+            background: linear-gradient(135deg, rgba(212, 165, 116, 0.3), rgba(180, 140, 95, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: #d4a574;
-            font-size: 0.9rem;
+            font-size: 1.2rem;
+        }
+        
+        .song-item-info {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .song-item-number {
+            color: #d4a574;
+            font-size: 0.85rem;
             font-family: Georgia, serif;
+            margin-right: 0.5rem;
         }
         
         .song-item-title {
             color: #e8e4dc;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-family: Georgia, serif;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
-        /* Right main area - Current song display */
+        /* Right main area - Current song display - MORE COMPACT */
         .main-display {
             background: 
                 repeating-linear-gradient(
@@ -135,12 +167,13 @@
                 radial-gradient(ellipse at 30% 30%, rgba(50, 45, 40, 0.3) 0%, transparent 50%),
                 rgba(42, 38, 33, 0.5);
             border-radius: 12px;
-            padding: 3rem 2.5rem;
+            padding: 2rem;
             box-shadow: 
                 inset 0 3px 10px rgba(0, 0, 0, 0.5),
                 0 4px 15px rgba(0, 0, 0, 0.4);
             border-left: 2px solid rgba(212, 165, 116, 0.4);
-            min-height: 600px;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -168,10 +201,10 @@
             font-style: italic;
         }
         
-        /* Current song display */
+        /* Current song display - COMPACT */
         .current-song-display {
             width: 100%;
-            max-width: 600px;
+            max-width: 500px;
             display: none;
         }
         
@@ -181,50 +214,53 @@
         
         .album-art {
             width: 100%;
+            max-width: 350px;
+            margin: 0 auto;
+            display: block;
             border-radius: 12px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
         
         .song-info {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
         
         .song-info h1 {
-            font-size: 2rem;
+            font-size: 1.6rem;
             color: #e8e4dc;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.25rem;
             font-family: Georgia, serif;
             font-weight: 400;
         }
         
         .song-info .artist {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #d4a574;
             font-style: italic;
         }
         
-        /* Audio player */
+        /* Audio player - COMPACT */
         .audio-player-main {
             width: 100%;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
         
         .player-controls-main {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            gap: 1rem;
+            margin-bottom: 1rem;
         }
         
         .control-btn-main {
             background: linear-gradient(135deg, rgba(42, 38, 33, 0.9) 0%, rgba(30, 28, 25, 0.95) 100%);
             border: 1px solid rgba(212, 165, 116, 0.4);
             color: #d4a574;
-            width: 50px;
-            height: 50px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
@@ -237,8 +273,8 @@
         }
         
         .control-btn-main.play-btn {
-            width: 60px;
-            height: 60px;
+            width: 55px;
+            height: 55px;
         }
         
         .control-btn-main:hover {
@@ -286,16 +322,16 @@
             flex: 1;
         }
         
-        /* Lyrics section */
+        /* Lyrics section - COMPACT */
         .lyrics-section {
             width: 100%;
-            margin-top: 2rem;
+            margin-top: 1rem;
         }
         
         .lyrics-section details {
             background: rgba(0, 0, 0, 0.3);
             border-radius: 8px;
-            padding: 1.5rem;
+            padding: 1rem;
         }
         
         .lyrics-section summary {
@@ -303,18 +339,37 @@
             cursor: pointer;
             font-weight: 600;
             padding: 0.5rem;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
         
         .lyrics-section details[open] summary {
-            margin-bottom: 1rem;
+            margin-bottom: 0.75rem;
         }
         
         .lyrics-text {
             color: #e0ddd5;
-            line-height: 1.8;
+            line-height: 1.7;
             font-family: Georgia, serif;
             white-space: pre-line;
+            font-size: 0.95rem;
+            max-height: 200px;
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+        
+        /* Scrollbar for lyrics */
+        .lyrics-text::-webkit-scrollbar {
+            width: 5px;
+        }
+        
+        .lyrics-text::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+        }
+        
+        .lyrics-text::-webkit-scrollbar-thumb {
+            background: rgba(212, 165, 116, 0.4);
+            border-radius: 3px;
         }
         
         .suno-link {
@@ -484,15 +539,27 @@
             autoLoadIndex = lessonData.findIndex(lesson => lesson.id === fromLessonId);
         }
         
-        // Build compact song list
+        // Build compact song list with thumbnails
         lessonData.forEach((lesson, index) => {
             if (lesson.audio_file) {
                 const songItem = document.createElement('div');
                 songItem.className = 'song-item-compact';
                 songItem.dataset.index = index;
+                
+                // Create thumbnail
+                let thumbnailHTML = '';
+                if (lesson.image_url) {
+                    thumbnailHTML = `<img src="${lesson.image_url}" alt="${lesson.song_title}" class="song-item-thumbnail">`;
+                } else {
+                    thumbnailHTML = `<div class="song-item-thumbnail placeholder">♪</div>`;
+                }
+                
                 songItem.innerHTML = `
-                    <span class="song-item-number">${index + 1}.</span>
-                    <span class="song-item-title">${lesson.song_title}</span>
+                    ${thumbnailHTML}
+                    <div class="song-item-info">
+                        <span class="song-item-number">${index + 1}.</span>
+                        <span class="song-item-title">${lesson.song_title}</span>
+                    </div>
                 `;
                 songItem.addEventListener('click', () => loadSong(index));
                 songList.appendChild(songItem);
