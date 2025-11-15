@@ -289,6 +289,35 @@
             font-size: 1rem;
             color: #d4a574;
             font-style: italic;
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+        
+        .lesson-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #d4a574;
+            text-decoration: none;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            background: rgba(212, 165, 116, 0.1);
+            border: 1px solid rgba(212, 165, 116, 0.3);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        
+        .lesson-link:hover {
+            background: rgba(212, 165, 116, 0.2);
+            border-color: rgba(212, 165, 116, 0.5);
+            transform: translateX(-2px);
+            box-shadow: 0 2px 8px rgba(212, 165, 116, 0.2);
+        }
+        
+        .lesson-link svg {
+            width: 14px;
+            height: 14px;
+            fill: currentColor;
         }
         
         /* Audio player on right side */
@@ -518,7 +547,13 @@
                 
                 <div class="song-info">
                     <h1 id="song-title"></h1>
-                    <p class="artist">A song by The Tenth Hour</p>
+                    <span class="artist">A song by The Tenth Hour</span>
+                    <a href="#" id="lesson-link" class="lesson-link" style="display:none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                        </svg>
+                        View Lesson
+                    </a>
                 </div>
                 
                 <div class="audio-player-main">
@@ -595,6 +630,7 @@
         const lyricsSection = document.getElementById('lyrics-section');
         const lyricsText = document.getElementById('lyrics-text');
         const sunoLink = document.getElementById('suno-link');
+        const lessonLink = document.getElementById('lesson-link');
         
         // Format time helper
         function formatTime(seconds) {
@@ -652,6 +688,10 @@
             // Update UI
             songTitle.textContent = lesson.song_title;
             audio.src = lesson.audio_file;
+            
+            // Set lesson link
+            lessonLink.href = `lesson.html?id=${lesson.id}`;
+            lessonLink.style.display = 'inline-flex';
             
             if (lesson.image_url) {
                 albumArt.src = lesson.image_url;
