@@ -1014,6 +1014,14 @@ header {
     width: auto;
     vertical-align: middle;
     filter: drop-shadow(0 0 8px rgba(201, 164, 122, 0.3));
+    cursor: pointer; /* Show it's clickable */
+    transition: all 0.3s ease;
+}
+
+/* Easter egg hover effect */
+a:has(.inline-logo):hover .inline-logo {
+    filter: drop-shadow(0 0 15px rgba(240, 212, 168, 0.6));
+    transform: scale(1.05);
 }
 
 /* All sections full brightness - no opacity reduction */

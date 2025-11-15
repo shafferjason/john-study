@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Music - Hurst Class Study</title>
+    <link rel="stylesheet" href="style.css?v=33">
+    <style>
+        /* Sticky player container */
+        .sticky-player {
+            position: sticky;
+            top: 20px;
+            z-index: 50;
+            margin-bottom: 3rem;
+        }
+        
+        /* Song list styling - compact brass plates */
+        .song-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .song-list-item {
+            background: linear-gradient(180deg,
+                rgba(212, 165, 116, 0.22) 0%,
+                rgba(200, 155, 108, 0.15) 50%,
+                rgba(205, 160, 112, 0.18) 100%
+            );
+            border: 1px solid rgba(180, 140, 95, 0.4);
+            border-radius: 4px;
+            padding: 1.25rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            box-shadow: 
+                inset 0 2px 4px rgba(0, 0, 0, 0.4),
+                0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .song-list-item:hover {
+            background: linear-gradient(180deg,
+                rgba(212, 165, 116, 0.35) 0%,
+                rgba(200, 155, 108, 0.25) 50%,
+                rgba(205, 160, 112, 0.3) 100%
+            );
+            box-shadow: 
+                inset 0 2px 4px rgba(0, 0, 0, 0.3),
+                0 4px 12px rgba(212, 165, 116, 0.3);
+        }
+        
+        .song-list-item.active {
+            background: linear-gradient(180deg,
+                rgba(240, 212, 168, 0.4) 0%,
+                rgba(212, 165, 116, 0.3) 50%,
+                rgba(240, 212, 168, 0.35) 100%
+            );
+            border-color: rgba(240, 212, 168, 0.6);
+            box-shadow: 
+                inset 0 2px 4px rgba(0, 0, 0, 0.2),
+                0 0 20px rgba(240, 212, 168, 0.4);
+        }
+        
+        .song-list-item-number {
+            display: inline-block;
+            width: 2.5rem;
+            color: #d4a574;
+            font-weight: bold;
+            font-family: Georgia, serif;
+        }
+        
+        .song-list-item-title {
+            color: #e8e4dc;
+            font-family: Georgia, serif;
+            font-size: 1.1rem;
+        }
+        
+        /* Player controls */
+        .player-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        
+        .control-btn {
+            background: linear-gradient(135deg, rgba(42, 38, 33, 0.9) 0%, rgba(30, 28, 25, 0.95) 100%);
+            border: 1px solid rgba(212, 165, 116, 0.4);
+            color: #d4a574;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 2px 8px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(212, 165, 116, 0.1);
+        }
+        
+        .control-btn:hover {
+            background: linear-gradient(135deg, rgba(52, 48, 43, 0.9) 0%, rgba(40, 38, 35, 0.95) 100%);
+            box-shadow: 
+                0 4px 12px rgba(212, 165, 116, 0.3),
+                inset 0 1px 0 rgba(212, 165, 116, 0.2);
+        }
+        
+        .control-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+        
+        /* Repeat button active state */
+        .control-btn.repeat-active {
+            color: #f0d4a8;
+            border-color: #f0d4a8;
+            box-shadow: 
+                0 0 15px rgba(240, 212, 168, 0.5),
+                inset 0 1px 0 rgba(240, 212, 168, 0.3);
+        }
+        
+        /* Current song info */
+        .current-song-info {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .current-song-title {
+            font-size: 1.8rem;
+            color: #e8e4dc;
+            margin-bottom: 0.5rem;
+            font-family: Georgia, serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="back-link">
+            <a href="index.html">&larr; Back to All Lessons</a>
+        </div>
+        
+        <header class="lesson-header">
+            <h1>THE MUSIC</h1>
+            <p class="scripture-reference">Songs from The Tenth Hour</p>
+        </header>
+        
+        <!-- Sticky Player Section -->
+        <div class="sticky-player">
+            <section class="song-section" id="current-player">
+                <div class="current-song-info">
+                    <h2 class="current-song-title" id="current-title">Select a song to begin</h2>
+                    <p class="song-attribution">
+                        A song by The <img src="logo.svg" alt="Tenth Hour" class="inline-logo">
+                    </p>
+                </div>
+                
+                <img id="current-image" class="song-image" style="display:none;">
+                
+                <div class="custom-audio-player" id="main-player" style="display:none;">
+                    <audio id="main-audio"></audio>
+                    
+                    <!-- Previous/Play/Next Controls -->
+                    <div class="player-controls">
+                        <button id="prev-btn" class="control-btn" aria-label="Previous Song">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+                        </button>
+                        
+                        <button id="play-pause-btn" class="player-button" aria-label="Play/Pause">
+                            <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            <svg class="pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                        </button>
+                        
+                        <button id="next-btn" class="control-btn" aria-label="Next Song">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+                        </button>
+                        
+                        <button id="repeat-btn" class="control-btn" aria-label="Repeat All">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+                        </button>
+                    </div>
+                    
+                    <div style="display: flex; align-items: center; gap: 0.75rem; width: 100%;">
+                        <div id="current-time" class="time-display">0:00</div>
+                        <input type="range" id="seek-bar" class="seek-bar" value="0" min="0" max="100" aria-label="Audio seek bar">
+                        <div id="duration" class="time-display">0:00</div>
+                    </div>
+                </div>
+                
+                <p class="suno-link" id="suno-link" style="display:none;"></p>
+                
+                <!-- Lyrics Accordion -->
+                <details class="accordion lyrics-accordion" id="lyrics-accordion" style="display:none;">
+                    <summary>View Song Lyrics</summary>
+                    <div class="accordion-content lyrics-content">
+                        <div class="lyrics-text" id="lyrics-text"></div>
+                    </div>
+                </details>
+            </section>
+        </div>
+        
+        <!-- Ornate Divider -->
+        <div class="divider-ornate"></div>
+        
+        <!-- Song List Section -->
+        <section class="lesson-summary">
+            <h2>All Songs</h2>
+            <p class="preview-text">Select a song from the collection below</p>
+            
+            <div class="song-list" id="song-list">
+                <!-- Songs will be dynamically inserted here -->
+            </div>
+        </section>
+    </div>
+    
+    <script src="data.js"></script>
+    <script>
+        let currentSongIndex = -1;
+        let isRepeatAll = false;
+        
+        const audio = document.getElementById('main-audio');
+        const playPauseBtn = document.getElementById('play-pause-btn');
+        const playIcon = playPauseBtn.querySelector('.play-icon');
+        const pauseIcon = playPauseBtn.querySelector('.pause-icon');
+        const seekBar = document.getElementById('seek-bar');
+        const currentTimeEl = document.getElementById('current-time');
+        const durationEl = document.getElementById('duration');
+        const audioPlayer = document.getElementById('main-player');
+        const currentImage = document.getElementById('current-image');
+        const currentTitle = document.getElementById('current-title');
+        const lyricsAccordion = document.getElementById('lyrics-accordion');
+        const lyricsText = document.getElementById('lyrics-text');
+        const sunoLink = document.getElementById('suno-link');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const repeatBtn = document.getElementById('repeat-btn');
+        const songList = document.getElementById('song-list');
+        
+        // Format time helper
+        function formatTime(seconds) {
+            if (isNaN(seconds)) return '0:00';
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs.toString().padStart(2, '0')}`;
+        }
+        
+        // Build song list
+        lessonData.forEach((lesson, index) => {
+            if (lesson.audio_file) {
+                const songItem = document.createElement('div');
+                songItem.className = 'song-list-item';
+                songItem.dataset.index = index;
+                songItem.innerHTML = `
+                    <span class="song-list-item-number">${index + 1}.</span>
+                    <span class="song-list-item-title">${lesson.song_title}</span>
+                `;
+                songItem.addEventListener('click', () => loadSong(index));
+                songList.appendChild(songItem);
+            }
+        });
+        
+        // Load a song
+        function loadSong(index) {
+            currentSongIndex = index;
+            const lesson = lessonData[index];
+            
+            // Update UI
+            currentTitle.textContent = lesson.song_title;
+            audio.src = lesson.audio_file;
+            
+            if (lesson.image_url) {
+                currentImage.src = lesson.image_url;
+                currentImage.alt = lesson.song_title;
+                currentImage.style.display = 'block';
+            } else {
+                currentImage.style.display = 'none';
+            }
+            
+            if (lesson.song_lyrics) {
+                lyricsText.innerHTML = lesson.song_lyrics;
+                lyricsAccordion.style.display = 'block';
+            } else {
+                lyricsAccordion.style.display = 'none';
+            }
+            
+            if (lesson.suno_link) {
+                sunoLink.innerHTML = `Can't play? <a href="${lesson.suno_link}" target="_blank" rel="noopener">Listen on Suno →</a>`;
+                sunoLink.style.display = 'block';
+            } else {
+                sunoLink.style.display = 'none';
+            }
+            
+            audioPlayer.style.display = 'flex';
+            
+            // Update active state in list
+            document.querySelectorAll('.song-list-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelector(`[data-index="${index}"]`).classList.add('active');
+            
+            // Auto-play
+            audio.play();
+            playIcon.style.display = 'none';
+            pauseIcon.style.display = 'inline-block';
+            audioPlayer.classList.add('playing');
+        }
+        
+        // Play/Pause
+        playPauseBtn.addEventListener('click', () => {
+            if (currentSongIndex === -1) return;
+            
+            if (audio.paused) {
+                audio.play();
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'inline-block';
+                audioPlayer.classList.add('playing');
+            } else {
+                audio.pause();
+                playIcon.style.display = 'inline-block';
+                pauseIcon.style.display = 'none';
+                audioPlayer.classList.remove('playing');
+            }
+        });
+        
+        // Previous song
+        prevBtn.addEventListener('click', () => {
+            if (currentSongIndex > 0) {
+                loadSong(currentSongIndex - 1);
+            } else if (isRepeatAll) {
+                loadSong(lessonData.length - 1);
+            }
+        });
+        
+        // Next song
+        nextBtn.addEventListener('click', () => {
+            if (currentSongIndex < lessonData.length - 1) {
+                loadSong(currentSongIndex + 1);
+            } else if (isRepeatAll) {
+                loadSong(0);
+            }
+        });
+        
+        // Repeat toggle
+        repeatBtn.addEventListener('click', () => {
+            isRepeatAll = !isRepeatAll;
+            repeatBtn.classList.toggle('repeat-active', isRepeatAll);
+        });
+        
+        // Time updates
+        audio.addEventListener('timeupdate', () => {
+            if (audio.duration) {
+                seekBar.value = (audio.currentTime / audio.duration) * 100;
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            }
+        });
+        
+        audio.addEventListener('loadedmetadata', () => {
+            durationEl.textContent = formatTime(audio.duration);
+        });
+        
+        // Seek
+        seekBar.addEventListener('input', () => {
+            audio.currentTime = (seekBar.value / 100) * audio.duration;
+        });
+        
+        // Auto-play next
+        audio.addEventListener('ended', () => {
+            if (currentSongIndex < lessonData.length - 1) {
+                loadSong(currentSongIndex + 1);
+            } else if (isRepeatAll) {
+                loadSong(0);
+            } else {
+                playIcon.style.display = 'inline-block';
+                pauseIcon.style.display = 'none';
+                audioPlayer.classList.remove('playing');
+            }
+        });
+        
+        // Media Session API
+        if ('mediaSession' in navigator) {
+            audio.addEventListener('loadedmetadata', () => {
+                const lesson = lessonData[currentSongIndex];
+                navigator.mediaSession.metadata = new MediaMetadata({
+                    title: lesson.song_title,
+                    artist: 'The Tenth Hour',
+                    album: 'Hurst Class Study: Book of John',
+                    artwork: lesson.image_url ? [
+                        { src: lesson.image_url, sizes: '512x512', type: 'image/jpeg' }
+                    ] : []
+                });
+            });
+            
+            navigator.mediaSession.setActionHandler('play', () => audio.play());
+            navigator.mediaSession.setActionHandler('pause', () => audio.pause());
+            navigator.mediaSession.setActionHandler('previoustrack', () => prevBtn.click());
+            navigator.mediaSession.setActionHandler('nexttrack', () => nextBtn.click());
+        }
+    </script>
+</body>
+</html>
