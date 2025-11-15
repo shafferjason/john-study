@@ -97,41 +97,46 @@
                         A song by The <a href="songs.html?from=${currentLesson.id}" title="View all songs"><img src="logo.svg" alt="Tenth Hour" class="inline-logo"></a>
                     </p>
                     
-                    ${currentLesson.image_url ? `<img src="${currentLesson.image_url}" alt="${currentLesson.song_title}" class="song-image">` : ''}
-                    
-                    ${currentLesson.audio_file ? `
-                        <div class="custom-audio-player">
-                            <audio id="lesson-audio" src="${currentLesson.audio_file}"></audio>
+                    <!-- Two-column grid: image left, player + lyrics right -->
+                    <div class="song-content-grid">
+                        ${currentLesson.image_url ? `
+                            <img src="${currentLesson.image_url}" alt="${currentLesson.song_title}" class="song-image">
+                        ` : ''}
+                        
+                        <div class="song-lyrics-wrapper">
+                            ${currentLesson.audio_file ? `
+                                <!-- Simple audio player -->
+                                <div class="simple-audio-player">
+                                    <audio id="lesson-audio" src="${currentLesson.audio_file}"></audio>
+                                    
+                                    <button id="play-pause-btn" class="simple-player-btn" aria-label="Play/Pause">
+                                        <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                            <path d="M8 5v14l11-7z"/>
+                                        </svg>
+                                        <svg class="pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display:none;">
+                                            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                                        </svg>
+                                    </button>
+                                    
+                                    <div class="simple-progress-wrapper">
+                                        <div id="current-time" class="simple-time-display">0:00</div>
+                                        <input type="range" id="seek-bar" class="simple-seek-bar" value="0" min="0" max="100" aria-label="Audio seek bar">
+                                        <div id="duration" class="simple-time-display">0:00</div>
+                                    </div>
+                                </div>
+                            ` : ''}
                             
-                            <div class="player-controls">
-                                <button id="play-pause-btn" class="player-button" aria-label="Play/Pause">
-                                    <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                    <svg class="pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                                </button>
-                            </div>
-                            
-                            <div class="progress-container">
-                                <div id="current-time" class="time-display">0:00</div>
-                                <input type="range" id="seek-bar" class="seek-bar" value="0" min="0" max="100" aria-label="Audio seek bar">
-                                <div id="duration" class="time-display">0:00</div>
-                            </div>
+                            ${currentLesson.song_lyrics ? `
+                                <!-- Lyrics accordion -->
+                                <details class="accordion lyrics-accordion">
+                                    <summary>View Song Lyrics</summary>
+                                    <div class="accordion-content">
+                                        <div class="lyrics-text">${currentLesson.song_lyrics}</div>
+                                    </div>
+                                </details>
+                            ` : ''}
                         </div>
-                    ` : ''}
-                    ${currentLesson.suno_link ? `
-                        <p class="suno-link">
-                            Can't play? <a href="${currentLesson.suno_link}" target="_blank" rel="noopener">Listen on Suno →</a>
-                        </p>
-                    ` : ''}
-                    
-                    ${currentLesson.song_lyrics ? `
-                        <!-- Lyrics accordion below player -->
-                        <details class="accordion lyrics-accordion">
-                            <summary>View Song Lyrics</summary>
-                            <div class="accordion-content lyrics-content">
-                                <div class="lyrics-text">${currentLesson.song_lyrics}</div>
-                            </div>
-                        </details>
-                    ` : ''}
+                    </div>
                 </section>
             `;
 
@@ -178,7 +183,7 @@
                 const seekBar = document.getElementById('seek-bar');
                 const currentTimeEl = document.getElementById('current-time');
                 const durationEl = document.getElementById('duration');
-                const audioPlayer = document.querySelector('.custom-audio-player');
+                const audioPlayer = document.querySelector('.simple-audio-player');
 
                 // Helper function to format time in 0:00
                 function formatTime(seconds) {
