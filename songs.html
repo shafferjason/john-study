@@ -4,18 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Music - Hurst Class Study</title>
-    <link rel="stylesheet" href="style.css?v=33">
+    <link rel="stylesheet" href="style.css?v=34">
     <style>
-        /* Sticky player container - COMPACT */
-        .sticky-player {
-            position: sticky;
-            top: 20px;
-            z-index: 50;
-            margin-bottom: 2rem;
+        /* Override container for two-column layout */
+        body {
+            padding: 0;
         }
         
-        /* Compact player panel */
-        .compact-player {
+        .top-nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Two-column layout - Apple Music style */
+        .music-container {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px 40px 20px;
+        }
+        
+        /* Left sidebar - Song list */
+        .sidebar {
             background: 
                 repeating-linear-gradient(
                     90deg,
@@ -26,100 +39,192 @@
                 ),
                 rgba(42, 38, 33, 0.5);
             border-radius: 12px;
-            padding: 1.5rem 2rem;
+            padding: 2rem 1.5rem;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
             box-shadow: 
                 inset 0 3px 10px rgba(0, 0, 0, 0.5),
                 0 4px 15px rgba(0, 0, 0, 0.4);
             border-left: 2px solid rgba(212, 165, 116, 0.4);
         }
         
-        /* Now playing header - very compact */
-        .now-playing-header {
-            font-size: 0.75rem;
+        .sidebar h2 {
+            font-size: 1.2rem;
+            color: #d4a574;
+            margin: 0 0 1.5rem 0;
             text-transform: uppercase;
             letter-spacing: 0.1em;
+        }
+        
+        .song-list-compact {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+            padding-right: 0.5rem;
+        }
+        
+        /* Custom scrollbar */
+        .song-list-compact::-webkit-scrollbar {
+            width: 6px;
+        }
+        
+        .song-list-compact::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+        }
+        
+        .song-list-compact::-webkit-scrollbar-thumb {
+            background: rgba(212, 165, 116, 0.4);
+            border-radius: 3px;
+        }
+        
+        .song-list-compact::-webkit-scrollbar-thumb:hover {
+            background: rgba(212, 165, 116, 0.6);
+        }
+        
+        .song-item-compact {
+            padding: 0.75rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid transparent;
+        }
+        
+        .song-item-compact:hover {
+            background: rgba(212, 165, 116, 0.15);
+            border-color: rgba(212, 165, 116, 0.3);
+        }
+        
+        .song-item-compact.active {
+            background: linear-gradient(180deg,
+                rgba(240, 212, 168, 0.25) 0%,
+                rgba(212, 165, 116, 0.2) 100%
+            );
+            border-color: rgba(240, 212, 168, 0.5);
+            box-shadow: 0 0 12px rgba(240, 212, 168, 0.3);
+        }
+        
+        .song-item-number {
+            display: inline-block;
+            width: 2rem;
             color: #d4a574;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-        
-        /* Current song info - compact */
-        .current-song-info {
-            margin-bottom: 1rem;
-        }
-        
-        .current-song-title {
-            font-size: 1.3rem;
-            color: #e8e4dc;
-            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
             font-family: Georgia, serif;
         }
         
-        .current-song-artist {
-            font-size: 0.9rem;
+        .song-item-title {
+            color: #e8e4dc;
+            font-size: 0.95rem;
+            font-family: Georgia, serif;
+        }
+        
+        /* Right main area - Current song display */
+        .main-display {
+            background: 
+                repeating-linear-gradient(
+                    90deg,
+                    rgba(42, 38, 33, 0.15) 0px,
+                    rgba(35, 32, 28, 0.1) 0.5px,
+                    transparent 1px,
+                    transparent 3px
+                ),
+                radial-gradient(ellipse at 30% 30%, rgba(50, 45, 40, 0.3) 0%, transparent 50%),
+                rgba(42, 38, 33, 0.5);
+            border-radius: 12px;
+            padding: 3rem 2.5rem;
+            box-shadow: 
+                inset 0 3px 10px rgba(0, 0, 0, 0.5),
+                0 4px 15px rgba(0, 0, 0, 0.4);
+            border-left: 2px solid rgba(212, 165, 116, 0.4);
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .empty-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             color: #a8a49b;
+            text-align: center;
+        }
+        
+        .empty-state svg {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1.5rem;
+            opacity: 0.3;
+        }
+        
+        .empty-state p {
+            font-size: 1.2rem;
             font-style: italic;
         }
         
-        /* Play this song button */
-        .play-this-song-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
+        /* Current song display */
+        .current-song-display {
             width: 100%;
-            max-width: 300px;
-            margin: 2rem auto;
-            padding: 1rem 2rem;
-            background: linear-gradient(180deg, #c9a47a 0%, #b89968 100%);
-            color: #2a231d;
-            border: none;
-            border-radius: 8px;
-            font-family: Georgia, serif;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            box-shadow: 
-                0 4px 12px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
+            max-width: 600px;
+            display: none;
         }
         
-        .play-this-song-btn:hover {
-            background: linear-gradient(180deg, #d4af84 0%, #c2a372 100%);
-            transform: translateY(-2px);
-            box-shadow: 
-                0 6px 16px rgba(212, 165, 116, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+        .current-song-display.active {
+            display: block;
         }
         
-        .play-this-song-btn:active {
-            transform: translateY(0);
-            box-shadow: 
-                0 2px 8px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
-        }
-        
-        /* Song panels */
-        .song-panel {
+        .album-art {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
             margin-bottom: 2rem;
         }
         
-        /* Player controls */
-        .player-controls {
+        .song-info {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .song-info h1 {
+            font-size: 2rem;
+            color: #e8e4dc;
+            margin-bottom: 0.5rem;
+            font-family: Georgia, serif;
+            font-weight: 400;
+        }
+        
+        .song-info .artist {
+            font-size: 1.1rem;
+            color: #d4a574;
+            font-style: italic;
+        }
+        
+        /* Audio player */
+        .audio-player-main {
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+        
+        .player-controls-main {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 1rem;
-            margin: 1.5rem 0;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
         }
         
-        .control-btn {
+        .control-btn-main {
             background: linear-gradient(135deg, rgba(42, 38, 33, 0.9) 0%, rgba(30, 28, 25, 0.95) 100%);
             border: 1px solid rgba(212, 165, 116, 0.4);
             color: #d4a574;
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             cursor: pointer;
             display: flex;
@@ -131,21 +236,31 @@
                 inset 0 1px 0 rgba(212, 165, 116, 0.1);
         }
         
-        .control-btn:hover {
+        .control-btn-main.play-btn {
+            width: 60px;
+            height: 60px;
+        }
+        
+        .control-btn-main:hover {
             background: linear-gradient(135deg, rgba(52, 48, 43, 0.9) 0%, rgba(40, 38, 35, 0.95) 100%);
             box-shadow: 
                 0 4px 12px rgba(212, 165, 116, 0.3),
                 inset 0 1px 0 rgba(212, 165, 116, 0.2);
+            transform: scale(1.05);
         }
         
-        .control-btn svg {
-            width: 20px;
-            height: 20px;
+        .control-btn-main svg {
+            width: 24px;
+            height: 24px;
             fill: currentColor;
         }
         
-        /* Repeat button active state */
-        .control-btn.repeat-active {
+        .control-btn-main.play-btn svg {
+            width: 28px;
+            height: 28px;
+        }
+        
+        .control-btn-main.repeat-active {
             color: #f0d4a8;
             border-color: #f0d4a8;
             box-shadow: 
@@ -153,22 +268,92 @@
                 inset 0 1px 0 rgba(240, 212, 168, 0.3);
         }
         
-        /* Current song info */
-        .current-song-info {
-            text-align: center;
+        .progress-bar-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+        }
+        
+        .time-display {
+            font-size: 0.9rem;
+            color: #a8a49b;
+            font-family: 'Courier New', monospace;
+            min-width: 45px;
+        }
+        
+        .seek-bar {
+            flex: 1;
+        }
+        
+        /* Lyrics section */
+        .lyrics-section {
+            width: 100%;
+            margin-top: 2rem;
+        }
+        
+        .lyrics-section details {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+        
+        .lyrics-section summary {
+            color: #d4a574;
+            cursor: pointer;
+            font-weight: 600;
+            padding: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .lyrics-section details[open] summary {
             margin-bottom: 1rem;
         }
         
-        .current-song-title {
-            font-size: 1.8rem;
-            color: #e8e4dc;
-            margin-bottom: 0.5rem;
+        .lyrics-text {
+            color: #e0ddd5;
+            line-height: 1.8;
             font-family: Georgia, serif;
+            white-space: pre-line;
+        }
+        
+        .suno-link {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+            color: #a8a49b;
+        }
+        
+        .suno-link a {
+            color: #d4a574;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .suno-link a:hover {
+            color: #f0d4a8;
+            text-shadow: 0 0 10px rgba(240, 212, 168, 0.3);
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 1024px) {
+            .music-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+                margin-bottom: 2rem;
+            }
+            
+            .song-list-compact {
+                max-height: 300px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="top-nav">
         <div class="back-link">
             <a href="index.html">&larr; Back to All Lessons</a>
         </div>
@@ -177,60 +362,85 @@
             <h1>THE MUSIC</h1>
             <p class="scripture-reference">Songs from The Tenth Hour</p>
         </header>
+    </div>
+    
+    <div class="music-container">
+        <!-- Left Sidebar - Song List -->
+        <aside class="sidebar">
+            <h2>All Songs</h2>
+            <div class="song-list-compact" id="song-list">
+                <!-- Songs will be inserted here -->
+            </div>
+        </aside>
         
-        <!-- Sticky Compact Player -->
-        <div class="sticky-player">
-            <div class="compact-player">
-                <div class="now-playing-header">Now Playing</div>
-                <div class="current-song-info">
-                    <div class="current-song-title" id="current-title">Select a song to begin</div>
-                    <div class="current-song-artist">A song by The Tenth Hour</div>
+        <!-- Right Main Display - Current Song -->
+        <main class="main-display">
+            <!-- Empty state -->
+            <div class="empty-state" id="empty-state">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+                </svg>
+                <p>Select a song to begin</p>
+            </div>
+            
+            <!-- Current song display -->
+            <div class="current-song-display" id="current-display">
+                <img id="album-art" class="album-art" alt="">
+                
+                <div class="song-info">
+                    <h1 id="song-title"></h1>
+                    <p class="artist">A song by The Tenth Hour</p>
                 </div>
                 
-                <div class="custom-audio-player" id="main-player" style="display:none;">
+                <div class="audio-player-main">
                     <audio id="main-audio"></audio>
                     
-                    <!-- Previous/Play/Next Controls -->
-                    <div class="player-controls">
-                        <button id="prev-btn" class="control-btn" aria-label="Previous Song">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+                    <div class="player-controls-main">
+                        <button id="prev-btn" class="control-btn-main" aria-label="Previous Song">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+                            </svg>
                         </button>
                         
-                        <button id="play-pause-btn" class="player-button" aria-label="Play/Pause">
-                            <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                            <svg class="pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display:none;"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                        <button id="play-pause-btn" class="control-btn-main play-btn" aria-label="Play/Pause">
+                            <svg class="play-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M8 5v14l11-7z"/>
+                            </svg>
+                            <svg class="pause-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" style="display:none;">
+                                <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+                            </svg>
                         </button>
                         
-                        <button id="next-btn" class="control-btn" aria-label="Next Song">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+                        <button id="next-btn" class="control-btn-main" aria-label="Next Song">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+                            </svg>
                         </button>
                         
-                        <button id="repeat-btn" class="control-btn" aria-label="Repeat All">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+                        <button id="repeat-btn" class="control-btn-main" aria-label="Repeat All">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/>
+                            </svg>
                         </button>
                     </div>
                     
-                    <div style="display: flex; align-items: center; gap: 0.75rem; width: 100%;">
+                    <div class="progress-bar-container">
                         <div id="current-time" class="time-display">0:00</div>
                         <input type="range" id="seek-bar" class="seek-bar" value="0" min="0" max="100" aria-label="Audio seek bar">
                         <div id="duration" class="time-display">0:00</div>
                     </div>
                 </div>
+                
+                <div class="lyrics-section" id="lyrics-section" style="display:none;">
+                    <details>
+                        <summary>View Song Lyrics</summary>
+                        <div class="lyrics-text" id="lyrics-text"></div>
+                    </details>
+                </div>
+                
+                <p class="suno-link" id="suno-link" style="display:none;"></p>
             </div>
-        </div>
-        
-        <!-- Ornate Divider -->
-        <div class="divider-ornate"></div>
-        
-        <!-- Song List Section - Full Details -->
-        <section class="lesson-summary">
-            <h2>All Songs</h2>
-            <p class="preview-text">Browse and select songs from the collection</p>
-            
-            <div id="song-list">
-                <!-- Songs will be dynamically inserted here as full panels -->
-            </div>
-        </section>
+        </main>
     </div>
     
     <script src="data.js"></script>
@@ -245,12 +455,17 @@
         const seekBar = document.getElementById('seek-bar');
         const currentTimeEl = document.getElementById('current-time');
         const durationEl = document.getElementById('duration');
-        const audioPlayer = document.getElementById('main-player');
-        const currentTitle = document.getElementById('current-title');
         const prevBtn = document.getElementById('prev-btn');
         const nextBtn = document.getElementById('next-btn');
         const repeatBtn = document.getElementById('repeat-btn');
         const songList = document.getElementById('song-list');
+        const emptyState = document.getElementById('empty-state');
+        const currentDisplay = document.getElementById('current-display');
+        const albumArt = document.getElementById('album-art');
+        const songTitle = document.getElementById('song-title');
+        const lyricsSection = document.getElementById('lyrics-section');
+        const lyricsText = document.getElementById('lyrics-text');
+        const sunoLink = document.getElementById('suno-link');
         
         // Format time helper
         function formatTime(seconds) {
@@ -269,57 +484,19 @@
             autoLoadIndex = lessonData.findIndex(lesson => lesson.id === fromLessonId);
         }
         
-        // Build song list as full panels
+        // Build compact song list
         lessonData.forEach((lesson, index) => {
             if (lesson.audio_file) {
-                const songPanel = document.createElement('div');
-                songPanel.className = 'song-panel';
-                songPanel.dataset.index = index;
-                songPanel.id = `song-${index}`;
-                
-                songPanel.innerHTML = `
-                    <div class="divider-ornate"></div>
-                    <section class="song-section">
-                        <h2>${lesson.song_title}</h2>
-                        <p class="song-attribution">
-                            A song by The <img src="logo.svg" alt="Tenth Hour" class="inline-logo">
-                        </p>
-                        ${lesson.image_url ? `<img src="${lesson.image_url}" alt="${lesson.song_title}" class="song-image">` : ''}
-                        
-                        <button class="play-this-song-btn" data-index="${index}">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="#d4a574" d="M8 5v14l11-7z"/></svg>
-                            Play This Song
-                        </button>
-                        
-                        ${lesson.song_lyrics ? `
-                            <details class="accordion lyrics-accordion">
-                                <summary>View Song Lyrics</summary>
-                                <div class="accordion-content lyrics-content">
-                                    <div class="lyrics-text">${lesson.song_lyrics}</div>
-                                </div>
-                            </details>
-                        ` : ''}
-                        
-                        ${lesson.suno_link ? `
-                            <p class="suno-link">
-                                Can't play? <a href="${lesson.suno_link}" target="_blank" rel="noopener">Listen on Suno →</a>
-                            </p>
-                        ` : ''}
-                    </section>
+                const songItem = document.createElement('div');
+                songItem.className = 'song-item-compact';
+                songItem.dataset.index = index;
+                songItem.innerHTML = `
+                    <span class="song-item-number">${index + 1}.</span>
+                    <span class="song-item-title">${lesson.song_title}</span>
                 `;
-                
-                songList.appendChild(songPanel);
+                songItem.addEventListener('click', () => loadSong(index));
+                songList.appendChild(songItem);
             }
-        });
-        
-        // Add click handlers to play buttons
-        document.querySelectorAll('.play-this-song-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const index = parseInt(btn.dataset.index);
-                loadSong(index);
-                // Scroll to top to see player
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
         });
         
         // Load a song
@@ -327,24 +504,50 @@
             currentSongIndex = index;
             const lesson = lessonData[index];
             
+            // Hide empty state, show player
+            emptyState.style.display = 'none';
+            currentDisplay.classList.add('active');
+            
             // Update UI
-            currentTitle.textContent = lesson.song_title;
+            songTitle.textContent = lesson.song_title;
             audio.src = lesson.audio_file;
             
-            audioPlayer.style.display = 'flex';
+            if (lesson.image_url) {
+                albumArt.src = lesson.image_url;
+                albumArt.alt = lesson.song_title;
+            }
+            
+            if (lesson.song_lyrics) {
+                lyricsText.textContent = lesson.song_lyrics;
+                lyricsSection.style.display = 'block';
+            } else {
+                lyricsSection.style.display = 'none';
+            }
+            
+            if (lesson.suno_link) {
+                sunoLink.innerHTML = `Can't play? <a href="${lesson.suno_link}" target="_blank" rel="noopener">Listen on Suno →</a>`;
+                sunoLink.style.display = 'block';
+            } else {
+                sunoLink.style.display = 'none';
+            }
+            
+            // Update active state in list
+            document.querySelectorAll('.song-item-compact').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelector(`[data-index="${index}"]`).classList.add('active');
             
             // Auto-play
             audio.play();
             playIcon.style.display = 'none';
             pauseIcon.style.display = 'inline-block';
-            audioPlayer.classList.add('playing');
         }
         
         // Auto-load song if coming from a lesson page
         if (autoLoadIndex !== -1) {
             setTimeout(() => {
                 loadSong(autoLoadIndex);
-            }, 500);
+            }, 300);
         }
         
         // Play/Pause
@@ -355,12 +558,10 @@
                 audio.play();
                 playIcon.style.display = 'none';
                 pauseIcon.style.display = 'inline-block';
-                audioPlayer.classList.add('playing');
             } else {
                 audio.pause();
                 playIcon.style.display = 'inline-block';
                 pauseIcon.style.display = 'none';
-                audioPlayer.classList.remove('playing');
             }
         });
         
@@ -414,7 +615,6 @@
             } else {
                 playIcon.style.display = 'inline-block';
                 pauseIcon.style.display = 'none';
-                audioPlayer.classList.remove('playing');
             }
         });
         
