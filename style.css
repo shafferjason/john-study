@@ -1109,12 +1109,12 @@ a:has(.inline-logo):hover .inline-logo {
 .song-section {
     margin-bottom: 3rem;
     
-    /* Light journal panel - cleaner */
+    /* Match songs page panel style */
     background: rgba(42, 38, 33, 0.4);
     border-radius: 12px;
     padding: 2.5rem 2rem;
     
-    /* Simplified shadow */
+    /* Match songs page shadows */
     box-shadow: 
         inset 0 1px 2px rgba(212, 165, 116, 0.1),
         inset 0 2px 6px rgba(0, 0, 0, 0.3),
@@ -1128,7 +1128,7 @@ a:has(.inline-logo):hover .inline-logo {
     /* Subtle glow animation */
     animation: subtleGlow 5s ease-in-out infinite;
     
-    /* Side-by-side layout for desktop */
+    /* Side-by-side layout matching songs page exactly */
     display: grid;
     grid-template-columns: 280px 1fr;
     gap: 2rem;
@@ -1141,30 +1141,128 @@ a:has(.inline-logo):hover .inline-logo {
     align-items: start;
 }
 
-/* Song section child elements */
+/* Song title - match songs page h1 style */
 .song-section h2 {
     grid-area: title;
     text-align: left;
-    margin-top: 0;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.6rem;
+    color: #e8e4dc;
+    font-family: Georgia, serif;
+    font-weight: 400;
+    line-height: 1.3;
+    text-transform: none;
+    letter-spacing: normal;
+    text-shadow: none;
+    padding: 0;
 }
 
+/* Song attribution */
 .song-section .song-attribution {
     grid-area: attribution;
+    text-align: left;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #d4a574;
+    font-style: italic;
 }
 
+/* Song image */
 .song-section .song-image {
     grid-area: image;
     width: 100%;
-    max-width: 280px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
     margin: 0;
 }
 
+/* Audio player - match songs page */
 .song-section .custom-audio-player {
     grid-area: player;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
 }
 
+/* Player controls container */
+.song-section .player-controls {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+/* Individual control buttons - match songs page */
+.song-section .player-button {
+    background: linear-gradient(135deg, rgba(42, 38, 33, 0.9) 0%, rgba(30, 28, 25, 0.95) 100%);
+    border: 1px solid rgba(212, 165, 116, 0.4);
+    color: #d4a574;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.4),
+        inset 0 1px 0 rgba(212, 165, 116, 0.1);
+}
+
+.song-section .player-button:hover {
+    background: linear-gradient(135deg, rgba(52, 48, 43, 0.9) 0%, rgba(40, 38, 35, 0.95) 100%);
+    box-shadow: 
+        0 4px 12px rgba(212, 165, 116, 0.3),
+        inset 0 1px 0 rgba(212, 165, 116, 0.2);
+    transform: scale(1.05);
+}
+
+.song-section .player-button svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+}
+
+/* Progress bar container */
+.song-section .progress-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+/* Time displays */
+.song-section .time-display {
+    font-size: 0.9rem;
+    color: #a8a49b;
+    font-family: 'Courier New', monospace;
+    min-width: 45px;
+}
+
+/* Seek bar */
+.song-section .seek-bar {
+    flex: 1;
+}
+
+/* Suno link */
 .song-section .suno-link {
     grid-area: suno;
+    text-align: left;
+    margin: 0;
+    font-size: 0.95rem;
+    color: #a8a49b;
+}
+
+.song-section .suno-link a {
+    color: #d4a574;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.song-section .suno-link a:hover {
+    color: #f0d4a8;
+    text-shadow: 0 0 10px rgba(240, 212, 168, 0.3);
 }
 
 /* Brass corner tabs removed */
@@ -1180,26 +1278,40 @@ a:has(.inline-logo):hover .inline-logo {
     margin-bottom: 0;
 }
 
+.song-section .lyrics-accordion details {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 1.5rem;
+}
+
+.song-section .lyrics-accordion summary {
+    color: #d4a574;
+    cursor: pointer;
+    font-weight: 600;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.song-section .lyrics-accordion details[open] summary {
+    margin-bottom: 0.75rem;
+}
+
 /* Ensure lyrics content maintains proper styling */
 .song-section .lyrics-content {
     display: block;
 }
 
 .song-section .lyrics-text {
-    /* Poetic formatting */
-    text-align: left;
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 1rem;
-    line-height: 1.8;
+    /* Match songs page lyrics style */
     color: #e0ddd5;
-    font-style: italic;
-    
-    /* Preserve line breaks from data */
+    line-height: 1.7;
+    font-family: Georgia, serif;
     white-space: pre-line;
-    
-    /* Extra spacing for stanzas */
-    margin: 0 auto;
-    padding: 1rem 2rem;
+    font-size: 0.95rem;
+    text-align: left;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
 }
 
 /* ===================================
