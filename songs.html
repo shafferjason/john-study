@@ -30,21 +30,22 @@
         .top-nav .lesson-header h1 {
             font-size: 2rem;
             margin-bottom: 0.25rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-        }
-        
-        .header-logo {
-            height: 2.5rem;
-            width: auto;
-            filter: drop-shadow(0 0 8px rgba(201, 164, 122, 0.3));
         }
         
         .top-nav .scripture-reference {
             font-size: 0.95rem;
             margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .header-logo {
+            height: 4.5rem;
+            width: auto;
+            filter: drop-shadow(0 0 8px rgba(201, 164, 122, 0.3));
+            vertical-align: middle;
         }
         
         /* Two-column layout - Apple Music style */
@@ -527,11 +528,10 @@
         </div>
         
         <header class="lesson-header">
-            <h1>
-                THE MUSIC
-                <img src="logo.svg" alt="The Tenth Hour" class="header-logo">
-            </h1>
-            <p class="scripture-reference">Songs from The Tenth Hour</p>
+            <h1>THE MUSIC</h1>
+            <p class="scripture-reference">
+                Songs from <img src="logo.svg" alt="The Tenth Hour" class="header-logo">
+            </p>
         </header>
     </div>
     
