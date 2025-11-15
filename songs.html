@@ -16,7 +16,25 @@
         .top-nav {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 20px 20px 10px 20px;
+            padding: 10px 20px 5px 20px;
+        }
+        
+        .top-nav .back-link {
+            margin-bottom: 0.5rem;
+        }
+        
+        .top-nav .lesson-header {
+            margin-bottom: 0.5rem;
+        }
+        
+        .top-nav .lesson-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .top-nav .scripture-reference {
+            font-size: 0.95rem;
+            margin-bottom: 0;
         }
         
         /* Two-column layout - Apple Music style */
@@ -26,8 +44,8 @@
             gap: 2rem;
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 20px 20px 20px;
-            height: calc(100vh - 140px);
+            padding: 0 20px 15px 20px;
+            height: calc(100vh - 100px);
             overflow: hidden;
         }
         
@@ -67,30 +85,30 @@
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
-            overflow-y: auto;
+            overflow-y: scroll;
             overflow-x: hidden;
             padding-right: 0.5rem;
             flex: 1;
             min-height: 0;
         }
         
-        /* Custom scrollbar */
+        /* Custom scrollbar - always visible */
         .song-list-compact::-webkit-scrollbar {
-            width: 6px;
+            width: 8px;
         }
         
         .song-list-compact::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 3px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
         }
         
         .song-list-compact::-webkit-scrollbar-thumb {
-            background: rgba(212, 165, 116, 0.4);
-            border-radius: 3px;
+            background: rgba(212, 165, 116, 0.5);
+            border-radius: 4px;
         }
         
         .song-list-compact::-webkit-scrollbar-thumb:hover {
-            background: rgba(212, 165, 116, 0.6);
+            background: rgba(212, 165, 116, 0.7);
         }
         
         .song-item-compact {
