@@ -1005,10 +1005,12 @@ header {
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    min-height: 5rem; /* Allow room for larger logo */
 }
 
 .inline-logo {
-    height: 4.5rem !important; /* Force larger size on desktop */
+    height: 5rem !important; /* Force much larger size on desktop */
+    max-height: none !important; /* Override any max-height constraints */
     width: auto;
     vertical-align: middle;
     filter: drop-shadow(0 0 8px rgba(201, 164, 122, 0.3));
