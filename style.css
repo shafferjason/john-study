@@ -1048,7 +1048,7 @@ header {
     border-radius: 12px;
     
     /* Padding for breathing room - extra top/bottom for cross-stitch borders */
-    padding: 3rem 2rem;
+    padding: 4.5rem 2rem; /* Increased from 3rem for taller desktop panels */
     
     /* ENHANCED 3D: Maximum stacked journal depth with light catch */
     box-shadow: 
