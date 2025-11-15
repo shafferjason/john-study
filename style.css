@@ -1008,7 +1008,7 @@ header {
 }
 
 .inline-logo {
-    height: 4rem; /* Increased for better desktop visibility */
+    height: 4.5rem !important; /* Force larger size on desktop */
     width: auto;
     vertical-align: middle;
     filter: drop-shadow(0 0 8px rgba(201, 164, 122, 0.3));
