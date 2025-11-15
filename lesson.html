@@ -94,7 +94,7 @@
                     
                     <!-- "A song by The Tenth Hour" with logo -->
                     <p class="song-attribution">
-                        A song by The <a href="songs.html" title="View all songs"><img src="logo.svg" alt="Tenth Hour" class="inline-logo"></a>
+                        A song by The <a href="songs.html?from=${currentLesson.id}" title="View all songs"><img src="logo.svg" alt="Tenth Hour" class="inline-logo"></a>
                     </p>
                     
                     ${currentLesson.image_url ? `<img src="${currentLesson.image_url}" alt="${currentLesson.song_title}" class="song-image">` : ''}
