@@ -166,15 +166,19 @@
             return m ? parseInt(m[1], 10) : 0;
         }
 
-        // Which chapter group a lesson belongs to.
-        // Lessons 1-4 are foundational; everything else groups by the
+        // Which section a lesson belongs to.
+        // Lessons 1-4 are foundational. A lesson may name its own section via
+        // `chapter_group` in data.js — used for topical asides that are anchored in a
+        // chapter the class hasn't reached yet (e.g. lesson 22, the "I AM" word study,
+        // taught mid-John-6 but reading John 8:48-59). Everything else groups by the
         // John chapter named in its scripture line.
         function chapterOf(lesson) {
             const num = lessonNum(lesson);
-            if (num <= 4) return { label: 'Foundations', order: 0 };
+            if (lesson.chapter_group) return { label: lesson.chapter_group };
+            if (num <= 4) return { label: 'Foundations' };
             const m = (lesson.scripture || '').match(/John\s+(\d+)\s*:/);
-            if (m) { const ch = parseInt(m[1], 10); return { label: 'John ' + ch, order: ch }; }
-            return { label: 'Other', order: 99 };
+            if (m) return { label: 'John ' + parseInt(m[1], 10) };
+            return { label: 'Other' };
         }
 
         // Render lessons grouped into collapsible chapter sections
@@ -186,29 +190,38 @@
                 return;
             }
 
-            // Bucket lessons by chapter group
+            // Bucket lessons by section
             const groupsMap = {};
             lessonData.forEach(lesson => {
                 const g = chapterOf(lesson);
-                if (!groupsMap[g.label]) groupsMap[g.label] = { label: g.label, order: g.order, lessons: [] };
+                if (!groupsMap[g.label]) groupsMap[g.label] = { label: g.label, lessons: [] };
                 groupsMap[g.label].lessons.push(lesson);
             });
 
             let groups = Object.keys(groupsMap).map(k => groupsMap[k]);
-            groups.sort((a, b) => a.order - b.order); // reading order
+            groups.forEach(g => {
+                const nums = g.lessons.map(lessonNum);
+                g.first = Math.min.apply(null, nums);
+                g.last = Math.max.apply(null, nums);
+            });
 
             // Find the group that holds the most recent lesson — open it by default
             let newestLabel = null, newestNum = -1;
             groups.forEach(g => {
-                const maxN = Math.max.apply(null, g.lessons.map(lessonNum));
-                if (maxN > newestNum) { newestNum = maxN; newestLabel = g.label; }
+                if (g.last > newestNum) { newestNum = g.last; newestLabel = g.label; }
             });
 
-            // Order lessons within each group, and section order, to match the toggle
+            // Order sections by teaching sequence, not by chapter number — the study is
+            // sequential, so for chapter sections this is the same reading order it always
+            // was, but it also places a topical aside where it was actually taught.
+            // Newest first: the section with the most recent lesson leads.
+            // Oldest first: the section that started earliest leads.
+            groups.sort((a, b) => sortNewestFirst ? b.last - a.last : a.first - b.first);
+
+            // Order lessons within each section to match the toggle
             groups.forEach(g => {
                 g.lessons.sort((a, b) => sortNewestFirst ? lessonNum(b) - lessonNum(a) : lessonNum(a) - lessonNum(b));
             });
-            if (sortNewestFirst) groups.reverse();
 
             groups.forEach(group => {
                 const section = document.createElement('details');

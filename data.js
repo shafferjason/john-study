@@ -295,6 +295,7 @@ const lessonData = [
     },
     {
         id: "lesson-22",
+        chapter_group: "Word Study: I AM",
         title: "Lesson 22: I AM — the Two Words That Answer the Burning Bush, the Stones That Prove the Claim, and What Gets Lost in Translation",
         scripture: "John 8:48-59 • Exodus 3:14 • The Seven \"I Am\" Statements (John 6:35 et al.) • Matthew 14:27 • Revelation 1:8",
         summary_preview: "This week Ben pressed pause between the walking on the water and the bread of life for a lesson on two words: ego eimi — \"I am.\" When Jesus speaks them in their absolute form, he is answering the burning bush — and the stones the Pharisees picked up prove his hearers understood him perfectly.",
