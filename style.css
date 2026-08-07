@@ -1199,16 +1199,18 @@ header {
     box-sizing: border-box;
 }
 
-/* BRASS TITLE PLATE - embossed/stamped into spine */
-.lesson-item a::before {
+/* BRASS TITLE PLATE - embossed/stamped into spine.
+   Anchored to the title itself, not to the card, so it grows with the text. It used to be
+   a fixed-height box centred in the card (75px desktop / 110px mobile), which meant any
+   title taller than the plate spilled out of the top and bottom of it — the whole first
+   line of a six-line title sat outside the brass on a phone. Chasing that with a bigger
+   fixed height only moves the breaking point to the next long title. */
+.lesson-item a .lesson-title::before {
     content: '';
     position: absolute;
-    left: 2.5rem;
-    right: 2.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 75px;
-    
+    inset: -0.55rem 0;
+    z-index: -1;
+
     /* TEXTURED worn brass plate pressed into leather */
     background: 
         /* Fine brass scratches - horizontal wear marks */
@@ -1252,8 +1254,6 @@ header {
         inset 1px 1px 0 rgba(220, 180, 130, 0.15),
         /* Outer glow */
         0 0 3px rgba(212, 165, 116, 0.15);
-    
-    z-index: 0;
 }
 
 /* WORN CORNERS - darker aged edges on each spine */
@@ -1328,7 +1328,7 @@ header {
 }
 
 /* Brass plate glows on hover */
-.lesson-item a:hover::before {
+.lesson-item a:hover .lesson-title::before {
     background: linear-gradient(180deg,
         rgba(212, 165, 116, 0.25) 0%,
         rgba(212, 165, 116, 0.15) 50%,
@@ -3071,12 +3071,8 @@ strong, b {
         min-height: 48px;
     }
     
-    /* Expand brass plate on mobile to contain titles */
-    .lesson-item a::before {
-        left: 1rem !important; /* Reduced from 2.5rem */
-        right: 1rem !important; /* Reduced from 2.5rem */
-        height: 110px !important; /* Increased from 90px to fit 4 lines */
-    }
+    /* The brass plate sizes itself to the title now — no fixed height to out-grow.
+       (Removed the old left/right/height !important patch that tried to chase line count.) */
     
     /* Reduce leather panel padding on mobile for full bleed reading */
     .lesson-summary,
